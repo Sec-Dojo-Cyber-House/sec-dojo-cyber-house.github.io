@@ -14,3 +14,19 @@ url = "https://github.com/Sec-Dojo-Cyber-House/cve-hunters"
 
 [social.params]
 icon = "brand-github"
+
+[[social]]
+identifier = "discord"
+name = "Discord"
+url = "https://discord.gg/xqXHJGan"
+
+[social.params]
+icon = "brand-discord"
+
+[[social]]
+identifier = "gmail"
+name = "Gmail"
+url = "mailto:secdojocyberhouse@gmail.com"
+
+[social.params]
+icon = "mail"
