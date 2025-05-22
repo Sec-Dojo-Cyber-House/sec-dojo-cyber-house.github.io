@@ -12,7 +12,7 @@ links:
     website: https://www.linkedin.com/in/nmmorette/
     image: natan.png
   
-  - title: Sec-Dojo-Cyber-House
+  - title: Sec Dojo Cyber House
     description: GitHub organization for CVE Hunters contributors.
     website: https://github.com/Sec-Dojo-Cyber-House
     image: sdch.png
@@ -52,6 +52,8 @@ links:
 
   - title: Taíza Oliveira
     description: CVE Hunters contributor.
+    website: https://www.linkedin.com/in/taíza-oliveira
+    image: taiza.png
 
   - title: Vanderlei Princival
     description: CVE Hunters contributor.
