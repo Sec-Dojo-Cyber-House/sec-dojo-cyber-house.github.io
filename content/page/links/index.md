@@ -27,13 +27,14 @@ links:
     website: https://www.linkedin.com/in/diegocbcastro/
     image: diego.png
 
-  - title: Elisângela Mendonça
+  - title: Elisangela Mendonça
     description: CVE-Hunters contributor.
     website: https://www.linkedin.com/in/elisangelasilvademendonca/
     image: elisangela.png
 
   - title: Fernanda Martins
     description: CVE-Hunters contributor.
+    website: https://www.linkedin.com/in/fêmartins/
 
   - title: Isadora Novaes
     description: CVE-Hunters contributor.
