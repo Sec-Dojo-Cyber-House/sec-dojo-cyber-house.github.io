@@ -2,5 +2,11 @@
 [en]
 languageName = "English"
 languagedirection = "ltr"
-title = "Example Site"
+title = "CVE-Hunters"
 weight = 1
+
+[pt]
+languageName = "Português"
+languagedirection = "ltr"
+title = "CVE-Hunters"
+weight = 2

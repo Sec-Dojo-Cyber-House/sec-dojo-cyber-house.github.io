@@ -16,3 +16,5 @@ hasCJKLanguage = false
 
 [pagination]
 pagerSize = 5
+[params.header]
+  showLanguageSwitcher = true
