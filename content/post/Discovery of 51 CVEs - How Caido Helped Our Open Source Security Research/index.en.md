@@ -1,6 +1,6 @@
 ---
 title: Discovery of 51 CVEs - How Caido Helped Our Open Source Security Research
-description: Improving Open Source Security through Effective Vulnerability Detection
+description: Strengthening open source security through effective vulnerability detection
 date: 2025-06-04
 weight: 100
 translationKey: "article-cvehuntersandcaido"
