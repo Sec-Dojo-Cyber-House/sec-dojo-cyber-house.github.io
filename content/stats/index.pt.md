@@ -11,7 +11,7 @@ menu:
 comments: false
 ---
 
-Todas as estatísticas de CVEs registrados pelos CVE-Hunters:
+Todas as estatísticas de CVEs registradas pela equipe do CVE-Hunters:
 
 ### Total de CVEs registrados
 
