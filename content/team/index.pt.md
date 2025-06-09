@@ -127,7 +127,7 @@ Você pode encontrar links úteis para repositórios e colaboradores abaixo:
   </tbody>
 </table>
 
-# Repositórios
+## Repositórios
 
 <table border="1" align="center">
   <tbody>
