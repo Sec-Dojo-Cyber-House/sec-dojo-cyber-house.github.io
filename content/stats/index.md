@@ -1,0 +1,32 @@
+---
+title: "Stats"
+layout: "post"
+
+menu:
+  main: 
+    weight: 5
+    params:
+      icon: chart-bar
+
+comments: false
+---
+
+All statistics of CVEs registered by CVE-Hunters:
+
+### Total CVEs Registered
+
+<img src="total.png" width=100% height=100>
+
+### Top Finders
+
+<img src="topfinders.png" width=100% height=100>
+
+### Vulnerability Type
+
+<img src="vulntype.png" width=100% height=100>
+
+##
+
+### Severity
+
+<img src="severity.png" width=100% height=100>

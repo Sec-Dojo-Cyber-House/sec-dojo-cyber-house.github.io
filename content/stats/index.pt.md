@@ -1,0 +1,30 @@
+---
+title: "Métricas"
+layout: "post"
+
+menu:
+  main: 
+    weight: 5
+    params:
+      icon: chart-bar
+
+comments: false
+---
+
+Todas as estatísticas de CVEs registrados pelos CVE-Hunters:
+
+### Total de CVEs registrados
+
+<img src="/stats/total.png" width=100% height=100>
+
+### Quem mais encontrou CVEs
+
+<img src="/stats/topfinders.png" width=100% height=100>
+
+### Tipos de vulnerabilidades
+
+<img src="/stats/vulntype.png" width=100% height=100>
+
+### Severidade
+
+<img src="/stats/severity.png" width=100% height=100>
