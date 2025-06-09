@@ -30,7 +30,7 @@ Você pode encontrar links úteis para repositórios e colaboradores abaixo:
   </tbody>
 </table>
 
-## Contribuidores
+## Colaboradores
 
 <table border="1" align="center">
   <tbody>
