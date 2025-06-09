@@ -1,0 +1,151 @@
+---
+title: "Equipe"
+layout: "post"
+
+menu:
+  main: 
+    weight: 4
+    params:
+      icon: tabler-users
+
+comments: false
+---
+
+Você pode encontrar links úteis para repositórios e colaboradores abaixo:
+
+## Fundador
+
+<table border="1" style="max-width: 155px;">
+  <tbody>
+    <tr>
+      <td style="text-align: center;">
+        <a href="https://www.linkedin.com/in/nmmorette/">
+          <img src="/team/natan.png" width="100"/> 
+        </a><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/nmmorette/">Natan Maia<br> Morette</a></td>
+    </tr>
+  </tbody>
+</table>
+
+## Contribuidores
+
+<table border="1" align="center">
+  <tbody>
+    <tr>
+      <td style="text-align: center;">
+        <a href="https://www.linkedin.com/in/angelo-morette-019/">
+          <img src="/team/angelo.png" width="100"/> 
+        </a><br>
+      </td>
+      <td style="text-align: center;">
+        <a href="https://www.linkedin.com/in/diegocbcastro/">
+          <img src="/team/diego.png" width="100"/> 
+        </a><br>
+      </td>
+      <td style="text-align: center;">
+        <a href="https://www.linkedin.com/in/elisangelasilvademendonca/">
+          <img src="/team/elisangela.png" width="100"/> 
+        </a><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/angelo-morette-019/">Angelo <br> Morette </a></td>
+      <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/diegocbcastro/">Diego <br> Castro</a></td>
+      <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/elisangelasilvademendonca/">Elisangela <br> Mendonça</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<table border="1" align="center">
+  <tbody>
+    <tr>
+      <td style="text-align: center;">
+        <a href="https://www.linkedin.com/in/f%C3%AAmartins/">
+        </a><br>
+      </td>
+      <td style="text-align: center;">
+        <a href="https://www.linkedin.com/in/isadora-cristina-a05580014b/">
+          <img src="/team/isadora.png" width="100"/> 
+        </a><br>
+      </td>
+      <td style="text-align: center;">
+        <a href="https://www.linkedin.com/in/karina-gante/">
+          <img src="/team/karina.png" width="100"/> 
+        </a><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/f%C3%AAmartins/">Fernanda <br> Martins </a></td>
+      <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/isadora-cristina-a05580014b/">Isadora <br> Novaes</a></td>
+      <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/karina-gante/">Karina <br> Gante</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<table border="1" align="center">
+  <tbody>
+    <tr>
+      <td style="text-align: center;">
+        <a href="https://www.linkedin.com/in/rafael-corvino/">
+          <img src="/team/rafael.png" width="100"/> 
+        </a><br>
+      </td>
+      <td style="text-align: center;">
+        <a href="https://www.linkedin.com/in/ta%C3%ADza-oliveira">
+          <img src="/team/taiza.png" width="100"/> 
+        </a><br>
+      </td>
+      <td style="text-align: center;">
+        <a href="https://www.linkedin.com/in/vanderlei-princival/">
+          <img src="/team/vanderlei.png" width="100"/> 
+        </a><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/rafael-corvino/">Rafael <br> Corvino</a></td>
+      <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/ta%C3%ADza-oliveira">Taíza <br> Oliveira</a></td>
+      <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/vanderlei-princival/">Vanderlei <br> Princival</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<table border="1" style="max-width: 155px;">
+  <tbody>
+    <tr>
+      <td style="text-align: center;">
+        <a href="https://www.linkedin.com/in/vinicius-marim-melfi-4b937b155/">
+          <img src="/team/vinicius.png" width="100"/> 
+        </a><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/vinicius-marim-melfi-4b937b155/">Vinícius <br> Melfi</a></td>
+    </tr>
+  </tbody>
+</table>
+
+# Repositórios
+
+<table border="1" align="center">
+  <tbody>
+    <tr>
+      <td style="text-align: center;">
+        <a href="https://github.com/Sec-Dojo-Cyber-House/cve-hunters">
+          <img src="/team/cve-hunters-logo.png" width="100"/> 
+        </a><br>
+      </td>
+      <td style="text-align: center;">
+        <a href="https://github.com/Sec-Dojo-Cyber-House">
+          <img src="/team/sdch.png" width="100"/> 
+        </a><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: center; font-weight: bold;"><a href="https://github.com/Sec-Dojo-Cyber-House/cve-hunters">CVE <br> Hunters </a></td>
+      <td style="text-align: center; font-weight: bold;"><a href="https://github.com/Sec-Dojo-Cyber-House">Sec-Dojo <br> Cyber House </a></td>
+    </tr>
+  </tbody>
+</table>
