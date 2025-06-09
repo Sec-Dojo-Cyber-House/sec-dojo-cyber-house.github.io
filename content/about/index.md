@@ -42,22 +42,18 @@ comments: false
 
   ### Contributed Projects
 
-<div align="center" width=100% style="text-align: center;">
-
-<table border="1">
+<table border="1" align="center">
   <tbody>
     <tr>
-      <td style="text-align: center; font-weight: bold;">
+      <td style="text-align: center;">
         <a href="https://github.com/LabRedesCefetRJ/WeGIA">
-          <img style="text-align: center; font-weight: bold;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTd6n7hnQuMI-Reb4mfUFwDavFBFcSlXwFm1Lno6Yn9JtG16xKFzKDv75czTZXoH6ATKWk&usqp=CAU" width="100"/> 
-        </a><br>
-        <a href="https://github.com/LabRedesCefetRJ/WeGIA">WeGIA</a><br>
+          <img style="text-align: center; font-weight: bold;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTd6n7hnQuMI-Reb4mfUFwDavFBFcSlXwFm1Lno6Yn9JtG16xKFzKDv75czTZXoH6ATKWk&usqp=CAU" width="100"/> </br> WeGia
+        </a>
       </td>
-      <td style="text-align: center; font-weight: bold;">
+      <td style="text-align: center;">
         <a href="https://github.com/portabilis/i-educar">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxujcWO_xFleo4jbQjDDBkXyVI8oEE7NdlAA&s" width="100"/> 
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxujcWO_xFleo4jbQjDDBkXyVI8oEE7NdlAA&s" width="100"/> </br> i-Educar
         </a><br>
-        <a href="https://github.com/portabilis/i-educar">i-Educar</a><br>
       </td>
     </tr>
     <tr>
@@ -66,8 +62,7 @@ comments: false
     </tr>
     <tr>
       <td style="text-align: center; font-weight: bold;">🛡️ CVEs: 48</td>
-      <td style="text-align: center; font-weight: bold;">🛡️ CVEs: 3 </td>
+      <td style="text-align: center; font-weight: bold;">🛡️ CVEs: 3</td>
     </tr>
   </tbody>
 </table>
-</div>
