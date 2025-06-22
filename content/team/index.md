@@ -21,7 +21,7 @@ You can find useful repositories and contributors links below:
     <tr>
       <td style="text-align: center;">
         <a href="https://www.linkedin.com/in/nmmorette/">
-          <img src="natan.png" width="100"/> 
+          <img src="/assets/contributors/natan.png" width="100"/> 
         </a><br>
       </td>
     </tr>
@@ -38,17 +38,17 @@ You can find useful repositories and contributors links below:
     <tr>
       <td style="text-align: center;">
         <a href="https://www.linkedin.com/in/angelo-morette-019/">
-          <img src="angelo.png" width="100"/> 
+          <img src="/assets/contributors/angelo.png" width="100"/> 
         </a><br>
       </td>
       <td style="text-align: center;">
         <a href="https://www.linkedin.com/in/diegocbcastro/">
-          <img src="diego.png" width="100"/> 
+          <img src="/assets/contributors/diego.png" width="100"/> 
         </a><br>
       </td>
       <td style="text-align: center;">
         <a href="https://www.linkedin.com/in/elisangelasilvademendonca/">
-          <img src="elisangela.png" width="100"/> 
+          <img src="/assets/contributors/elisangela.png" width="100"/> 
         </a><br>
       </td>
     </tr>
@@ -69,12 +69,12 @@ You can find useful repositories and contributors links below:
       </td>
       <td style="text-align: center;">
         <a href="https://www.linkedin.com/in/isadora-cristina-a05580014b/">
-          <img src="isadora.png" width="100"/> 
+          <img src="/assets/contributors/isadora.png" width="100"/> 
         </a><br>
       </td>
       <td style="text-align: center;">
         <a href="https://www.linkedin.com/in/karina-gante/">
-          <img src="karina.png" width="100"/> 
+          <img src="/assets/contributors/karina.png" width="100"/> 
         </a><br>
       </td>
     </tr>
@@ -91,17 +91,17 @@ You can find useful repositories and contributors links below:
     <tr>
       <td style="text-align: center;">
         <a href="https://www.linkedin.com/in/rafael-corvino/">
-          <img src="rafael.png" width="100"/> 
+          <img src="/assets/contributors/rafael.png" width="100"/> 
         </a><br>
       </td>
       <td style="text-align: center;">
         <a href="https://www.linkedin.com/in/ta%C3%ADza-oliveira">
-          <img src="taiza.png" width="100"/> 
+          <img src="/assets/contributors/taiza.png" width="100"/> 
         </a><br>
       </td>
       <td style="text-align: center;">
         <a href="https://www.linkedin.com/in/vanderlei-princival/">
-          <img src="vanderlei.png" width="100"/> 
+          <img src="/assets/contributors/vanderlei.png" width="100"/> 
         </a><br>
       </td>
     </tr>
@@ -118,7 +118,7 @@ You can find useful repositories and contributors links below:
     <tr>
       <td style="text-align: center;">
         <a href="https://www.linkedin.com/in/vinicius-marim-melfi-4b937b155/">
-          <img src="vinicius.png" width="100"/> 
+          <img src="/assets/contributors/vinicius.png" width="100"/> 
         </a><br>
       </td>
     </tr>
@@ -140,7 +140,7 @@ You can find useful repositories and contributors links below:
       </td>
       <td style="text-align: center;">
         <a href="https://github.com/Sec-Dojo-Cyber-House">
-          <img src="sdch.png" width="100"/> 
+          <img src="/assets/contributors/sdch.png" width="100"/> 
         </a><br>
       </td>
     </tr>
