@@ -30,3 +30,11 @@ url = "mailto:secdojocyberhouse@gmail.com"
 
 [social.params]
 icon = "mail"
+
+[[social]]
+identifier = "linkedin"
+name = "LinkedIn"
+url = "https://www.linkedin.com/company/cve-hunters/"
+
+[social.params]
+icon = "brand-linkedin"
