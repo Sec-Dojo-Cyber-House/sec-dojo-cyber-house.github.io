@@ -153,12 +153,12 @@ categories:
 
 ## Written by
 
-[![](elisangela50x50.png)](https://www.linkedin.com/in/elisangelasilvademendonca/) [Elisangela Mendonça](https://www.linkedin.com/in/elisangelasilvademendonca/)
+[![](/assets/contributors/50x50/elisangela50x50.png)](https://www.linkedin.com/in/elisangelasilvademendonca/) [Elisangela Mendonça](https://www.linkedin.com/in/elisangelasilvademendonca/)
 
 ## Contributors
 
-[![](karina50x50.png)](https://www.linkedin.com/in/karina-gante/) [Karina Gante](https://www.linkedin.com/in/karina-gante/)
+[![](/assets/contributors/50x50/karina50x50.png)](https://www.linkedin.com/in/karina-gante/) [Karina Gante](https://www.linkedin.com/in/karina-gante/)
 
-[![](natan50x50.png)](https://www.linkedin.com/in/nmmorette) [Natan Maia Morette](https://www.linkedin.com/in/nmmorette) 
+[![](/assets/contributors/50x50/natan50x50.png)](https://www.linkedin.com/in/nmmorette) [Natan Maia Morette](https://www.linkedin.com/in/nmmorette) 
 
 > *By: [CVE-Hunters](https://github.com/Sec-Dojo-Cyber-House/cve-hunters)*
