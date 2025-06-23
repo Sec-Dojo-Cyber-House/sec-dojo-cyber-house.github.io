@@ -43,13 +43,13 @@ Learn more about our partners and sponsors below:
   <tbody>
     <tr>
       <td style="text-align: center;">
-        <a href="https://www.atados.com.br/ong/instituto-um-passo-de-cada-vez">
+        <a href="https://institutoumpassodecadavez.org/">
           <img src="instituto-um-passo-de-cada-vez.png" width="100"/> 
         </a><br>
       </td>
     </tr>
     <tr>
-      <td style="text-align: center; font-weight: bold;"><a href="https://www.atados.com.br/ong/instituto-um-passo-de-cada-vez">Instituto Um Passo de Cada Vez</a></td>
+      <td style="text-align: center; font-weight: bold;"><a href="https://institutoumpassodecadavez.org/">Instituto Um Passo de Cada Vez</a></td>
     </tr>
   </tbody>
 </table>
