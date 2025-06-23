@@ -46,7 +46,7 @@ Altere:
 - Adicione o parametro `translationKey` onde alterou o titulo, data etc
 - O parametro `translationKey` deve ser exatamente o mesmo no conteudo em ingles e em portugues
 
-> ***Exemplo na pasta: "Discovery of 51 CVEs - How Caido Helped Our Open Source Security Research"***
+> ***Exemplo na pasta: "CVE-2025-52474"***
 
 - Espaços (" ") não são aceitos nos parametros `title`, `date`, `translationKey` etc, substitua por "-", quando houver necessidade.
 - O arquivo do conteudo em portugues deve estar na **mesma** pasta do post em ingles com o nome `index.pt.md`
