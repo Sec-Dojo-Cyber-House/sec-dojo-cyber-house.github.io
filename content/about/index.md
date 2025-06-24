@@ -47,22 +47,29 @@ comments: false
     <tr>
       <td style="text-align: center;">
         <a href="https://github.com/LabRedesCefetRJ/WeGIA">
-          <img style="text-align: center; font-weight: bold;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTd6n7hnQuMI-Reb4mfUFwDavFBFcSlXwFm1Lno6Yn9JtG16xKFzKDv75czTZXoH6ATKWk&usqp=CAU" width="100"/> </br> WeGia
+          <img style="text-align: center; font-weight: bold;" src="wegia.png" width="100"/> </br> WeGia
         </a>
       </td>
       <td style="text-align: center;">
         <a href="https://github.com/portabilis/i-educar">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxujcWO_xFleo4jbQjDDBkXyVI8oEE7NdlAA&s" width="100"/> </br> i-Educar
+          <img src="i-educar.png" width="100"/> </br> i-Educar
         </a><br>
+      </td>
+      <td style="text-align: center;">
+        <a href="https://github.com/portabilis/i-diario">
+          <img style="text-align: center; font-weight: bold;" src="i-diario.png" width="100"/> </br> i-Diário
+        </a>
       </td>
     </tr>
     <tr>
       <td style="text-align: center; font-weight: bold;"><img src="https://www.php.net/images/logos/new-php-logo.png" width="35"/> </td>
       <td style="text-align: center; font-weight: bold;"><img src="https://www.php.net/images/logos/new-php-logo.png" width="35"/> </td>
+      <td style="text-align: center; font-weight: bold;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Ruby_logo.svg/2048px-Ruby_logo.svg.png" width="25"/> </td>
     </tr>
     <tr>
       <td style="text-align: center; font-weight: bold;">🛡️ CVEs: 48</td>
       <td style="text-align: center; font-weight: bold;">🛡️ CVEs: 3</td>
+      <td style="text-align: center; font-weight: bold;">🛡️ CVEs: Loading...</td>
     </tr>
   </tbody>
 </table>
