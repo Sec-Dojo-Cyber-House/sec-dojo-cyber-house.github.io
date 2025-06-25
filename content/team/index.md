@@ -89,6 +89,10 @@ You can find useful repositories and contributors links below:
 <table border="1" align="center">
   <tbody>
     <tr>
+    <td style="text-align: center;">
+        <a href="https://github.com/Pedro-Lyrio">
+        </a><br>
+      </td>
       <td style="text-align: center;">
         <a href="https://www.linkedin.com/in/rafael-corvino/">
           <img src="/assets/contributors/rafael.png" width="100"/> 
@@ -99,23 +103,23 @@ You can find useful repositories and contributors links below:
           <img src="/assets/contributors/taiza.png" width="100"/> 
         </a><br>
       </td>
+    </tr>
+    <tr>
+      <td style="text-align: center; font-weight: bold;"><a href="https://github.com/Pedro-Lyrio">Pedro<br>Lyrio</a></td>
+      <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/rafael-corvino/">Rafael <br> Corvino</a></td>
+      <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/ta%C3%ADza-oliveira">Taíza <br> Oliveira</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<table border="1" align="center">
+  <tbody>
+    <tr>
       <td style="text-align: center;">
         <a href="https://www.linkedin.com/in/vanderlei-princival/">
           <img src="/assets/contributors/vanderlei.png" width="100"/> 
         </a><br>
       </td>
-    </tr>
-    <tr>
-      <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/rafael-corvino/">Rafael <br> Corvino</a></td>
-      <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/ta%C3%ADza-oliveira">Taíza <br> Oliveira</a></td>
-      <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/vanderlei-princival/">Vanderlei <br> Princival</a></td>
-    </tr>
-  </tbody>
-</table>
-
-<table border="1" style="max-width: 155px;">
-  <tbody>
-    <tr>
       <td style="text-align: center;">
         <a href="https://www.linkedin.com/in/vinicius-marim-melfi-4b937b155/">
           <img src="/assets/contributors/vinicius.png" width="100"/> 
@@ -123,6 +127,7 @@ You can find useful repositories and contributors links below:
       </td>
     </tr>
     <tr>
+      <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/vanderlei-princival/">Vanderlei <br> Princival</a></td>
       <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/vinicius-marim-melfi-4b937b155/">Vinícius <br> Melfi</a></td>
     </tr>
   </tbody>
