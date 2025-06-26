@@ -15,15 +15,15 @@ Todas as estatísticas de CVEs registradas pela equipe do CVE-Hunters:
 
 ### Total de CVEs registrados
 
-<img src="totalCVEsRegistred.png" width=100% height=100>
+<img src="/stats/totalCVEsRegistred.png" width=100% height=100>
 
 ### Quem mais encontrou CVEs
 
-<img src="topFinders.png" width=100% height=100>
+<img src="/stats/topFinders.png" width=100% height=100>
 
 ### Tipos de vulnerabilidades
 
-<img src="vulnerabilityType.png" width=100% height=100>
+<img src="/stats/vulnerabilityType.png" width=100% height=100>
 
 ### Severidade
 
