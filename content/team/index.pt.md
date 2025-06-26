@@ -89,7 +89,8 @@ Você pode encontrar links úteis para repositórios e colaboradores abaixo:
   <tbody>
     <tr>
     <td style="text-align: center;">
-        <a href="https://github.com/Pedro-Lyrio">
+        <a href="https://www.linkedin.com/in/pedro-henrique-da-costa-lyrio-020a401a3?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">
+          <img src="/assets/contributors/pedro.png" width="100"/> 
         </a><br>
       </td>
       <td style="text-align: center;">
@@ -104,7 +105,7 @@ Você pode encontrar links úteis para repositórios e colaboradores abaixo:
       </td>
     </tr>
     <tr>
-      <td style="text-align: center; font-weight: bold;"><a href="https://github.com/Pedro-Lyrio">Pedro<br>Lyrio</a></td>
+      <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/pedro-henrique-da-costa-lyrio-020a401a3?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">Pedro<br>Lyrio</a></td>
       <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/rafael-corvino/">Rafael <br> Corvino</a></td>
       <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/ta%C3%ADza-oliveira">Taíza <br> Oliveira</a></td>
     </tr>
