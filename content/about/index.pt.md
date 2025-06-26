@@ -66,8 +66,8 @@ comments: false
       <td style="text-align: center; font-weight: bold;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Ruby_logo.svg/2048px-Ruby_logo.svg.png" width="25"/> </td>
     </tr>
     <tr>
-      <td style="text-align: center; font-weight: bold;">🛡️ CVEs: 48</td>
-      <td style="text-align: center; font-weight: bold;">🛡️ CVEs: 3</td>
+      <td style="text-align: center; font-weight: bold;">🛡️ CVEs: 50</td>
+      <td style="text-align: center; font-weight: bold;">🛡️ CVEs: Carregando...</td>
       <td style="text-align: center; font-weight: bold;">🛡️ CVEs: Carregando...</td>
     </tr>
   </tbody>
