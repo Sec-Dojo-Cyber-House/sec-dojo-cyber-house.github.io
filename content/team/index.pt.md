@@ -35,7 +35,7 @@ Você pode encontrar links úteis para repositórios e colaboradores abaixo:
 <table border="1" align="center">
   <tbody>
     <tr>
-    <td style="text-align: center;">
+     <td style="text-align: center;">
         <a href="https://www.linkedin.com/in/angelo-morette-019/">
           <img src="/assets/contributors/angelo.png" width="100"/> 
         </a><br>
@@ -50,22 +50,11 @@ Você pode encontrar links úteis para repositórios e colaboradores abaixo:
           <img src="/assets/contributors/elisangela.png" width="100"/> 
         </a><br>
       </td>
-      <td style="text-align: center;">
-        <a href="https://www.linkedin.com/in/isadora-cristina-a05580014b/">
-          <img src="/assets/contributors/isadora.png" width="100"/> 
-        </a><br>
-      </td>
-      <td style="text-align: center;">
-        <a href="https://www.linkedin.com/in/f%C3%AAmartins/">
-        </a><br>
-      </td>
     </tr>
     <tr>
       <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/angelo-morette-019/">Angelo<br>Morette </a></td>
       <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/diegocbcastro/">Diego<br>Castro</a></td>
       <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/elisangelasilvademendonca/">Elisangela<br>Mendonça</a></td>
-      <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/isadora-cristina-a05580014b/">Isadora<br>Novaes</a></td>
-      <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/f%C3%AAmartins/">Fernanda<br>Martins</a></td>
     </tr>
   </tbody>
 </table>
@@ -74,11 +63,32 @@ Você pode encontrar links úteis para repositórios e colaboradores abaixo:
   <tbody>
     <tr>
     <td style="text-align: center;">
+        <a href="https://www.linkedin.com/in/f%C3%AAmartins/">
+        </a><br>
+      </td>
+     <td style="text-align: center;">
+        <a href="https://www.linkedin.com/in/isadora-cristina-a05580014b/">
+          <img src="/assets/contributors/isadora.png" width="100"/> 
+        </a><br>
+      </td>
+      <td style="text-align: center;">
         <a href="https://www.linkedin.com/in/karina-gante/">
           <img src="/assets/contributors/karina.png" width="100"/> 
         </a><br>
       </td>
-      <td style="text-align: center;">
+    </tr>
+    <tr>
+      <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/f%C3%AAmartins/">Fernanda<br>Martins</a></td>
+      <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/isadora-cristina-a05580014b/">Isadora<br>Novaes</a></td>
+      <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/karina-gante/">Karina<br>Gante</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<table border="1" align="center">
+  <tbody>
+    <tr>
+    <td style="text-align: center;">
         <a href="http://www.linkedin.com/in/marceloqueirozjr">
           <img src="/assets/contributors/marcelo.png" width="100"/> 
         </a><br>
@@ -93,18 +103,11 @@ Você pode encontrar links úteis para repositórios e colaboradores abaixo:
           <img src="/assets/contributors/rafael.png" width="100"/> 
         </a><br>
       </td>
-      <td style="text-align: center;">
-        <a href="https://www.linkedin.com/in/ta%C3%ADza-oliveira">
-          <img src="/assets/contributors/taiza.png" width="100"/> 
-        </a><br>
-      </td>
     </tr>
     <tr>
-      <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/karina-gante/">Karina<br>Gante</a></td>
       <td style="text-align: center; font-weight: bold;"><a href="http://www.linkedin.com/in/marceloqueirozjr">Marcelo<br>Queiroz</a></td>
       <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/pedro-henrique-da-costa-lyrio-020a401a3?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">Pedro<br>Lyrio</a></td>
       <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/rafael-corvino/">Rafael<br>Corvino</a></td>
-      <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/ta%C3%ADza-oliveira">Taíza<br>Oliveira</a></td>
     </tr>
   </tbody>
 </table>
@@ -112,6 +115,11 @@ Você pode encontrar links úteis para repositórios e colaboradores abaixo:
 <table border="1" align="center">
   <tbody>
     <tr>
+    <td style="text-align: center;">
+        <a href="https://www.linkedin.com/in/ta%C3%ADza-oliveira">
+          <img src="/assets/contributors/taiza.png" width="100"/> 
+        </a><br>
+      </td>
       <td style="text-align: center;">
         <a href="https://www.linkedin.com/in/vanderlei-princival/">
           <img src="/assets/contributors/vanderlei.png" width="100"/> 
@@ -124,6 +132,7 @@ Você pode encontrar links úteis para repositórios e colaboradores abaixo:
       </td>
     </tr>
     <tr>
+      <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/ta%C3%ADza-oliveira">Taíza<br>Oliveira</a></td>
       <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/vanderlei-princival/">Vanderlei <br> Princival</a></td>
       <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/vinicius-marim-melfi-4b937b155/">Vinícius <br> Melfi</a></td>
     </tr>
