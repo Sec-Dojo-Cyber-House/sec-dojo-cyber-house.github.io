@@ -116,6 +116,11 @@ Você pode encontrar links úteis para repositórios e colaboradores abaixo:
   <tbody>
     <tr>
     <td style="text-align: center;">
+        <a href="https://github.com/%20%20www.linkedin.com/in/raul-pazem%C3%A9cxas-04882b21a/">
+          <img src="/assets/contributors/raul.png" width="100"/> 
+        </a><br>
+      </td>
+      <td style="text-align: center;">
         <a href="https://www.linkedin.com/in/ta%C3%ADza-oliveira">
           <img src="/assets/contributors/taiza.png" width="100"/> 
         </a><br>
@@ -125,15 +130,25 @@ Você pode encontrar links úteis para repositórios e colaboradores abaixo:
           <img src="/assets/contributors/vanderlei.png" width="100"/> 
         </a><br>
       </td>
+    </tr>
+    <tr>
+      <td style="text-align: center; font-weight: bold;"><a href="https://github.com/%20%20www.linkedin.com/in/raul-pazem%C3%A9cxas-04882b21a/">Raul<br>Pazemécxas</a></td>
+      <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/ta%C3%ADza-oliveira">Taíza<br>Oliveira</a></td>
+      <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/vanderlei-princival/">Vanderlei<br>Princival</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<table border="1" style="max-width: 155px;">
+  <tbody>
+    <tr>
       <td style="text-align: center;">
         <a href="https://www.linkedin.com/in/vinicius-marim-melfi-4b937b155/">
-          <img src="/assets/contributors/vinicius.png" width="100"/> 
+          <img src="/assets/contributors/vinicius.png" width="100"/>
         </a><br>
       </td>
     </tr>
     <tr>
-      <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/ta%C3%ADza-oliveira">Taíza<br>Oliveira</a></td>
-      <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/vanderlei-princival/">Vanderlei <br> Princival</a></td>
       <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/vinicius-marim-melfi-4b937b155/">Vinícius <br> Melfi</a></td>
     </tr>
   </tbody>
