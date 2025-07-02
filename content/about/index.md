@@ -47,28 +47,46 @@ comments: false
     <tr>
       <td style="text-align: center;">
         <a href="https://github.com/LabRedesCefetRJ/WeGIA">
-          <img style="text-align: center; font-weight: bold;" src="wegia.png" width="100"/> </br> WeGia
+          <img style="text-align: center; font-weight: bold;" src="/about/wegia.png" width="100"/> </br> WeGia
+        </a>
+      </td>
+      <td style="text-align: center;">
+        <a href="https://www.sourcecodester.com/">
+          <img style="text-align: center; font-weight: bold;" src="/about/sourcecodester.png" width="100"/> </br> SourceCodester
         </a>
       </td>
       <td style="text-align: center;">
         <a href="https://github.com/portabilis/i-educar">
-          <img src="i-educar.png" width="100"/> </br> i-Educar
+          <img src="/about/i-educar.png" width="100"/> </br> i-Educar
         </a><br>
       </td>
+    </tr>
+    <tr>
+      <td style="text-align: center; font-weight: bold;"><img src="https://www.php.net/images/logos/new-php-logo.png" width="35"/> </td>
+      <td style="text-align: center; font-weight: bold;"><img src="https://www.php.net/images/logos/new-php-logo.png" width="35"/> </td>
+      <td style="text-align: center; font-weight: bold;"><img src="https://www.php.net/images/logos/new-php-logo.png" width="35"/> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center; font-weight: bold;">🛡️ CVEs: 57</td>
+      <td style="text-align: center; font-weight: bold;">🛡️ CVEs: 3</td>
+      <td style="text-align: center; font-weight: bold;">🛡️ CVEs: Loading...</td>
+    </tr>
+  </tbody>
+</table>
+
+<table border="1" align="center">
+  <tbody>
+    <tr>
       <td style="text-align: center;">
         <a href="https://github.com/portabilis/i-diario">
-          <img style="text-align: center; font-weight: bold;" src="i-diario.png" width="100"/> </br> i-Diário
+          <img style="text-align: center; font-weight: bold;" src="/about/i-diario.png" width="100"/> </br> i-Diário
         </a>
       </td>
     </tr>
     <tr>
-      <td style="text-align: center; font-weight: bold;"><img src="https://www.php.net/images/logos/new-php-logo.png" width="35"/> </td>
-      <td style="text-align: center; font-weight: bold;"><img src="https://www.php.net/images/logos/new-php-logo.png" width="35"/> </td>
       <td style="text-align: center; font-weight: bold;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Ruby_logo.svg/2048px-Ruby_logo.svg.png" width="25"/> </td>
     </tr>
     <tr>
-      <td style="text-align: center; font-weight: bold;">🛡️ CVEs: 51</td>
-      <td style="text-align: center; font-weight: bold;">🛡️ CVEs: Loading...</td>
       <td style="text-align: center; font-weight: bold;">🛡️ CVEs: Loading...</td>
     </tr>
   </tbody>
