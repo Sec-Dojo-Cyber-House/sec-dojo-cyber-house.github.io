@@ -1,0 +1,49 @@
+{
+  "top_finders": {
+    "data": {
+      "Elisangela": 28,
+      "Natan": 19,
+      "Pedro": 1,
+      "Rafael": 3,
+      "Raul": 9
+    },
+    "colors": [
+      "#e918d5",
+      "#6407ab",
+      "#5b0eeb",
+      "#02bef0",
+      "#f542c5"
+    ]
+  },
+  "vuln_types": {
+    "data": {
+      "XSS": 42,
+      "SQL Injection": 11,
+      "Broken Access Control": 1,
+      "CSRF": 1,
+      "RCE": 1,
+      "DoS": 1,
+      "Open Redirect": 1,
+      "Command Injection": 1
+    },
+    "colors": [
+      "#011da1",
+      "#02bef0",
+      "#002680",
+      "#6407ab",
+      "#e918d5",
+      "#100027",
+      "#5b0eeb",
+      "#34ebc3"
+    ]
+  },
+  "severity": {
+    "Critical": 14,
+    "High": 4,
+    "Moderate": 42
+  },
+  "total_by_year": {
+    "2024: 10 CVEs": 10,
+    "2025: 50 CVEs": 50
+  }
+}
