@@ -1,97 +1,94 @@
 ---
-title: XSS Não Está Morto
-description: Uma análise prática sobre a exploração de XSS
+title: XSS Is Not Dead
+description: A practical look at XSS exploitation
 date: 2025-07-04
-weight: 100
+weight: 99
 translationKey: "article-xssnaoestamorto"
-image: cve-hunters+caido.png
+image: xss-is-not-dead.png
 tags:
   - CVE-Hunters
   - XSS
-  - Pesquisa de vulnerabilidades
-  - Segurança de aplicações web
-  - Divulgação responsável
-  - Vulnerabilidades em código aberto
-  - Ferramentas de segurança para pentesters
-  - Ferramentas de bug bounty
-  - Hacking ético
-  - Detecção de XSS
+  - Vulnerability Research
+  - Web Application Security
+  - Responsible Disclosure
+  - Open Source Vulnerabilities
+  - Security Tools for Pentesters
+  - Bug Bounty Tools
+  - Ethical Hacking
+  - XSS Detection
 
 categories:
-  - Pesquisa de Vulnerabilidades
-  - Segurança de Código Aberto
-  - Segurança de Aplicações Web
-  - Ferramentas de Pentest
-  - Projetos de Hacking Ético
-  - Divulgação de CVE
-  - Educação em Cibersegurança
-  - Estudos de Caso
+  - Vulnerability Research
+  - Open Source Security
+  - Web Application Security
+  - Pentest Tools
+  - Ethical Hacking Projects
+  - CVE Disclosure
+  - Cybersecurity Education
+  - Case Studies
 ---
-### **1. introduction: "XSS? Still?"**
 
-In the middle of 2025, are we still talking about XSS? Yes, we still are. Even with the use of modern frameworks, intelligent WAFs and a plethora of articles explaining how to mitigate this threat, Cross-Site Scripting (XSS) is still present, sneaky, persistent and often overlooked.
+## Introduction: "XSS? Still?"
 
-XSS is one of the first vulnerabilities covered in introductory courses on offensive security and web application penetration testing. With a simple payload, instructors demonstrate how trivial this flaw is to exploit, highlighting the danger and ease of its exploitation.
+<p style="text-align: justify;">In the middle of 2025, are we still talking about XSS? Yes, we still are. Even with the use of modern frameworks, intelligent WAFs and a plethora of articles explaining how to mitigate this threat, Cross-Site Scripting (XSS) is still present, sneaky, persistent and often overlooked.</p>
 
-But what is XSS anyway? According to [OWASP](https://owasp.org/www-community/attacks/xss/), Cross-Site Scripting attacks are a type of injection in which malicious scripts are inserted into vulnerable websites. These attacks occur when an attacker uses a web application to send malicious code, usually scripts executed in the browser, to another user. The flaws that make these attacks possible are quite common and arise whenever a web application incorporates user input into the generated output without carrying out appropriate validation or coding.
+<p style="text-align: justify;">XSS is one of the first vulnerabilities covered in introductory courses on offensive security and web application penetration testing. With a simple payload, instructors demonstrate how trivial this flaw is to exploit, highlighting the danger and ease of its exploitation.</p>
 
-Also according to OWASP, the victim's browser has no mechanism for distinguishing legitimate scripts from malicious ones. Thus, when it receives and executes the code, it trusts that it came from a secure source. As a result, the attacker can access cookies, session tokens and other sensitive information stored by the browser, as well as rewriting the content of the page or redirecting the user to malicious sites disguised as legitimate ones.
+<p style="text-align: justify;">XSS is one of the first vulnerabilities covered in introductory courses on offensive security and web application penetration testing. With a simple payload, instructors demonstrate how trivial this flaw is to exploit, highlighting the danger and ease of its exploitation.</p>
+
+<p style="text-align: justify;">But what is XSS anyway? According to <b><a href="https://owasp.org/www-community/attacks/xss/" target="_blank">OWASP</a></b>, Cross-Site Scripting attacks are a type of injection in which malicious scripts are inserted into vulnerable websites. These attacks occur when an attacker uses a web application to send malicious code, usually scripts executed in the browser, to another user. The flaws that make these attacks possible are quite common and arise whenever a web application incorporates user input into the generated output without carrying out appropriate validation or coding.</p>
+
+<p style="text-align: justify;">Also according to <b><a href="https://owasp.org/www-community/attacks/xss/" target="_blank">OWASP</a></b>, the victim's browser has no mechanism for distinguishing legitimate scripts from malicious ones. Thus, when it receives and executes the code, it trusts that it came from a secure source. As a result, the attacker can access cookies, session tokens and other sensitive information stored by the browser, as well as rewriting the content of the page or redirecting the user to malicious sites disguised as legitimate ones.</p>
 
 ![Simple example of an XSS payload to execute a message.](image.png)
 
-Simple example of an XSS payload to execute a message.
+## CVE-Hunters vs XSS
 
----
+<p style="text-align: justify;">The <b><a href="https://github.com/Sec-Dojo-Cyber-House/cve-hunters" target="_blank">CVE-Hunters</a></b> group was created in November 2024 as a joint initiative between students and a teacher, with a clear objective: to identify vulnerabilities (CVEs) in open source projects. The proposal was to give students practical experience in searching for flaws in real environments, going beyond controlled labs or Capture The Flag (CTF) challenges.</p>
 
-### **2. CVE-Hunters vs XSS**
+<p style="text-align: justify;">Since then, the group has analyzed a wide range of projects, from small community systems to applications widely used in the public and educational sectors. Along the way, one pattern has stood out: the frequency with which <b>Cross-Site Scripting (XSS)</b> vulnerabilities have been found.</p>
 
-The **CVE-Hunters** group was created in November 2024 as a joint initiative between students and a teacher, with a clear objective: to identify vulnerabilities (CVEs) in open source projects. The proposal was to give students practical experience in searching for flaws in real environments, going beyond controlled labs or Capture The Flag (CTF) challenges.
+<p style="text-align: justify;">This recurrence raises an important question: have developers stopped treating XSS seriously enough? Despite being a widely documented and known flaw for years, it still appears frequently. Even in organizations with mature development processes, XSS vulnerabilities continue to appear due to the complexity of input and output flows, the use of legacy libraries or the lack of contextualized testing.</p>
 
-Since then, the group has analyzed a wide range of projects, from small community systems to applications widely used in the public and educational sectors. Along the way, one pattern has stood out: the frequency with which **Cross-Site Scripting (XSS)** vulnerabilities have been found.
+<p style="text-align: justify;">Currently, the group has <b>135 reported vulnerabilities</b>, <b>53 of which have already been officially registered as CVEs</b>. Of the total number of vulnerabilities discovered, <b>104 are of the XSS type</b>, which represents a significant and worrying proportion.</p>
 
-This recurrence raises an important question: have developers stopped treating XSS seriously enough? Despite being a widely documented and known flaw for years, it still appears frequently. Even in organizations with mature development processes, XSS vulnerabilities continue to appear due to the complexity of input and output flows, the use of legacy libraries or the lack of contextualized testing.
+![](1.png)
 
-Currently, the group has **135 reported vulnerabilities**, **53 of which have already been officially registered as CVEs**. Of the total number of vulnerabilities discovered, 104 **are of the XSS type**, which represents a significant and worrying proportion.
+<p style="text-align: justify;">62 occurrences of the stored type and 42 of the reflected type were identified, revealing a relatively even distribution.</p>
 
-![1.png](1.png)
+![](2.png)
 
-Sixty-two occurrences of the stored type and 42 of the reflected type were identified, revealing a relatively even distribution.
+<p style="text-align: justify;">This statistics alone reinforces the idea that XSS is still a real problem, often overlooked during development, and that it continues to deserve attention, both from the technical community and from developers responsible for applications in production.</p>
 
-![2.png](2.png)
+## **Practical experience**
 
-This statistic alone reinforces the idea that XSS is still a real problem, often overlooked during development, and that it continues to deserve attention, both from the technical community and from developers responsible for applications in production.
+<p style="text-align: justify;">You may now be thinking: "OK, the <b><a href="https://github.com/Sec-Dojo-Cyber-House/cve-hunters" target="_blank">CVE-Hunters</a></b> group has found a lot of XSS in open source projects, but who's to say that large companies are also vulnerable?"</p>
 
----
+<p style="text-align: justify;">Let's do a quick experiment, with one of the most recent XSS disclosed during the writing of this article: <b><a href="https://security.paloaltonetworks.com/CVE-2025-0133" target="_blank">CVE-2025-0133</a>.</b> An XSS reflected in the GlobalProtect gateway and portal products, features of Palo Alto Networks' PAN-OS, published on May 14, 2025.</p>
 
-### **3. Practical experience**
+<p style="text-align: justify;">With a simple query on Shodan, we can check the estimated amount of use of this product in the world.</p>
 
-You may now be thinking: "OK, the CVE-Hunters group has found a lot of XSS in open source projects, but who's to say that large companies are also vulnerable?"
+![](image-1.png)
 
-Let's do a quick experiment, with one of the most recent XSS disclosed during the writing of this article: [**CVE-2025-0133 - PAN-OS: Reflected Cross-Site Scripting (XSS) Vulnerability in GlobalProtect Gateway and Portal**.](https://security.paloaltonetworks.com/CVE-2025-0133) An XSS reflected in the GlobalProtect gateway and portal products, features of Palo Alto Networks' PAN-OS, published on May 14, 2025.
+<p style="text-align: justify;">However, this doesn't mean that everyone is vulnerable. Let's go through the experiment for this article.</p>
 
-With a simple query on Shodan, we can check the estimated amount of use of this product in the world. 
-
-![image.png](image%201.png)
-
-However, this doesn't mean that everyone is vulnerable. Let's go through the experiment for this article.
-
-First, we extract some results from Shodan, a small sample of the total amount:
+<p style="text-align: justify;">First, we extract some results from Shodan, a small sample of the total amount:</p>
 
 ```bash
 shodan search --fields hostnames 'http.title:"GlobalProtect Portal" port:443' | grep -v '^$' > globalprotect-hostnames.txt
 ```
 
-![image.png](image%202.png)
+![](image-2.png)
 
-After that, we can use **`Nuclei`** to test for this vulnerability and automate the test:
+<p style="text-align: justify;">After that, we can use <b><code>Nuclei</code></b> to test for this vulnerability and automate the test:</p>
 
 ```bash
 nuclei -l globalprotect-hostnames.txt -t CVE-2025-0133.yaml
 ```
 
-![image.png](image%203.png)
+![](image-3.png)
 
-Template used for scanning [CVE-2025-0133](https://github.com/projectdiscovery/nuclei-templates/blob/main/http/cves/2025/CVE-2025-0133.yaml).
+<p style="text-align: justify;">Template used for scanning: <b><a href="https://github.com/projectdiscovery/nuclei-templates/blob/main/http/cves/2025/CVE-2025-0133.yaml" target="_blank">CVE-2025-0133</a></b>.</p>
 
 ```bash
 id: CVE-2025-0133
@@ -140,59 +137,57 @@ http:
 # digest: 490a0046304402202037be3477c0e16d7bb7cfb9874bf1cb6894a1d8035d64115db72607a539a54502203a1dac9b97514abef71fdb6a73d681f64f788f43605f2235f1fbfd26f6ddac2c:922c64590222798bb761d5b6d8e72950
 ```
 
-We obtained a significant number of vulnerable hosts. Next, we tried to identify, among these results, any hosts that had a public VDP, so that we could notify them of the vulnerability. This step is a bit complex to do manually, so we used artificial intelligence to cross-reference the domains extracted from `Shodan` with information available on the internet about companies that have bug bounty programs or open VDPs.
+<p style="text-align: justify;">We obtained a significant number of vulnerable hosts. Next, we tried to identify, among these results, any hosts that had a public VDP, so that we could notify them of the vulnerability. This step is a bit complex to do manually, so we used artificial intelligence to cross-reference the domains extracted from <b><code>Shodan</code></b> with information available on the internet about companies that have bug bounty programs or open VDPs.</p>
 
-During this research, we found only two domains with public VDPs - one a large private sector company, the other a government agency. Both are based in the United States: one with a VDP hosted on BugCrowd and the other with a private VDP, accessible via email.
+<p style="text-align: justify;">During this research, we found only two domains with public VDPs - one a large private sector company, the other a government agency. Both are based in the United States: one with a VDP hosted on BugCrowd and the other with a private VDP, accessible via email.</p>
 
-We reported both vulnerabilities to the companies responsibly.
+<p style="text-align: justify;">We reported both vulnerabilities to the companies responsibly.</p>
 
-![image.png](image%204.png)
+![](image-4.png)
 
-![image.png](image%205.png)
+![](image-5.png)
 
-It is important to note that the sample tested represents only a fraction of the systems exposed. 
+<p style="text-align: justify;">It is important to note that the sample tested represents only a fraction of the systems exposed.</p>
 
-### **5. More numbers**
+## **More numbers**
 
-If you're still not convinced by the amount of XSS we have out there, we can do another simple search in the *GitHub Advisory Database*  where we get a return of over **31,611 XSS-related occurrences**.
+<p style="text-align: justify;">If you're still not convinced by the amount of XSS we have out there, we can do another simple search in the <i>GitHub Advisory Database</i> where we get a return of over <b>31,611 XSS-related occurrences</b>.</p>
 
-![XSS search in the GitHub Advisory Database](image%206.png)
+![XSS search in the GitHub Advisory Database](image-6.png)
 
-XSS search in the GitHub Advisory Database
+<p style="text-align: justify;">A search in the <b>CVE (Common Vulnerabilities and Exposures)</b> database also reveals a significant number of registered vulnerabilities related to XSS, demonstrating its recurrence in different systems, applications and contexts over the years.</p>
 
-A search in the **CVE (Common Vulnerabilities and Exposures)** database also reveals a significant number of registered vulnerabilities related to XSS, demonstrating its recurrence in different systems, applications and contexts over the years.
+![](image-7.png)
 
-![XSS search in Mitre's CVE database](image%207.png)
+<p style="text-align: justify;">In addition, a search carried out on the <b>HackerOne</b> platform, widely recognized in the <i>Bug Bounty</i> ecosystem, results in a total of <b>2,225 public reports</b> involving Cross-Site Scripting vulnerabilities. This data reinforces not only the prevalence of XSS, but also the security community's continued interest in exploiting and reporting it, even in environments with high security standards.</p>
 
-XSS search in Mitre's CVE database
+![](image-8.png)
 
-In addition, a search carried out on the **HackerOne** platform, widely recognized in the *Bug Bounty* ecosystem, results in a total of **2,225 public reports** involving Cross-Site Scripting vulnerabilities. This data reinforces not only the prevalence of XSS, but also the security community's continued interest in exploiting and reporting it, even in environments with high security standards.
+## **What can you do with an XSS besides alert(1)?**
 
-![XSS research on the Bounty Hacker One Bug Platform.](image%208.png)
+<p style="text-align: justify;">The famous alert(1) is often the first example used to demonstrate an XSS flaw.  However, the real impacts of this vulnerability go far beyond a simple alert window. Below, we list some classic and well-known malicious actions that can be carried out by an attacker when exploiting a Cross-Site Scripting flaw:</p>
 
-XSS research on the Bounty Hacker One Bug Platform.
+<p style="text-align: justify;">
+  <ul>
+    <li><b>Cookie Theft</b>, (if the cookie is not protected with the HttpOnly flag);</li>
+    <li><b>Session Hijacking</b>, assuming the victim's identity in authenticated applications;</li>
+    <li><b>Keylogging</b>, capturing everything the user types on the compromised page;</li>
+    <li><b>Malicious Redirects</b> to fake pages, with the aim of applying scams;</li>
+    <li><b>Performing actions on behalf of the user</b>, such as sending messages, changing settings or deleting data;</li>
+    <li><b>Remote Code Execution</b>, although rare and depending on the specific context, it may be possible to gain remote access to the system from an XSS.</li>
+  </ul>
+</p>
 
-### **6. What can you do with an XSS besides alert(1)?**
+<p style="text-align: justify;">These examples show that even though XSS is an often underestimated vulnerability, it can have serious consequences, especially when exploited in applications with sensitive data or with a high level of privilege for the affected user.</p>
 
-The famous alert(1) is often the first example used to demonstrate an XSS flaw.  However, the real impacts of this vulnerability go far beyond a simple alert window. Below, we list some classic and well-known malicious actions that can be carried out by an attacker when exploiting a Cross-Site Scripting flaw:
+## **Conclusion**
 
-- Cookie**theft** (if the cookie is not protected with the HttpOnly flag);
-- **Session hijacking**, assuming the victim's identity in authenticated applications;
-- **Keylogging**, capturing everything the user types on the compromised page;
-- **Malicious redirects** to fake pages, with the aim of applying scams;
-- **Performing actions on behalf of the user**, such as sending messages, changing settings or deleting data.
-- **Remote Code Execution**: although rare and depending on the specific context, it may be possible to gain remote access to the system from an XSS.
+<p style="text-align: justify;">XSS is not dead, perhaps it has just been ignored in the face of new, more 'glamorous' threats. But its silent presence continues to offer an exploitable attack surface, often with critical impact.</p>
 
-These examples show that even though XSS is an often underestimated vulnerability, it can have serious consequences, especially when exploited in applications with sensitive data or with a high level of privilege for the affected user.
+<p style="text-align: justify;">Despite often being classified as a vulnerability of <i>medium</i> or even <i>low</i> severity, <b>XSS should not be underestimated</b>. <b>Its impact can be significant, especially when it involves stealing cookies, session hijacking or redirecting to malicious pages. And what's more dangerous: traditional protections are not always enough to prevent the user from being tricked into clicking on that phishing site that is using a legitimate URL with an XSS vulnerability</b>.</p>
 
-### **7. Conclusion**
+<p style="text-align: justify;">After all, XSS often depends on a single click, and in this scenario, <b>the weakest link is usually the user themselves</b>. It doesn't matter how robust your framework is or how well configured your WAF is: if the attacker manages to create a convincing malicious link, all it takes is one inattentive action by the victim for the attack to materialize.</p>
 
-XSS is not dead, perhaps it has just been ignored in the face of new, more 'glamorous' threats. But its silent presence continues to offer an exploitable attack surface, often with critical impact.
+<p style="text-align: justify;"><b>While we rely on frameworks and WAFs, the attacker relies on our carelessness and the user's curiosity.</b></p>
 
-Despite often being classified as a vulnerability of *medium* or even *low* severity, **XSS should not be underestimated**. Its impact can be significant, especially when it involves stealing cookies, session hijacking or redirecting to malicious pages. And what's more dangerous: **traditional protections are not always enough to prevent the user from being tricked into clicking on that phishing site that is using a legitimate URL with an XSS vulnerability.**
-
-After all, XSS often depends on a single click, and in this scenario, **the weakest link is usually the user themselves**. It doesn't matter how robust your framework is or how well configured your WAF is: if the attacker manages to create a convincing malicious link, all it takes is one inattentive action by the victim for the attack to materialize.
-
-**While we rely on frameworks and WAFs, the attacker relies on our carelessness and the user's curiosity.**
-
-![image.png](image%209.png)
+> *By: [CVE-Hunters](https://github.com/Sec-Dojo-Cyber-House/cve-hunters)*
