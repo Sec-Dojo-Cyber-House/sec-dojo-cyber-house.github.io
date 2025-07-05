@@ -52,11 +52,11 @@ categories:
 
 <p style="text-align: justify;">Currently, the group has <b>135 reported vulnerabilities</b>, <b>53 of which have already been officially registered as CVEs</b>. Of the total number of vulnerabilities discovered, <b>104 are of the XSS type</b>, which represents a significant and worrying proportion.</p>
 
-![](1.png)
+![Vulnerabilities types Found by CVE-Hunters](1.png)
 
 <p style="text-align: justify;">62 occurrences of the stored type and 42 of the reflected type were identified, revealing a relatively even distribution.</p>
 
-![](2.png)
+![Amount of Stored vs Reflected XSS](2.png)
 
 <p style="text-align: justify;">This statistics alone reinforces the idea that XSS is still a real problem, often overlooked during development, and that it continues to deserve attention, both from the technical community and from developers responsible for applications in production.</p>
 
@@ -68,7 +68,7 @@ categories:
 
 <p style="text-align: justify;">With a simple query on Shodan, we can check the estimated amount of use of this product in the world.</p>
 
-![](image-1.png)
+![Shodan's search for pages with Global Protect](image-1.png)
 
 <p style="text-align: justify;">However, this doesn't mean that everyone is vulnerable. Let's go through the experiment for this article.</p>
 
@@ -78,7 +78,7 @@ categories:
 shodan search --fields hostnames 'http.title:"GlobalProtect Portal" port:443' | grep -v '^$' > globalprotect-hostnames.txt
 ```
 
-![](image-2.png)
+![Shodan CLI used to export pages with Global Protect](image-2.png)
 
 <p style="text-align: justify;">After that, we can use <b><code>Nuclei</code></b> to test for this vulnerability and automate the test:</p>
 
@@ -86,7 +86,7 @@ shodan search --fields hostnames 'http.title:"GlobalProtect Portal" port:443' | 
 nuclei -l globalprotect-hostnames.txt -t CVE-2025-0133.yaml
 ```
 
-![](image-3.png)
+![Nuclei's results for CVE-2025-0133 template](image-3.png)
 
 <p style="text-align: justify;">Template used for scanning: <b><a href="https://github.com/projectdiscovery/nuclei-templates/blob/main/http/cves/2025/CVE-2025-0133.yaml" target="_blank">CVE-2025-0133</a></b>.</p>
 
@@ -143,9 +143,9 @@ http:
 
 <p style="text-align: justify;">We reported both vulnerabilities to the companies responsibly.</p>
 
-![](image-4.png)
+![POC of Reflected XSS on one of the identified targets](image-4.png)
 
-![](image-5.png)
+![Responsible Disclosure via Bugcrowd](image-5.png)
 
 <p style="text-align: justify;">It is important to note that the sample tested represents only a fraction of the systems exposed.</p>
 
@@ -153,15 +153,15 @@ http:
 
 <p style="text-align: justify;">If you're still not convinced by the amount of XSS we have out there, we can do another simple search in the <i>GitHub Advisory Database</i> where we get a return of over <b>31,611 XSS-related occurrences</b>.</p>
 
-![XSS search in the GitHub Advisory Database](image-6.png)
+![XSS search on GitHub Advisory Database](image-6.png)
 
 <p style="text-align: justify;">A search in the <b>CVE (Common Vulnerabilities and Exposures)</b> database also reveals a significant number of registered vulnerabilities related to XSS, demonstrating its recurrence in different systems, applications and contexts over the years.</p>
 
-![](image-7.png)
+![XSS search on MITRE](image-7.png)
 
 <p style="text-align: justify;">In addition, a search carried out on the <b>HackerOne</b> platform, widely recognized in the <i>Bug Bounty</i> ecosystem, results in a total of <b>2,225 public reports</b> involving Cross-Site Scripting vulnerabilities. This data reinforces not only the prevalence of XSS, but also the security community's continued interest in exploiting and reporting it, even in environments with high security standards.</p>
 
-![](image-8.png)
+![XSS search on HackerOne](image-8.png)
 
 ## **What can you do with an XSS besides alert(1)?**
 
@@ -190,18 +190,15 @@ http:
 
 <p style="text-align: justify;"><b>While we rely on frameworks and WAFs, the attacker relies on our carelessness and the user's curiosity.</b></p>
 
-<<<<<<< HEAD
-> *By: [CVE-Hunters](https://github.com/Sec-Dojo-Cyber-House/cve-hunters)*
-=======
 Despite often being classified as a vulnerability of *medium* or even *low* severity, **XSS should not be underestimated**. Its impact can be significant, especially when it involves stealing cookies, session hijacking or redirecting to malicious pages. And what's more dangerous: **traditional protections are not always enough to prevent the user from being tricked into clicking on that phishing site that is using a legitimate URL with an XSS vulnerability.**
 
 After all, XSS often depends on a single click, and in this scenario, **the weakest link is usually the user themselves**. It doesn't matter how robust your framework is or how well configured your WAF is: if the attacker manages to create a convincing malicious link, all it takes is one inattentive action by the victim for the attack to materialize.
 
 **While we rely on frameworks and WAFs, the attacker relies on our carelessness and the user's curiosity.**
 
-![image.png](image%209.png)
+![](xss-is-not-dead.png)
 
 ## Written by
 
 [![](/assets/contributors/50x50/natan50x50.png)](https://www.linkedin.com/in/nmmorette) [Natan Maia Morette](https://www.linkedin.com/in/nmmorette) 
->>>>>>> 712251a (Add: post <Alteracoes XSS nao está morto, description, title>)
+

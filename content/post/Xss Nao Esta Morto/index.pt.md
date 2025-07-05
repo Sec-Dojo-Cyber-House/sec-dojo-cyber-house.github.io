@@ -50,11 +50,11 @@ categories:
 
 <p style="text-align: justify;">Atualmente, o grupo tem <b>135 vulnerabilidades reportadas</b>, <b>53 das quais já foram oficialmente registradas como CVEs</b>. Do total de vulnerabilidades descobertas, <b>104 são do tipo XSS</b>, o que representa uma proporção significativa e preocupante.</p>
 
-![](1.png)
+![Tipos de Vulnerabilidades encontradas pelo CVE-Hunters](1.png)
 
 <p style="text-align: justify;">Foram identificadas 62 ocorrências do tipo armazenado e 42 do tipo refletido, revelando uma distribuição relativamente equilibrada.</p>
 
-![](2.png)
+![Quantidade de XSS Armazenado vs Refletido](2.png)
 
 <p style="text-align: justify;">Essas estatísticas por si só reforçam a ideia de que o XSS ainda é um problema real, frequentemente ignorado durante o desenvolvimento, e que continua a merecer atenção, tanto da comunidade técnica quanto dos desenvolvedores responsáveis ​​por aplicativos em produção.</p>
 
@@ -66,7 +66,7 @@ categories:
 
 <p style="text-align: justify;">Com uma simples consulta no Shodan, podemos verificar a estimativa de uso deste produto no mundo.</p>
 
-![](image-1.png)
+![Busca por páginas com Global Protect no Shodan ](image-1.png)
 
 <p style="text-align: justify;">No entanto isso não significa que todos estão vulneráveis. Vamos ao experimento para este artigo.</p>
 
@@ -76,7 +76,7 @@ categories:
 shodan search --fields hostnames 'http.title:"GlobalProtect Portal" port:443' | grep -v '^$' > globalprotect-hostnames.txt
 ```
 
-![](image-2.png)
+![Shodan CLI usado para exportar páginas com Global Protect](image-2.png)
 
 <p style="text-align: justify;">Depois disso, podemos usar o <b><code>Nuclei</code></b> para testar essa vulnerabilidade e automatizar o teste:</p>
 
@@ -84,9 +84,9 @@ shodan search --fields hostnames 'http.title:"GlobalProtect Portal" port:443' | 
 nuclei -l globalprotect-hostnames.txt -t CVE-2025-0133.yaml
 ```
 
-![](image-3.png)
+![Resultado Nuclei template CVE-2025-0133](image-3.png)
 
-<p style="text-align: justify;">Modelo utilizado para o scan: <b><a href="https://github.com/projectdiscovery/nuclei-templates/blob/main/http/cves/2025/CVE-2025-0133.yaml" target="_blank">CVE-2025-0133</a></b>.</p>
+<p style="text-align: justify;">Template do nuclei utilizado para realizar o scan: <b><a href="https://github.com/projectdiscovery/nuclei-templates/blob/main/http/cves/2025/CVE-2025-0133.yaml" target="_blank">CVE-2025-0133</a></b>.</p>
 
 ```bash
 id: CVE-2025-0133
@@ -141,9 +141,9 @@ http:
 
 <p style="text-align: justify;">Relatamos ambas as vulnerabilidades às empresas de forma responsável.</p>
 
-![](image-4.png)
+![POC XSS Refletido em um dos alvos encontrados ](image-4.png)
 
-![](image-5.png)
+![Divulgação Responsável via Bug Crowd](image-5.png)
 
 <p style="text-align: justify;">É importante destacar que a amostra testada representa apenas uma fração dos sistemas expostos.</p>
 
@@ -157,11 +157,11 @@ Se ainda não está convencido da quantidade de XSS que temos por ai, podemos fa
 
 <p style="text-align: justify;">Uma busca no banco de dados de <b>CVE (Common Vulnerabilities and Exposures)</b> também revela um número significativo de vulnerabilidades registradas relacionadas ao XSS, demonstrando sua recorrência em diferentes sistemas, aplicações e contextos ao longo dos anos.</p>
 
-![](image-7.png)
+![Pesquisa de XSS no MITRE](image-7.png)
 
 <p style="text-align: justify;">Além disso, uma busca realizada na plataforma <b>HackerOne</b>, amplamente reconhecida no ecossistema de <i>Bug Bounty</i>, resulta em um total de <b>2.225 relatórios públicos</b> envolvendo vulnerabilidades de Cross-Site Scripting. Esses dados reforçam não apenas a prevalência do XSS, mas também o interesse contínuo da comunidade de segurança em explorá-lo e relatá-lo, mesmo em ambientes com altos padrões de segurança.</p>
 
-![](image-8.png)
+![Pesquisa por XSS no Hacker One](image-8.png)
 
 ## O que dá para fazer com um XSS além do alert(1)?
 
@@ -196,7 +196,7 @@ Afinal, o XSS frequentemente depende de um simples clique, e nesse cenário, **o
 
 **Enquanto confiamos em frameworks e WAFs, o atacante confia no nosso descuido,e na curiosidade do usuário.**
 
-![image.png](image%209.png)
+![](xss-nao-esta-morto.png)
 
 ## Escrito por
 
