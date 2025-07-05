@@ -119,8 +119,6 @@ Top das galaxias:
 
 ![](image-5.png)
 
-
-
 ##### Terminei de escrever o post e agora?
 
 - Sempre revise: titulo, data, descrição etc, tanto no inglês quanto no português. Muitos erros comuns de quebra do site vêm de copiar/colar o topo do arquivo e esquecer de ajustar os valores conforme o idioma.
