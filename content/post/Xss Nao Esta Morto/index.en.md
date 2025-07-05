@@ -202,3 +202,6 @@ After all, XSS often depends on a single click, and in this scenario, **the weak
 
 [![](/assets/contributors/50x50/natan50x50.png)](https://www.linkedin.com/in/nmmorette) [Natan Maia Morette](https://www.linkedin.com/in/nmmorette) 
 
+## Contributor
+
+[![](/assets/contributors/50x50/karina50x50.png)](https://www.linkedin.com/in/karina-gante/) [Karina Gante](https://www.linkedin.com/in/karina-gante/)

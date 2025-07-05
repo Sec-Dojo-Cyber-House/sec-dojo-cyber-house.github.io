@@ -202,6 +202,10 @@ Afinal, o XSS frequentemente depende de um simples clique, e nesse cenário, **o
 
 [![](/assets/contributors/50x50/natan50x50.png)](https://www.linkedin.com/in/nmmorette) [Natan Maia Morette](https://www.linkedin.com/in/nmmorette) 
 
+## Colaboradora
+
+[![](/assets/contributors/50x50/karina50x50.png)](https://www.linkedin.com/in/karina-gante/) [Karina Gante](https://www.linkedin.com/in/karina-gante/)
+
 
 > *Por: [CVE-Hunters](https://github.com/Sec-Dojo-Cyber-House/cve-hunters)*
 
