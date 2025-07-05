@@ -53,6 +53,19 @@ Altere os dados que forem necessários, exemplo:
 
 - Ferramenta online para ajustes: https://www.photopea.com/
 
+Você pode usar o modelo base da capa para o post (`template-capa-post.psd`), pode abrir no photoshop ou no photopea
+
+****Nao altere o arquivo `template-capa-post.psd`, deixe salvo e use em outra pasta para nao alterar o modelo do repositorio.****
+
+- Se a imagem tiver texto, precisa ser ajustada conforme os idiomas, use o modelo base (`template-capa-post.psd`)
+
+- Voce pode buscar por fontes correspondentes em ferramentas online como: https://www.myfonts.com/pages/whatthefont
+    - a fonte correspondente a ser usada precisa:
+        - photoshop: ser instalada no sistema
+        - photopea (ferramenta online): carregada do computador (apenas baixe)
+
+![](image-10.png)
+
 ##### 🧱 Fixar um post:
 
 - Use o parâmetro `weight` para fixar o post em uma posição específica.
@@ -118,6 +131,12 @@ Evitar:
 Top das galaxias:
 
 ![](image-5.png)
+
+### Vale lembrar que todas as alterações podem ser vistas em tempo real utilizando o servidor local do Hugo com comando: `hugo server -D`.
+
+> ***sempre verifique se a versão do Hugo está atualizada, caso contrário, pode dar erros.***
+
+### Para parar de rodar o servidor local e fazer outras operações no terminal, use `ctrl+c`.
 
 ##### Terminei de escrever o post e agora?
 
