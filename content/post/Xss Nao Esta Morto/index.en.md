@@ -1,6 +1,6 @@
 ---
-title: XSS Is Not Dead
-description: A practical look at XSS exploitation
+title: XSS is not Dead
+description: Based on real-world findings from CVE-Hunters, this article shows why this classic vulnerability still deserves serious attention in today’s web applications.
 date: 2025-07-04
 weight: 99
 translationKey: "article-xssnaoestamorto"
@@ -190,4 +190,18 @@ http:
 
 <p style="text-align: justify;"><b>While we rely on frameworks and WAFs, the attacker relies on our carelessness and the user's curiosity.</b></p>
 
+<<<<<<< HEAD
 > *By: [CVE-Hunters](https://github.com/Sec-Dojo-Cyber-House/cve-hunters)*
+=======
+Despite often being classified as a vulnerability of *medium* or even *low* severity, **XSS should not be underestimated**. Its impact can be significant, especially when it involves stealing cookies, session hijacking or redirecting to malicious pages. And what's more dangerous: **traditional protections are not always enough to prevent the user from being tricked into clicking on that phishing site that is using a legitimate URL with an XSS vulnerability.**
+
+After all, XSS often depends on a single click, and in this scenario, **the weakest link is usually the user themselves**. It doesn't matter how robust your framework is or how well configured your WAF is: if the attacker manages to create a convincing malicious link, all it takes is one inattentive action by the victim for the attack to materialize.
+
+**While we rely on frameworks and WAFs, the attacker relies on our carelessness and the user's curiosity.**
+
+![image.png](image%209.png)
+
+## Written by
+
+[![](/assets/contributors/50x50/natan50x50.png)](https://www.linkedin.com/in/nmmorette) [Natan Maia Morette](https://www.linkedin.com/in/nmmorette) 
+>>>>>>> 712251a (Add: post <Alteracoes XSS nao está morto, description, title>)

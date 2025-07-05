@@ -1,6 +1,6 @@
 ---
 title: XSS Não Está Morto
-description: Uma análise prática sobre a exploração de XSS
+description: Com base em descobertas reais do projeto CVE-Hunters, este artigo mostra por que essa vulnerabilidade clássica ainda merece atenção nas aplicações web atuais.
 date: 2025-07-04
 weight: 99
 translationKey: "article-xssnaoestamorto"
@@ -190,4 +190,19 @@ Se ainda não está convencido da quantidade de XSS que temos por ai, podemos fa
 
 <p style="text-align: justify;"><b>Enquanto nós confiamos em estruturas e WAFs, o invasor confia em nossa falta de cuidado e na curiosidade do usuário.</b></p>
 
+Apesar de muitas vezes ser classificado como uma vulnerabilidade de severidade *média* ou até *baixa*, o **XSS não deve ser subestimado**. Seu impacto pode ser significativo, especialmente quando envolve o roubo de cookies, sequestro de sessão ou redirecionamento para páginas maliciosas. E o mais perigoso: **nem sempre as proteções tradicionais são suficientes para impedir que o usuário seja enganado e clique naquele phishing que está utilizando uma URL legítima com vulnerabilidade de XSS.**
+
+Afinal, o XSS frequentemente depende de um simples clique, e nesse cenário, **o elo mais fraco costuma ser o próprio usuário**. Não importa o quão robusto seja seu framework ou quão bem configurado esteja seu WAF: se o atacante conseguir criar um link malicioso convincente, basta uma ação desatenta da vítima para que o ataque se concretize.
+
+**Enquanto confiamos em frameworks e WAFs, o atacante confia no nosso descuido,e na curiosidade do usuário.**
+
+![image.png](image%209.png)
+
+## Escrito por
+
+[![](/assets/contributors/50x50/natan50x50.png)](https://www.linkedin.com/in/nmmorette) [Natan Maia Morette](https://www.linkedin.com/in/nmmorette) 
+
+
 > *Por: [CVE-Hunters](https://github.com/Sec-Dojo-Cyber-House/cve-hunters)*
+
+
