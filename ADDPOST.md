@@ -25,9 +25,12 @@
 
 > 💡 Isso não é um problema, pois a pasta public será sobrescrita sempre que o site for buildado (atualizado) novamente.
 
-#### 4. Criar o post na pasta content/post
+#### 4. Criar posts:
 
-- Navegue até `content/post`
+- CVEs: na pasta content/post
+- Artigos: na pasta content/articles
+
+- Navegue até a pasta respectiva
 - Crie uma nova pasta com o título do post, exemplo: CVE-2025-12345
 
 > 💡 Dica: para facilitar, copie e cole a pasta de um post anterior com a mesma severidade (se for um artigo, copie a pasta de um artigo) e exclua as imagens. Nao esqueça de alterar os metadados do topo: titulo, image, description etc, de acordo com seu post.
