@@ -66,8 +66,10 @@ top_finders_config = {
 save_chart(urlencode_chart_config(top_finders_config), "topFinders.png")
 
 ### Gráfico 2: Total CVEs Registered (linha)
-labels = list(data["total_by_year"].keys())
-values = list(data["total_by_year"].values())
+total_by_year = data["total_by_year"]
+years = [k.split(":")[0] for k in total_by_year.keys()]
+values = list(total_by_year.values())
+labels = [f"{year}: {value} CVEs" for year, value in zip(years, values)]
 
 total_url = (
     "https://image-charts.com/chart"
@@ -76,7 +78,7 @@ total_url = (
     f"&chd=t:{','.join(map(str, values))}"
     "&chxt=y,x"
     "&chxr=0,0,100,10"
-    f"&chxl=1:|{urllib.parse.quote(labels[0])}|{urllib.parse.quote(labels[1])}"
+    f"&chxl=1:|{'|'.join(labels)}"
     "&chco=e918d5"
     "&chf=bg,s,0d1117"
     "&chxs=0,FFFFFF,14|1,FFFFFF,14"
