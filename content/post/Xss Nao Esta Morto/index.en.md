@@ -1,7 +1,7 @@
 ---
-title: XSS is not Dead
+title: XSS is not Dead - Hacktiba Pulse 07
 description: Based on real-world findings from CVE-Hunters, this article shows why this classic vulnerability still deserves serious attention in today’s web applications.
-date: 2025-07-04
+date: 2025-07-07
 weight: 99
 translationKey: "article-xssnaoestamorto"
 image: xss-is-not-dead.png
@@ -204,4 +204,10 @@ After all, XSS often depends on a single click, and in this scenario, **the weak
 
 ## Contributor
 
-[![](/assets/contributors/50x50/karina50x50.png)](https://www.linkedin.com/in/karina-gante/) [Karina Gante](https://www.linkedin.com/in/karina-gante/)
+This post was made in partnership with [Hacktiba](https://hacktiba.github.io/) for Pulse 07.
+
+![Hacktiba](hacktiba.png)
+
+> *Por: [CVE-Hunters](https://github.com/Sec-Dojo-Cyber-House/cve-hunters)*
+
+
