@@ -67,9 +67,9 @@ comments: false
       <td style="text-align: center; font-weight: bold;"><img src="https://www.php.net/images/logos/new-php-logo.png" width="35"/> </td>
     </tr>
     <tr>
-      <td style="text-align: center; font-weight: bold;">🛡️ CVEs: 57</td>
+      <td style="text-align: center; font-weight: bold;">🛡️ CVEs: 63</td>
       <td style="text-align: center; font-weight: bold;">🛡️ CVEs: 3</td>
-      <td style="text-align: center; font-weight: bold;">🛡️ CVEs: Loading...</td>
+      <td style="text-align: center; font-weight: bold;">🛡️ CVEs: 5</td>
     </tr>
   </tbody>
 </table>
