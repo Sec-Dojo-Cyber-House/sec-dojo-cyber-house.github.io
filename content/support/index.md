@@ -4,7 +4,7 @@ layout: "post"
 
 menu:
   main: 
-    weight: 5
+    weight: 6
     params:
       icon: heart-handshake
 

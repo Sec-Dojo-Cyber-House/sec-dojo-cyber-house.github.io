@@ -4,7 +4,7 @@ layout: "post"
 
 menu:
   main: 
-    weight: 6
+    weight: 7
     params:
       icon: info-octagon
 
