@@ -3,6 +3,9 @@ baseurl = "https://www.cvehunters.com/"
 languageCode = "en-us"
 title = "CVE-Hunters"
 
+[params]
+  mainSections = ["post", "articles"]
+
 # Theme i18n support
 # Available values: en, fr, id, ja, ko, pt-br, zh-cn, zh-tw, es, de, nl, it, th, el, uk, ar
 defaultContentLanguage = "en"
