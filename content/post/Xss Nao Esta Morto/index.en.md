@@ -208,6 +208,6 @@ After all, XSS often depends on a single click, and in this scenario, **the weak
 
 ## Partnership
 
-![](/assets/partners/hacktiba60x60.png) This post was made in partnership with **[Hacktiba](https://hacktiba.github.io/)** for Pulse 07.
+[![](/assets/partners/hacktiba60x60.png)](https://hacktiba.github.io/) This post was made in partnership with **[Hacktiba](https://hacktiba.github.io/)** for Pulse 07.
 
 > *Por: [CVE-Hunters](https://github.com/Sec-Dojo-Cyber-House/cve-hunters)*
