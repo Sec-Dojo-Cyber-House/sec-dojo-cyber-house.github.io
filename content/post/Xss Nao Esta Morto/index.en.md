@@ -206,10 +206,8 @@ After all, XSS often depends on a single click, and in this scenario, **the weak
 
 [![](/assets/contributors/50x50/karina50x50.png)](https://www.linkedin.com/in/karina-gante/) [Karina Gante](https://www.linkedin.com/in/karina-gante/)
 
-This post was made in partnership with [Hacktiba](https://hacktiba.github.io/) for Pulse 07.
+## Partnership
 
-![Hacktiba](hacktiba.png)
+![Hacktiba](hacktiba60x60.png) This post was made in partnership with **[Hacktiba](https://hacktiba.github.io/)** for Pulse 07.
 
 > *Por: [CVE-Hunters](https://github.com/Sec-Dojo-Cyber-House/cve-hunters)*
-
-

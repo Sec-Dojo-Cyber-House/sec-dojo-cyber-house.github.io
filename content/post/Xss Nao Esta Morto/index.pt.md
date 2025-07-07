@@ -206,10 +206,9 @@ Afinal, o XSS frequentemente depende de um simples clique, e nesse cenário, **o
 
 [![](/assets/contributors/50x50/karina50x50.png)](https://www.linkedin.com/in/karina-gante/) [Karina Gante](https://www.linkedin.com/in/karina-gante/)
 
+## Parceria
 
-Esse post foi feito em parceria com [Hacktiba](https://hacktiba.github.io/) para o Pulse 07.
-
-![Hacktiba](hacktiba.png)
+![Hacktiba](hacktiba60x60.png) Esse post foi feito em parceria com **[Hacktiba](https://hacktiba.github.io/)** para o Pulse 07.
 
 > *Por: [CVE-Hunters](https://github.com/Sec-Dojo-Cyber-House/cve-hunters)*
 
