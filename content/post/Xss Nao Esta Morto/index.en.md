@@ -204,6 +204,8 @@ After all, XSS often depends on a single click, and in this scenario, **the weak
 
 ## Contributor
 
+[![](/assets/contributors/50x50/karina50x50.png)](https://www.linkedin.com/in/karina-gante/) [Karina Gante](https://www.linkedin.com/in/karina-gante/)
+
 This post was made in partnership with [Hacktiba](https://hacktiba.github.io/) for Pulse 07.
 
 ![Hacktiba](hacktiba.png)
