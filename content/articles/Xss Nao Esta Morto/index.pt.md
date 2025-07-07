@@ -2,7 +2,6 @@
 title: XSS Não Está Morto - Hacktiba Pulse 07
 description: Com base em descobertas reais do projeto CVE-Hunters, este artigo mostra por que essa vulnerabilidade clássica ainda merece atenção nas aplicações web atuais.
 date: 2025-07-07
-weight: 99
 translationKey: "article-xssnaoestamorto"
 image: xss-nao-esta-morto.png
 tags:

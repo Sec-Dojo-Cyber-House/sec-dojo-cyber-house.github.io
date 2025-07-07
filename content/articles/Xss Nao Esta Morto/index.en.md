@@ -2,7 +2,6 @@
 title: XSS is not Dead - Hacktiba Pulse 07
 description: Based on real-world findings from CVE-Hunters, this article shows why this classic vulnerability still deserves serious attention in today’s web applications.
 date: 2025-07-07
-weight: 99
 translationKey: "article-xssnaoestamorto"
 image: xss-is-not-dead.png
 tags:

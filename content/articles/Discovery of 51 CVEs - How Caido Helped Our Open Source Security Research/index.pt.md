@@ -2,7 +2,6 @@
 title: Descoberta de 51 CVEs - Como o Caido Ajudou Nossa Pesquisa em Segurança de Código Aberto
 description: Fortalecendo a Segurança de Software Open Source através da Detecção Eficaz de Vulnerabilidades
 date: 2025-06-04
-weight: 100
 translationKey: "article-cvehuntersandcaido"
 image: cve-hunters+caido.png
 tags:
