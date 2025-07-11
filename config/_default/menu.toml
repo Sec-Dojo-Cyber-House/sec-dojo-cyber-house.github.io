@@ -24,8 +24,8 @@ url = "https://discord.gg/VVahUjRnuM"
 icon = "brand-discord"
 
 [[social]]
-identifier = "gmail"
-name = "Gmail"
+identifier = "email"
+name = "Email"
 url = "mailto:contact@cvehunters.com"
 
 [social.params]
