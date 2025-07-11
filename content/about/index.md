@@ -47,29 +47,29 @@ comments: false
     <tr>
       <td style="text-align: center;">
         <a href="https://github.com/LabRedesCefetRJ/WeGIA">
-          <img style="text-align: center; font-weight: bold;" src="/about/wegia.png" width="100"/> </br> WeGia
-        </a>
-      </td>
-      <td style="text-align: center;">
-        <a href="https://www.sourcecodester.com/">
-          <img style="text-align: center; font-weight: bold;" src="/about/sourcecodester.png" width="100"/> </br> SourceCodester
+          <img src="/about/wegia.png" width="100"/> </br> <b>WeGIA</b>
         </a>
       </td>
       <td style="text-align: center;">
         <a href="https://github.com/portabilis/i-educar">
-          <img src="/about/i-educar.png" width="100"/> </br> i-Educar
-        </a><br>
+          <img src="/about/i-educar.png" width="100"/> </br> <b>i-Educar</b>
+        </a>
+      </td>
+      <td style="text-align: center;">
+        <a href="https://www.sourcecodester.com/">
+          <img src="/about/sourcecodester.png" width="100"/> </br> <b>SourceCodester</b>
+        </a>
       </td>
     </tr>
     <tr>
-      <td style="text-align: center; font-weight: bold;"><img src="https://www.php.net/images/logos/new-php-logo.png" width="35"/> </td>
-      <td style="text-align: center; font-weight: bold;"><img src="https://www.php.net/images/logos/new-php-logo.png" width="35"/> </td>
-      <td style="text-align: center; font-weight: bold;"><img src="https://www.php.net/images/logos/new-php-logo.png" width="35"/> </td>
+      <td style="text-align: center;"><img src="https://www.php.net/images/logos/new-php-logo.png" width="35"/></td>
+      <td style="text-align: center;"><img src="https://www.php.net/images/logos/new-php-logo.png" width="35"/></td>
+      <td style="text-align: center;"><img src="https://www.php.net/images/logos/new-php-logo.png" width="35"/></td>
     </tr>
     <tr>
-      <td style="text-align: center; font-weight: bold;">🛡️ CVEs: 63</td>
-      <td style="text-align: center; font-weight: bold;">🛡️ CVEs: 3</td>
-      <td style="text-align: center; font-weight: bold;">🛡️ CVEs: 5</td>
+      <td style="text-align: center;"><b>🛡️ CVEs: 63</b></td>
+      <td style="text-align: center;"><b>🛡️ CVEs: 5</b></td>
+      <td style="text-align: center;"><b>🛡️ CVEs: 3</b></td>
     </tr>
   </tbody>
 </table>
@@ -78,16 +78,55 @@ comments: false
   <tbody>
     <tr>
       <td style="text-align: center;">
+        <a href="https://github.com/centreon/centreon">
+          <img src="/about/centreon.png" width="100"/> </br> <b>Centreon</b>
+        </a>
+      </td>
+      <td style="text-align: center;">
+        <a href="https://github.com/getgrav/grav">
+          <img src="/about/grav.png" width="100"/> </br> <b>Grav</b>
+        </a>
+      </td>
+      <td style="text-align: center;">
         <a href="https://github.com/portabilis/i-diario">
-          <img style="text-align: center; font-weight: bold;" src="/about/i-diario.png" width="100"/> </br> i-Diário
+          <img src="/about/i-diario.png" width="100"/> </br> <b>i-Diário</b>
         </a>
       </td>
     </tr>
     <tr>
-      <td style="text-align: center; font-weight: bold;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Ruby_logo.svg/2048px-Ruby_logo.svg.png" width="25"/> </td>
+      <td style="text-align: center;"><img src="https://www.php.net/images/logos/new-php-logo.png" width="35"/></td>
+      <td style="text-align: center;"><img src="https://www.php.net/images/logos/new-php-logo.png" width="35"/></td>
+      <td style="text-align: center;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Ruby_logo.svg/2048px-Ruby_logo.svg.png" width="25"/></td>
     </tr>
     <tr>
-      <td style="text-align: center; font-weight: bold;">🛡️ CVEs: Loading...</td>
+      <td style="text-align: center;"><b>🛡️ CVEs: Loading...</b></td>
+      <td style="text-align: center;"><b>🛡️ CVEs: Loading...</b></td>
+      <td style="text-align: center;"><b>🛡️ CVEs: Loading...</b></td>
+    </tr>
+  </tbody>
+</table>
+
+<table border="1" align="center">
+  <tbody>
+    <tr>
+      <td style="text-align: center;">
+        <a href="https://github.com/indico/indico">
+          <img src="/about/indico.png" width="100"/> </br> <b>Indico</b>
+        </a>
+      </td>
+      <td style="text-align: center;">
+        <a href="https://github.com/SCADA-LTS/Scada-LTS">
+          <img src="/about/scada-lts.png" width="100"/> </br> <b>SCADA-LTS</b>
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: center;"><img src="https://cdn.iconscout.com/icon/free/png-256/free-python-logo-icon-download-in-svg-png-gif-file-formats--technology-social-media-vol-5-pack-logos-icons-3030224.png?f=webp" width="28"/></td>
+      <td style="text-align: center;"><img src="https://cdn-icons-png.flaticon.com/512/226/226777.png" width="35"/></td>
+    </tr>
+    <tr>
+      <td style="text-align: center;"><b>🛡️ CVEs: Loading...</b></td>
+      <td style="text-align: center;"><b>🛡️ CVEs: Loading...</b></td>
     </tr>
   </tbody>
 </table>
