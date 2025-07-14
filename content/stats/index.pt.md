@@ -28,3 +28,7 @@ Todas as estatísticas de CVEs registradas pela equipe do CVE-Hunters:
 ### Severidade
 
 <img src="/stats/severity.png" width=100% height=100>
+
+### Histórico de Estrelas do Repositório
+
+<img src="https://api.star-history.com/svg?repos=CVE-Hunters/cve-hunters&type=Date" width=100% height=100>

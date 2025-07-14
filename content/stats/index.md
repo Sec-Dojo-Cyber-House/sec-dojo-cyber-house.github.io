@@ -30,3 +30,7 @@ All statistics of CVEs registered by CVE-Hunters's Team:
 ### Severity
 
 <img src="severity.png" width=100% height=100>
+
+### Repository Stars History
+
+<img src="https://api.star-history.com/svg?repos=CVE-Hunters/cve-hunters&type=Date" width=100% height=100>
