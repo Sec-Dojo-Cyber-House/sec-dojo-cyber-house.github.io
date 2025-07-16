@@ -4,9 +4,9 @@
       "Elisangela": 29,
       "Natan": 20,
       "Pedro": 2,
-      "Rafael": 6,
+      "Rafael": 7,
       "Raul": 14,
-      "Marcelo": 2
+      "Marcelo": 8
     },
     "colors": [
       "#e918d5",
@@ -19,9 +19,9 @@
   },
   "vuln_types": {
     "data": {
-      "XSS": 50,
-      "SQL Injection": 14,
-      "Broken Access Control": 1,
+      "XSS": 55,
+      "SQL Injection": 15,
+      "Broken Access Control": 3,
       "CSRF": 1,
       "RCE": 1,
       "DoS": 3,
@@ -40,12 +40,12 @@
     ]
   },
   "severity": {
-    "Critical": 18,
+    "Critical": 19,
     "High": 5,
-    "Moderate": 50
+    "Moderate": 56
   },
   "total_by_year": {
     "2024: 10 CVEs": 10,
-    "2025: 50 CVEs": 63
+    "2025: 50 CVEs": 70
   }
 }
