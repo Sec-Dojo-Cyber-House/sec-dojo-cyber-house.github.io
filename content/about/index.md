@@ -67,7 +67,7 @@ comments: false
       <td style="text-align: center;"><img src="https://www.php.net/images/logos/new-php-logo.png" width="35"/></td>
     </tr>
     <tr>
-      <td style="text-align: center;"><b>🛡️ CVEs: 63</b></td>
+      <td style="text-align: center;"><b>🛡️ CVEs: 80</b></td>
       <td style="text-align: center;"><b>🛡️ CVEs: 5</b></td>
       <td style="text-align: center;"><b>🛡️ CVEs: 3</b></td>
     </tr>
@@ -126,7 +126,7 @@ comments: false
     </tr>
     <tr>
       <td style="text-align: center;"><b>🛡️ CVEs: Loading...</b></td>
-      <td style="text-align: center;"><b>🛡️ CVEs: Loading...</b></td>
+      <td style="text-align: center;"><b>🛡️ CVEs: 2</b></td>
     </tr>
   </tbody>
 </table>
