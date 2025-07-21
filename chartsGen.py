@@ -113,11 +113,12 @@ save_chart(vuln_url, "vulnerabilityType.png")
 ### Gráfico 4: Severity (barras verticais)
 severity = data["severity"]
 
-# Define a ordem e as cores desejadas
+# Ordem e cores personalizadas
 ordered_labels = ["Low", "High", "Critical", "Moderate"]
-colors = ["17539c", "#ff1e00", "#ff0000", "#ff9c00"]  # cores sem '#'
+colors = ["17539c", "ff1e00", "ff0000", "ff9c00"]
 values = [severity[label] for label in ordered_labels]
 
+# Monta a legenda com texto
 legend = "|".join([f"{label}: {severity[label]}" for label in ordered_labels])
 
 severity_url = (
@@ -125,12 +126,11 @@ severity_url = (
     "?cht=bvg"
     "&chs=700x400"
     f"&chd=t:{'%7C'.join(map(str, values))}"
-    "&chxt=y,x"
+    "&chxt=y"  # Apenas eixo Y visível
     "&chxr=0,0,80,10"
-    f"&chxl=1:|{'|'.join(ordered_labels)}"
     f"&chco={','.join(colors)}"
     "&chf=bg,s,0d1117"
-    "&chxs=0,FFFFFF,14|1,FFFFFF,14"
+    "&chxs=0,FFFFFF,14"
     f"&chdl={urllib.parse.quote(legend)}"
     "&chdlp=r"
     "&chdls=FFFFFF,14"
