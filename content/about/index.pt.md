@@ -55,23 +55,59 @@ comments: false
         </a>
       </td>
       <td style="text-align: center;">
-        <a href="https://www.sourcecodester.com/">
-          <img src="/about/sourcecodester.png" width="100"/> </br> <b>SourceCodester</b>
+        <a href="https://github.com/portabilis/i-diario">
+          <img src="/about/i-diario.png" width="100"/> </br> <b>i-Diário</b>
         </a>
       </td>
     </tr>
     <tr>
       <td style="text-align: center;"><img src="https://www.php.net/images/logos/new-php-logo.png" width="35"/></td>
       <td style="text-align: center;"><img src="https://www.php.net/images/logos/new-php-logo.png" width="35"/></td>
-      <td style="text-align: center;"><img src="https://www.php.net/images/logos/new-php-logo.png" width="35"/></td>
+      <td style="text-align: center;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Ruby_logo.svg/2048px-Ruby_logo.svg.png" width="25"/></td>
     </tr>
     <tr>
-      <td style="text-align: center;"><b>🛡️ CVEs: 63</b></td>
-      <td style="text-align: center;"><b>🛡️ CVEs: 5</b></td>
+      <td style="text-align: center;"><b>🛡️ CVEs: 80</b></td>
+      <td style="text-align: center;"><b>🛡️ CVEs: 9</b></td>
       <td style="text-align: center;"><b>🛡️ CVEs: 3</b></td>
     </tr>
   </tbody>
 </table>
+
+<br/>
+
+<table border="1" align="center">
+  <tbody>
+    <tr>
+      <td style="text-align: center;">
+        <a href="https://www.sourcecodester.com/">
+          <img src="/about/sourcecodester.png" width="100"/> </br> <b>SourceCodester</b>
+        </a>
+      </td>
+      <td style="text-align: center;">
+        <a href="https://www.mercusys.com.br/">
+          <img src="/about/mercusys.png" width="100"/> </br> <b>Mercusys</b>
+        </a>
+      </td>
+      <td style="text-align: center;">
+        <a href="https://github.com/SCADA-LTS/Scada-LTS">
+          <img src="/about/scada-lts.png" width="100"/> </br> <b>SCADA-LTS</b>
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: center;"><img src="https://www.php.net/images/logos/new-php-logo.png" width="35"/></td>
+      <td style="text-align: center;"><img src="https://cdn-icons-png.flaticon.com/512/9694/9694712.png" width="35"/></td>
+      <td style="text-align: center;"><img src="https://cdn-icons-png.flaticon.com/512/226/226777.png" width="35"/></td>
+    </tr>
+    <tr>
+      <td style="text-align: center;"><b>🛡️ CVEs: 3</b></td>
+      <td style="text-align: center;"><b>🛡️ CVEs: 2</b></td>
+      <td style="text-align: center;"><b>🛡️ CVEs: 2</b></td>
+    </tr>
+  </tbody>
+</table>
+
+<br/>
 
 <table border="1" align="center">
   <tbody>
@@ -87,43 +123,18 @@ comments: false
         </a>
       </td>
       <td style="text-align: center;">
-        <a href="https://github.com/portabilis/i-diario">
-          <img src="/about/i-diario.png" width="100"/> </br> <b>i-Diário</b>
-        </a>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align: center;"><img src="https://www.php.net/images/logos/new-php-logo.png" width="35"/></td>
-      <td style="text-align: center;"><img src="https://www.php.net/images/logos/new-php-logo.png" width="35"/></td>
-      <td style="text-align: center;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Ruby_logo.svg/2048px-Ruby_logo.svg.png" width="25"/></td>
-    </tr>
-    <tr>
-      <td style="text-align: center;"><b>🛡️ CVEs: Carregando...</b></td>
-      <td style="text-align: center;"><b>🛡️ CVEs: Carregando...</b></td>
-      <td style="text-align: center;"><b>🛡️ CVEs: Carregando...</b></td>
-    </tr>
-  </tbody>
-</table>
-
-<table border="1" align="center">
-  <tbody>
-    <tr>
-      <td style="text-align: center;">
         <a href="https://github.com/indico/indico">
           <img src="/about/indico.png" width="100"/> </br> <b>Indico</b>
         </a>
       </td>
-      <td style="text-align: center;">
-        <a href="https://github.com/SCADA-LTS/Scada-LTS">
-          <img src="/about/scada-lts.png" width="100"/> </br> <b>SCADA-LTS</b>
-        </a>
-      </td>
     </tr>
     <tr>
+      <td style="text-align: center;"><img src="https://www.php.net/images/logos/new-php-logo.png" width="35"/></td>
+      <td style="text-align: center;"><img src="https://www.php.net/images/logos/new-php-logo.png" width="35"/></td>
       <td style="text-align: center;"><img src="https://cdn.iconscout.com/icon/free/png-256/free-python-logo-icon-download-in-svg-png-gif-file-formats--technology-social-media-vol-5-pack-logos-icons-3030224.png?f=webp" width="28"/></td>
-      <td style="text-align: center;"><img src="https://cdn-icons-png.flaticon.com/512/226/226777.png" width="35"/></td>
     </tr>
     <tr>
+      <td style="text-align: center;"><b>🛡️ CVEs: Carregando...</b></td>
       <td style="text-align: center;"><b>🛡️ CVEs: Carregando...</b></td>
       <td style="text-align: center;"><b>🛡️ CVEs: Carregando...</b></td>
     </tr>
