@@ -40,10 +40,10 @@
     ]
   },
   "severity": {
-    "Critical": 24,
+    "Low": 1,
     "High": 5,
-    "Moderate": 69,
-    "Low": 1
+    "Critical": 24,    
+    "Moderate": 69
   },
   "total_by_year": {
     "2024: 10 CVEs": 10,
