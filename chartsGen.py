@@ -115,7 +115,7 @@ severity = data["severity"]
 
 # Define a ordem e as cores desejadas
 ordered_labels = ["Low", "High", "Critical", "Moderate"]
-colors = ["ff0000", "ff1e00", "ff9c00", "17539c"]  # cores sem '#'
+colors = ["17539c", "#ff1e00", "#ff0000", "#ff9c00"]  # cores sem '#'
 values = [severity[label] for label in ordered_labels]
 
 legend = "|".join([f"{label}: {severity[label]}" for label in ordered_labels])
