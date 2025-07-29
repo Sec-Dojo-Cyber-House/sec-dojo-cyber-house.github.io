@@ -29,10 +29,16 @@ Saiba mais sobre nossos parceiros e patrocinadores abaixo:
           <img src="/support/hacktiba.png" width="100"/> 
         </a><br>
       </td>
+      <td style="text-align: center;">
+        <a href="https://vuldb.com/">
+          <img src="/support/vuldb.png" width="100"/> 
+        </a><br>
+      </td>
     </tr>
     <tr>
       <td style="text-align: center; font-weight: bold;"><a href="https://caido.io/">caido</a></td>
       <td style="text-align: center; font-weight: bold;"><a href="https://hacktiba.github.io/">Hacktiba</a></td>
+      <td style="text-align: center; font-weight: bold;"><a href="https://vuldb.com/">VulDB</a></td>
     </tr>
   </tbody>
 </table>
