@@ -137,7 +137,7 @@ comments: false
     <tr>
       <td style="text-align: center;"><b>🛡️ CVEs: Loading...</b></td>
       <td style="text-align: center;"><b>🛡️ CVEs: Loading...</b></td>
-      <td style="text-align: center;"><b>🛡️ CVEs: Loading...</b></td>
+      <td style="text-align: center;"><b>🛡️ CVEs: 1</b></td>
     </tr>
   </tbody>
 </table>
