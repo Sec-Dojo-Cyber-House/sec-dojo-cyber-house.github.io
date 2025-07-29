@@ -160,25 +160,19 @@ Você pode encontrar links úteis para repositórios e colaboradores abaixo:
   </tbody>
 </table>
 
-## Repositórios
+## Repositório
 
-<table border="1" align="center">
+<table border="1" style="max-width: 155px;">
   <tbody>
     <tr>
       <td style="text-align: center;">
-        <a href="https://github.com/Sec-Dojo-Cyber-House/cve-hunters">
+        <a href="https://github.com/CVE-Hunters/cve-hunters">
           <img src="/team/cve-hunters-logo.png" width="100"/> 
-        </a><br>
-      </td>
-      <td style="text-align: center;">
-        <a href="https://github.com/Sec-Dojo-Cyber-House">
-          <img src="/team/sdch.png" width="100"/> 
         </a><br>
       </td>
     </tr>
     <tr>
-      <td style="text-align: center; font-weight: bold;"><a href="https://github.com/Sec-Dojo-Cyber-House/cve-hunters">CVE <br> Hunters </a></td>
-      <td style="text-align: center; font-weight: bold;"><a href="https://github.com/Sec-Dojo-Cyber-House">Sec-Dojo <br> Cyber House </a></td>
+      <td style="text-align: center; font-weight: bold;"><a href="https://github.com/CVE-Hunters/cve-hunters">Repositório<br>Oficial</a></td>
     </tr>
   </tbody>
 </table>
