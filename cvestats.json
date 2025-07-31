@@ -2,11 +2,11 @@
   "top_finders": {
     "data": {
       "Elisangela": 32,
-      "Natan": 24,
+      "Natan": 26,
       "Pedro": 2,
       "Rafael": 8,
       "Raul": 20,
-      "Marcelo": 14
+      "Marcelo": 19
     },
     "colors": [
       "#e918d5",
@@ -19,7 +19,7 @@
   },
   "vuln_types": {
     "data": {
-      "XSS": 67,
+      "XSS": 74,
       "SQL Injection": 20,
       "Broken Access Control": 6,
       "CSRF": 1,
@@ -43,10 +43,10 @@
     "Low": 1,
     "High": 5,
     "Critical": 24,    
-    "Moderate": 70
+    "Moderate": 77
   },
   "total_by_year": {
     "2024: 10 CVEs": 10,
-    "2025: 90 CVEs": 90
+    "2025: 97 CVEs": 97
   }
 }
