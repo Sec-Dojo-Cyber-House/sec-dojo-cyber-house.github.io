@@ -77,7 +77,6 @@ total_url = (
     "&chs=700x400"
     f"&chd=t:{','.join(map(str, values))}"
     "&chxt=y,x"
-    "&chxr=0,0,100,10"
     f"&chxl=1:|{'|'.join(labels)}"
     "&chco=e918d5"
     "&chf=bg,s,0d1117"
@@ -110,7 +109,7 @@ vuln_url = (
 )
 save_chart(vuln_url, "vulnerabilityType.png")
 
-### Gráfico 4: Severity (barras verticais)
+### Gráfico 4: Severity (barras horizontais)
 severity = data["severity"]
 
 # Ordem e cores personalizadas
@@ -123,11 +122,10 @@ legend = "|".join([f"{label}: {severity[label]}" for label in ordered_labels])
 
 severity_url = (
     "https://image-charts.com/chart"
-    "?cht=bvg"
+    "?cht=bhg"
     "&chs=700x400"
     f"&chd=t:{'%7C'.join(map(str, values))}"
     "&chxt=y"  # Apenas eixo Y visível
-    "&chxr=0,0,80,10"
     f"&chco={','.join(colors)}"
     "&chf=bg,s,0d1117"
     "&chxs=0,FFFFFF,14"
