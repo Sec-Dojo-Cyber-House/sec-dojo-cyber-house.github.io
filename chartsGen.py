@@ -122,7 +122,7 @@ legend = "|".join([f"{label}: {severity[label]}" for label in ordered_labels])
 
 severity_url = (
     "https://image-charts.com/chart"
-    "?cht=bhg"
+    "?cht=bvg"
     "&chs=700x400"
     f"&chd=t:{'%7C'.join(map(str, values))}"
     "&chxt=y"  # Apenas eixo Y visível
