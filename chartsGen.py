@@ -1,136 +1,138 @@
-# python3 chartsGen.py
-
+# chartsGen.py
 import json
-import urllib.parse
-import requests
+import matplotlib.pyplot as plt
 from pathlib import Path
 
 # Diretório de saída
 output_dir = Path("content/stats")
 output_dir.mkdir(parents=True, exist_ok=True)
 
-def limpa_imagens():
-    arquivos = [
-        "topFinders.png",
-        "totalCVEsRegistred.png",
-        "vulnerabilityType.png",
-        "severity.png"
-    ]
-    for arq in arquivos:
-        caminho = output_dir / arq
-        if caminho.exists():
-            caminho.unlink()
-            print(f"[✂] {arq} removido.")
+# Configuração global de estilo
+plt.rcParams["figure.facecolor"] = "#0c1116"
+plt.rcParams["axes.facecolor"] = "#0c1116"
+plt.rcParams["savefig.facecolor"] = "#0c1116"
+plt.rcParams["axes.edgecolor"] = "#0c1116"
 
-# Limpa imagens antigas
-limpa_imagens()
-
-def urlencode_chart_config(config):
-    return "https://image-charts.com/chart.js/2.8.0?bkg=%230d1117&chs=700x400&c=" + urllib.parse.quote(json.dumps(config))
-
-def save_chart(url, filename):
-    img = requests.get(url)
-    (output_dir / filename).write_bytes(img.content)
-    print(f"[✔] {filename} gerado.")
-
-# Carrega os dados
+# Carrega dados
 with open("cvestats.json") as f:
     data = json.load(f)
 
-### Gráfico 1: Top Finders (doughnut estilizado)
+# =====================================================
+# 1) Gráfico: Top Finders (doughnut)
+# =====================================================
 top_finders = data["top_finders"]["data"]
-colors = data["top_finders"]["colors"]
 labels = list(top_finders.keys())
 values = list(top_finders.values())
+colors = data["top_finders"]["colors"]
 
-top_finders_config = {
-    "type": "doughnut",
-    "data": {
-        "labels": labels,
-        "datasets": [{
-            "data": values,
-            "backgroundColor": colors
-        }]
-    },
-    "options": {
-        "plugins": {
-            "legend": {"display": False},
-            "datalabels": {
-                "color": "white",
-                "font": {"size": 14},
-                "formatter": "(value,ctx) => ctx.chart.data.labels[ctx.dataIndex]"
-            }
-        }
-    }
-}
-save_chart(urlencode_chart_config(top_finders_config), "topFinders.png")
+def make_autopct(values):
+    def my_autopct(pct):
+        total = sum(values)
+        val = int(round(pct*total/100.0))
+        return f"{val}" if val > 0 else ""
+    return my_autopct
 
-### Gráfico 2: Total CVEs Registered (linha)
+fig, ax = plt.subplots(figsize=(8, 6))
+wedges, texts, autotexts = ax.pie(
+    values,
+    autopct=make_autopct(values),
+    labels=None,
+    colors=colors,
+    wedgeprops=dict(width=0.35, edgecolor="white")
+)
+
+for t in autotexts:
+    t.set_color("white")
+    t.set_fontsize(11)
+
+leg = ax.legend(
+    wedges, labels,
+    loc="center left", bbox_to_anchor=(1, 0.5),
+    facecolor="#0c1116", labelcolor="white"
+)
+plt.setp(leg.get_title(), color="white")
+plt.savefig(output_dir / "topFinders.png", dpi=300, bbox_inches="tight")
+plt.close()
+
+# =====================================================
+# 2) Gráfico: Total CVEs por Ano (linha)
+# =====================================================
 total_by_year = data["total_by_year"]
-years = [k.split(":")[0] for k in total_by_year.keys()]
+labels = list(total_by_year.keys())
 values = list(total_by_year.values())
-labels = [f"{year}: {value} CVEs" for year, value in zip(years, values)]
 
-total_url = (
-    "https://image-charts.com/chart"
-    "?cht=lc"
-    "&chs=700x400"
-    f"&chd=t:{','.join(map(str, values))}"
-    "&chxt=y,x"
-    f"&chxl=1:|{'|'.join(labels)}"
-    "&chco=e918d5"
-    "&chf=bg,s,0d1117"
-    "&chxs=0,FFFFFF,14|1,FFFFFF,14"
+fig, ax = plt.subplots(figsize=(7, 4))
+ax.plot(labels, values, marker="o", color="#e918d5", linewidth=2)
+
+ax.set_ylabel("Qtd", color="white")
+ax.tick_params(colors="white")
+ax.spines[:].set_visible(False)
+
+for i, v in enumerate(values):
+    ax.text(i, v + 2, str(v), color="white", ha="center", fontsize=10)
+
+plt.savefig(output_dir / "totalCVEsRegistred.png", dpi=300, bbox_inches="tight")
+plt.close()
+
+# =====================================================
+# 3) Gráfico: Vulnerability Types (pizza)
+# =====================================================
+vuln = data["vuln_types"]["data"]
+labels = list(vuln.keys())
+values = list(vuln.values())
+colors = data["vuln_types"]["colors"]
+
+def make_autopct(values):
+    def my_autopct(pct):
+        total = sum(values)
+        val = int(round(pct*total/100.0))
+        return f"{val}" if val > 0 else ""
+    return my_autopct
+
+fig, ax = plt.subplots(figsize=(8, 6))
+wedges, texts, autotexts = ax.pie(
+    values,
+    autopct=make_autopct(values),
+    labels=None,
+    colors=colors,
+    wedgeprops=dict(edgecolor="white")
 )
-save_chart(total_url, "totalCVEsRegistred.png")
 
-### Gráfico 3: Vulnerability Types (pizza clássico)
-vuln = data["vuln_types"]
-labels = list(vuln["data"].keys())
-values = list(vuln["data"].values())
-colors = [c.lstrip('#') for c in vuln["colors"]]  # Remove o # das cores
+for t in autotexts:
+    t.set_color("white")
+    t.set_fontsize(11)
 
-chl = "|".join(str(v) for v in values)  # valores dentro das fatias
-chdl = "|".join(urllib.parse.quote_plus(label) for label in labels)  # legenda
-chco = ",".join(colors)
-
-vuln_url = (
-    "https://image-charts.com/chart"
-    "?cht=p"
-    "&chs=700x400"
-    f"&chd=t:{','.join(map(str, values))}"
-    f"&chco={chco}"
-    f"&chl={chl}"
-    f"&chdl={chdl}"
-    "&chf=bg,s,0d1117"
-    "&chdlp=r"
-    "&chdls=FFFFFF,14"
-    "&chxs=0,FFFFFF,14"
+leg = ax.legend(
+    wedges, labels,
+    loc="center left", bbox_to_anchor=(1, 0.5),
+    facecolor="#0c1116", labelcolor="white"
 )
-save_chart(vuln_url, "vulnerabilityType.png")
+plt.setp(leg.get_title(), color="white")
+plt.savefig(output_dir / "vulnerabilityType.png", dpi=300, bbox_inches="tight")
+plt.close()
 
-### Gráfico 4: Severity (barras horizontais)
+
+# =====================================================
+# 4) Gráfico: Severidade (barras)
+# =====================================================
 severity = data["severity"]
-
-# Ordem e cores personalizadas
 ordered_labels = ["Low", "High", "Critical", "Moderate"]
-colors = ["17539c", "ff1e00", "ff0000", "ff9c00"]
-values = [severity[label] for label in ordered_labels]
+colors = ["#17539c", "#ff1e00", "#ff0000", "#ff9c00"]
+values = [severity[l] for l in ordered_labels]
 
-# Monta a legenda com texto
-legend = "|".join([f"{label}: {severity[label]}" for label in ordered_labels])
+fig, ax = plt.subplots(figsize=(7, 4))
+bars = ax.bar(ordered_labels, values, color=colors)
 
-severity_url = (
-    "https://image-charts.com/chart"
-    "?cht=bvg"
-    "&chs=700x400"
-    f"&chd=t:{'%7C'.join(map(str, values))}"
-    "&chxt=y"  # Apenas eixo Y visível
-    f"&chco={','.join(colors)}"
-    "&chf=bg,s,0d1117"
-    "&chxs=0,FFFFFF,14"
-    f"&chdl={urllib.parse.quote(legend)}"
-    "&chdlp=r"
-    "&chdls=FFFFFF,14"
-)
-save_chart(severity_url, "severity.png")
+for bar, value in zip(bars, values):
+    ax.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 1,
+            f"{value}",  # <<< só o valor
+            ha="center", va="bottom",
+            color="white", fontsize=11)
+
+ax.tick_params(colors="white")
+ax.spines[:].set_visible(False)
+
+plt.savefig(output_dir / "severity.png", dpi=300, bbox_inches="tight")
+plt.close()
+
+print("[✔] Todos os gráficos foram gerados em:", output_dir)
