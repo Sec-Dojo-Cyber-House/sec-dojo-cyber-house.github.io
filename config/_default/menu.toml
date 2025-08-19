@@ -24,8 +24,16 @@ url = "https://discord.gg/3GJvV6xPeg"
 icon = "brand-discord"
 
 [[social]]
+identifier = "youtube"
+name = "YouTube"
+url = "https://www.youtube.com/@CVEHunters"
+
+[social.params]
+icon = "brand-youtube"
+
+[[social]]
 identifier = "email"
-name = "Email"
+name = "E-mail"
 url = "mailto:contact@cvehunters.com"
 
 [social.params]
