@@ -6,7 +6,7 @@
       "Pedro": 2,
       "Rafael": 8,
       "Raul": 20,
-      "Marcelo": 33,
+      "Marcelo": 37,
       "Karina": 13,
       "Vanderlei": 2,
       "Fernanda": 3
@@ -25,8 +25,8 @@
   },
   "vuln_types": {
     "data": {
-      "XSS": 104,
-      "SQL Injection": 20,
+      "XSS": 107,
+      "SQL Injection": 21,
       "Broken Access Control": 10,
       "CSRF": 1,
       "RCE": 1,
@@ -50,11 +50,11 @@
   "severity": {
     "Low": 1,
     "High": 5,
-    "Critical": 24,    
-    "Moderate": 111
+    "Critical": 25,    
+    "Moderate": 114
   },
   "total_by_year": {
     "2024": 10,
-    "2025": 139
+    "2025": 143
   }
 }
