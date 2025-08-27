@@ -67,8 +67,8 @@ comments: false
       <td style="text-align: center;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Ruby_logo.svg/2048px-Ruby_logo.svg.png" width="25"/></td>
     </tr>
     <tr>
-      <td style="text-align: center;"><b>🛡️ CVEs: 80</b></td>
-      <td style="text-align: center;"><b>🛡️ CVEs: 34</b></td>
+      <td style="text-align: center;"><b>🛡️ CVEs: 81</b></td>
+      <td style="text-align: center;"><b>🛡️ CVEs: 36</b></td>
       <td style="text-align: center;"><b>🛡️ CVEs: 14</b></td>
     </tr>
   </tbody>
@@ -103,7 +103,7 @@ comments: false
     <tr>
       <td style="text-align: center;"><b>🛡️ CVEs: 3</b></td>
       <td style="text-align: center;"><b>🛡️ CVEs: 2</b></td>
-      <td style="text-align: center;"><b>🛡️ CVEs: 12</b></td>
+      <td style="text-align: center;"><b>🛡️ CVEs: 13</b></td>
     </tr>
   </tbody>
 </table>
