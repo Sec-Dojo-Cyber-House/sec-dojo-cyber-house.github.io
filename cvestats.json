@@ -50,11 +50,11 @@
   "severity": {
     "Low": 1,
     "High": 5,
-    "Critical": 25,    
-    "Moderate": 114
+    "Critical": 27,    
+    "Moderate": 116
   },
   "total_by_year": {
     "2024": 10,
-    "2025": 143
+    "2025": 147
   }
 }
