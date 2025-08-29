@@ -20,6 +20,11 @@ Learn more about our partners and sponsors below:
   <tbody>
     <tr>
       <td style="text-align: center;">
+        <a href="https://azure.microsoft.com/pt-br/">
+          <img src="azure.png" width="100"/> 
+        </a><br>
+      </td>
+      <td style="text-align: center;">
         <a href="https://caido.io/">
           <img src="caido.png" width="100"/> 
         </a><br>
@@ -29,6 +34,18 @@ Learn more about our partners and sponsors below:
           <img src="hacktiba.png" width="100"/> 
         </a><br>
       </td>
+    </tr>
+    <tr>
+      <td style="text-align: center; font-weight: bold;"><a href="https://azure.microsoft.com/pt-br/">Azure</a></td>
+      <td style="text-align: center; font-weight: bold;"><a href="https://caido.io/">caido</a></td>
+      <td style="text-align: center; font-weight: bold;"><a href="https://hacktiba.github.io/">Hacktiba</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<table border="1" align="center">
+  <tbody>
+    <tr>
       <td style="text-align: center;">
         <a href="https://vuldb.com/">
           <img src="vuldb.png" width="100"/> 
@@ -36,8 +53,6 @@ Learn more about our partners and sponsors below:
       </td>
     </tr>
     <tr>
-      <td style="text-align: center; font-weight: bold;"><a href="https://caido.io/">caido</a></td>
-      <td style="text-align: center; font-weight: bold;"><a href="https://hacktiba.github.io/">Hacktiba</a></td>
       <td style="text-align: center; font-weight: bold;"><a href="https://vuldb.com/">VulDB</a></td>
     </tr>
   </tbody>
