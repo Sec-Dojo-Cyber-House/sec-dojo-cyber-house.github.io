@@ -67,7 +67,7 @@ comments: false
     </tr>
     <tr>
       <td style="text-align: center;"><b>🛡️ CVEs: 81</b></td>
-      <td style="text-align: center;"><b>🛡️ CVEs: 36</b></td>
+      <td style="text-align: center;"><b>🛡️ CVEs: 42</b></td>
       <td style="text-align: center;"><b>🛡️ CVEs: 14</b></td>
     </tr>
   </tbody>
