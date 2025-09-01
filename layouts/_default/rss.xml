@@ -1,0 +1,34 @@
+{{- printf `<?xml version="1.0" encoding="UTF-8"?>` | safeHTML -}}
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>{{ if eq .Title .Site.Title }}{{ .Site.Title }}{{ else }}{{ .Title }} on {{ .Site.Title }}{{ end }}</title>
+    <link>{{ .Permalink }}</link>
+    <description>Recent content on {{ .Site.Title }}</description>
+    <atom:link href="{{ .Permalink }}index.xml" rel="self" type="application/rss+xml"/>
+
+    {{- $pages := where .Site.RegularPages "Params.hidden" "!=" true -}}
+    {{- $limit := .Site.Config.Services.RSS.Limit -}}
+    {{- if ge $limit 1 -}}
+      {{- $pages = $pages | first $limit -}}
+    {{- end -}}
+
+    {{ range $pages }}
+      <item>
+        <title>{{ .Title }}</title>
+        <link>{{ .Permalink }}</link>
+        <guid>{{ .Permalink }}</guid>
+        <description>{{ .Summary | htmlEscape }}</description>
+
+        {{- $raw := .Content -}}
+        {{- $step1 := $raw | replaceRE "]]>" "]]]]><![CDATA[>" -}}
+        {{- $step2 := $step1
+            | replaceRE "<img([^>]*)>" "<img$1 />"
+            | replaceRE "<br([^>]*)>" "<br$1 />"
+            | replaceRE "<hr([^>]*)>" "<hr$1 />"
+        -}}
+        <content:encoded>{{ $step2 | htmlEscape }}</content:encoded>
+        <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" }}</pubDate>
+      </item>
+    {{ end }}
+  </channel>
+</rss>

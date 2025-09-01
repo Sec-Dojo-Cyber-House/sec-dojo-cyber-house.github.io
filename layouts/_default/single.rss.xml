@@ -1,0 +1,27 @@
+{{- printf `<?xml version="1.0" encoding="UTF-8"?>` | safeHTML -}}
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>{{ .Title }}</title>
+    <link>{{ .Permalink }}</link>
+    <description>{{ with .Params.description }}{{ . | plainify }}{{ else }}{{ .Title }}{{ end }}</description>
+    <atom:link href="{{ .Permalink }}index.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>{{ .Title }}</title>
+      <link>{{ .Permalink }}</link>
+      <guid>{{ .Permalink }}</guid>
+      <description>{{ .Summary | htmlEscape }}</description>
+
+      {{- $raw := .Content -}}
+      {{- $step1 := $raw | replaceRE "]]>" "]]]]><![CDATA[>" -}}
+      {{- $step2 := $step1
+          | replaceRE "<img([^>]*)>" "<img$1 />"
+          | replaceRE "<br([^>]*)>" "<br$1 />"
+          | replaceRE "<hr([^>]*)>" "<hr$1 />"
+      -}}
+      <content:encoded>{{ $step2 | htmlEscape }}</content:encoded>
+
+      <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" }}</pubDate>
+    </item>
+  </channel>
+</rss>
