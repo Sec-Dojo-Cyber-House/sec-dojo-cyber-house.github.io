@@ -140,3 +140,21 @@ comments: false
     </tr>
   </tbody>
 </table>
+
+<table border="1" align="center">
+  <tbody>
+    <tr>
+      <td style="text-align: center;">
+        <a href="https://github.com/mautic/mautic">
+          <img src="/about/mautic.png" width="100"/> </br> <b>Mautic</b>
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: center;"><img src="https://www.php.net/images/logos/new-php-logo.png" width="35"/></td>
+    </tr>
+    <tr>
+      <td style="text-align: center;"><b>🛡️ CVEs: 1</b></td>
+    </tr>
+  </tbody>
+</table>
