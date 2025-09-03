@@ -1,19 +1,35 @@
-name: Post new Hugo articles to Discord
+name: RSS → Discord (Hugo, com estado)
 
 on:
   push:
     paths:
       - "content/**"
   schedule:
-    - cron: "*/15 * * * *"   # a cada 15 min (UTC)
-  workflow_dispatch: {}
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+    inputs:
+      force_latest:
+        description: "Repostar o item mais recente (ignora estado)?"
+        required: false
+        default: "false"
+      rss_url:
+        description: "Override do feed (ex.: https://cvehunters.com/index.xml)"
+        required: false
+        default: ""
 
 jobs:
-  rss_to_discord:
+  run:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+
+      # Restaura estado de IDs já postados
+      - name: Restore RSS state cache
+        id: cache
+        uses: actions/cache@v4
+        with:
+          path: .rss_state.json
+          key: rss-state-v1
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -23,62 +39,110 @@ jobs:
       - name: Install deps
         run: pip install feedparser requests
 
-      - name: Create script
+      - name: Publish to Discord
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+          HUGO_RSS_DEFAULT: https://cvehunters.com/index.xml
+          RSS_OVERRIDE: ${{ github.event.inputs.rss_url }}
+          FORCE_LATEST: ${{ github.event.inputs.force_latest }}
         run: |
           cat > rss_to_discord.py << 'PY'
-          import os, time, requests, feedparser
-          from datetime import datetime, timedelta, timezone
+          import os, json, re, requests, feedparser
+          from html import unescape
+          from pathlib import Path
 
           WEBHOOK = os.environ["DISCORD_WEBHOOK"]
-          RSS_URL = os.environ.get("HUGO_RSS", "https://cvehunters.com/index.xml")
-          WINDOW_MINUTES = int(os.environ.get("WINDOW_MINUTES", "120"))
+          RSS_URL = os.environ.get("RSS_OVERRIDE") or os.environ.get("HUGO_RSS_DEFAULT", "")
+          FORCE_LATEST = (os.environ.get("FORCE_LATEST","false").lower() == "true")
+          STATE_FILE = Path(".rss_state.json")
 
-          now = datetime.now(timezone.utc)
-          cutoff = now - timedelta(minutes=WINDOW_MINUTES)
+          def load_state():
+              if STATE_FILE.exists():
+                  try:
+                      return set(json.loads(STATE_FILE.read_text()))
+                  except Exception:
+                      return set()
+              return set()
 
+          def save_state(s):
+              STATE_FILE.write_text(json.dumps(sorted(s)))
+
+          def entry_id(e):
+              return e.get("id") or e.get("guid") or e.get("link")
+
+          tagstrip_re = re.compile(r"<[^>]+>")
+          def clean_html(s):
+              s = tagstrip_re.sub("", s or "")
+              s = re.sub(r"\s+"," ", s).strip()
+              return unescape(s)
+
+          seen = load_state()
           feed = feedparser.parse(RSS_URL)
-          new_entries = []
+          print(f"[info] feed='{RSS_URL}', total entries={len(feed.entries)}, seen={len(seen)}")
 
-          def to_dt(entry):
-              # tenta published_parsed, senão updated_parsed
-              struct = entry.get("published_parsed") or entry.get("updated_parsed")
-              if struct:
-                  return datetime(*struct[:6], tzinfo=timezone.utc)
-              return None
-
+          to_post = []
           for e in feed.entries:
-              dt = to_dt(e)
-              if not dt:
+              eid = entry_id(e)
+              if not eid:  # se não houver ID, usa o link como fallback
+                  eid = e.get("link")
+              if not eid:
                   continue
-              if dt >= cutoff:
-                  new_entries.append(e)
+              if eid not in seen:
+                  to_post.append((eid, e))
 
-          # publica do mais antigo pro mais novo
-          new_entries.sort(key=lambda e: e.get("published_parsed") or e.get("updated_parsed") or (0,))
-          for e in new_entries:
-              title = e.get("title", "Novo post")
-              url = e.get("link", "")
-              summary = (e.get("summary") or "")[:250]
+          # do mais antigo para o mais novo (estável)
+          to_post.reverse()
+
+          posted = 0
+          for eid, e in to_post:
+              title = (e.get("title") or "Novo post").strip()
+              url = e.get("link","")
+              summary = clean_html((e.get("summary_detail") or {}).get("value") or e.get("summary") or "")
+              summary = summary[:250]
+
               payload = {
                   "content": f"🆕 **{title}**\n{url}",
-                  "embeds": [
-                      {"title": title, "url": url, "description": summary}
-                  ],
+                  "embeds": [{"title": title, "url": url, "description": summary}],
                   "allowed_mentions": {"parse": []}
               }
               try:
-                  r = requests.post(WEBHOOK, json=payload, timeout=15)
+                  r = requests.post(WEBHOOK, json=payload, timeout=20)
+                  print(f"[post] {title} -> {r.status_code}")
                   r.raise_for_status()
+                  seen.add(eid)
+                  posted += 1
               except Exception as ex:
-                  print("Falhou ao postar no Discord:", ex)
+                  print(f"[erro] '{title}': {ex}")
 
-          print(f"RSS verificado. Itens novos publicados: {len(new_entries)}")
+          # Se nada novo e pediu force, republica o mais recente
+          if posted == 0 and FORCE_LATEST and feed.entries:
+              e = feed.entries[0]
+              title = (e.get("title") or "Post mais recente").strip()
+              url = e.get("link","")
+              summary = clean_html((e.get("summary_detail") or {}).get("value") or e.get("summary") or "")[:250]
+              payload = {
+                  "content": f"📢 (FORÇADO) **{title}**\n{url}",
+                  "embeds": [{"title": title, "url": url, "description": summary}],
+                  "allowed_mentions": {"parse": []}
+              }
+              try:
+                  r = requests.post(WEBHOOK, json=payload, timeout=20)
+                  print(f"[force] {title} -> {r.status_code}")
+                  r.raise_for_status()
+                  posted = 1
+              except Exception as ex:
+                  print(f"[erro] force_latest: {ex}")
+
+          save_state(seen)
+          print(f"[done] publicados={posted}, state_size={len(seen)}")
           PY
+          python rss_to_discord.py
 
-      - name: Run script
-        env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-          # ajuste se seu feed for outro caminho:
-          HUGO_RSS: https://cvehunters.com/index.xml
-          WINDOW_MINUTES: "120"
-        run: python rss_to_discord.py
+      # Salva o estado atualizado no cache
+      - name: Save RSS state cache
+        if: always()
+        uses: actions/cache@v4
+        with:
+          path: .rss_state.json
+          key: rss-state-v1
+          restore-keys: rss-state-v1
