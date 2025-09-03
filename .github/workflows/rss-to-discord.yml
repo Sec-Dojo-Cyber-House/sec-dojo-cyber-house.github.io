@@ -1,0 +1,84 @@
+name: Post new Hugo articles to Discord
+
+on:
+  push:
+    paths:
+      - "content/**"
+  schedule:
+    - cron: "*/15 * * * *"   # a cada 15 min (UTC)
+  workflow_dispatch: {}
+
+jobs:
+  rss_to_discord:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install deps
+        run: pip install feedparser requests
+
+      - name: Create script
+        run: |
+          cat > rss_to_discord.py << 'PY'
+          import os, time, requests, feedparser
+          from datetime import datetime, timedelta, timezone
+
+          WEBHOOK = os.environ["DISCORD_WEBHOOK"]
+          RSS_URL = os.environ.get("HUGO_RSS", "https://cvehunters.com/index.xml")
+          WINDOW_MINUTES = int(os.environ.get("WINDOW_MINUTES", "120"))
+
+          now = datetime.now(timezone.utc)
+          cutoff = now - timedelta(minutes=WINDOW_MINUTES)
+
+          feed = feedparser.parse(RSS_URL)
+          new_entries = []
+
+          def to_dt(entry):
+              # tenta published_parsed, senão updated_parsed
+              struct = entry.get("published_parsed") or entry.get("updated_parsed")
+              if struct:
+                  return datetime(*struct[:6], tzinfo=timezone.utc)
+              return None
+
+          for e in feed.entries:
+              dt = to_dt(e)
+              if not dt:
+                  continue
+              if dt >= cutoff:
+                  new_entries.append(e)
+
+          # publica do mais antigo pro mais novo
+          new_entries.sort(key=lambda e: e.get("published_parsed") or e.get("updated_parsed") or (0,))
+          for e in new_entries:
+              title = e.get("title", "Novo post")
+              url = e.get("link", "")
+              summary = (e.get("summary") or "")[:250]
+              payload = {
+                  "content": f"🆕 **{title}**\n{url}",
+                  "embeds": [
+                      {"title": title, "url": url, "description": summary}
+                  ],
+                  "allowed_mentions": {"parse": []}
+              }
+              try:
+                  r = requests.post(WEBHOOK, json=payload, timeout=15)
+                  r.raise_for_status()
+              except Exception as ex:
+                  print("Falhou ao postar no Discord:", ex)
+
+          print(f"RSS verificado. Itens novos publicados: {len(new_entries)}")
+          PY
+
+      - name: Run script
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+          # ajuste se seu feed for outro caminho:
+          HUGO_RSS: https://cvehunters.com/index.xml
+          WINDOW_MINUTES: "120"
+        run: python rss_to_discord.py
