@@ -2,7 +2,7 @@
   "top_finders": {
     "data": {
       "Elisangela": 32,
-      "Natan": 29,
+      "Natan": 30,
       "Pedro": 2,
       "Rafael": 8,
       "Raul": 20,
@@ -25,7 +25,7 @@
   },
   "vuln_types": {
     "data": {
-      "XSS": 117,
+      "XSS": 118,
       "SQL Injection": 29,
       "Broken Access Control": 13,
       "CSRF": 1,
@@ -51,10 +51,10 @@
     "Low": 1,
     "High": 5,
     "Critical": 33,    
-    "Moderate": 127
+    "Moderate": 128
   },
   "total_by_year": {
     "2024": 10,
-    "2025": 164
+    "2025": 165
   }
 }
