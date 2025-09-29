@@ -150,11 +150,18 @@ comments: false
           <img src="/about/mautic.png" width="100"/> </br> <b>Mautic</b>
         </a>
       </td>
+      <td style="text-align: center;">
+        <a href="https://github.com/novosga/novosga">
+          <img src="/about/NovoSGA.png" width="100"/> </br> <b>NovoSGA</b>
+        </a>
+      </td>
     </tr>
     <tr>
       <td style="text-align: center;"><img src="https://www.php.net/images/logos/new-php-logo.png" width="35"/></td>
+      <td style="text-align: center;"><img src="https://www.php.net/images/logos/new-php-logo.png" width="35"/></td>
     </tr>
     <tr>
+      <td style="text-align: center;"><b>🛡️ CVEs: 1</b></td>
       <td style="text-align: center;"><b>🛡️ CVEs: 1</b></td>
     </tr>
   </tbody>
