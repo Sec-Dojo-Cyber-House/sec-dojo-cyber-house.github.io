@@ -6,7 +6,7 @@
       "Pedro": 2,
       "Rafael": 8,
       "Raul": 20,
-      "Marcelo": 72,
+      "Marcelo": 73,
       "Karina": 30,
       "Vanderlei": 2,
       "Fernanda": 3
@@ -31,7 +31,7 @@
       "CSRF": 2,
       "RCE": 1,
       "DoS": 3,
-      "Open Redirect": 2,
+      "Open Redirect": 3,
       "Command Injection": 1,
       "Security Misconfiguration": 1,
       "Identification and Authentication Failures": 1
@@ -53,10 +53,10 @@
     "Low": 1,
     "High": 6,
     "Critical": 40,    
-    "Moderate": 151
+    "Moderate": 152
   },
   "total_by_year": {
     "2024": 10,
-    "2025": 196
+    "2025": 197
   }
 }
