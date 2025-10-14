@@ -60,17 +60,23 @@ Saiba mais sobre nossos parceiros e patrocinadores abaixo:
 
 ## Patrocinadores
 
-<table border="1" style="max-width: 155px;">
+<table border="1" align="center">
   <tbody>
     <tr>
       <td style="text-align: center;">
         <a href="https://institutoumpassodecadavez.org/">
-          <img src="/support/instituto-um-passo-de-cada-vez.png" width="100"/> 
+          <img src="instituto-um-passo-de-cada-vez.png" width="100"/> 
+        </a><br>
+      </td>
+      <td style="text-align: center;">
+        <a href="https://future.com.br/">
+          <img src="future.png" width="100"/> 
         </a><br>
       </td>
     </tr>
     <tr>
-      <td style="text-align: center; font-weight: bold;"><a href="https://institutoumpassodecadavez.org/">Instituto Um Passo de Cada Vez</a></td>
+      <td style="text-align: center; font-weight: bold;"><a href="https://institutoumpassodecadavez.org/">Instituto Um Passo</br>de Cada Vez</a></td>
+      <td style="text-align: center; font-weight: bold;"><a href="https://future.com.br/">future</a></td>
     </tr>
   </tbody>
 </table>
