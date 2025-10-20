@@ -1,3 +1,3 @@
-# sec-dojo-cyber-house.github.io
+# cve-hunters.github.io
 
-[https://sec-dojo-cyber-house.github.io](https://sec-dojo-cyber-house.github.io)
+[https://www.cvehunters.com/](https://www.cvehunters.com/)
