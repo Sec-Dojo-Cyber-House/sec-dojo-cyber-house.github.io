@@ -6,7 +6,7 @@
       "Pedro": 2,
       "Rafael": 8,
       "Raul": 20,
-      "Marcelo": 80,
+      "Marcelo": 83,
       "Karina": 30,
       "Vanderlei": 2,
       "Fernanda": 3
@@ -34,7 +34,7 @@
       "Open Redirect": 3,
       "Command Injection": 1,
       "Security Misconfiguration": 1,
-      "Identification and Authentication Failures": 1
+      "Identification and Authentication Failures": 2
     },
     "colors": [
       "#011da1",
@@ -52,11 +52,11 @@
   "severity": {
     "Low": 1,
     "High": 6,
-    "Critical": 40,    
-    "Moderate": 159
+    "Critical": 41,    
+    "Moderate": 161
   },
   "total_by_year": {
     "2024": 10,
-    "2025": 204
+    "2025": 200
   }
 }
