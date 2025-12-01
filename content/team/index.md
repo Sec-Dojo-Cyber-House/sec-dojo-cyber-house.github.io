@@ -86,7 +86,7 @@ You can find useful repositories and contributors links below:
   </tbody>
 </table>
 
-<table border="1" align="center">
+<table>
   <tbody>
     <tr>
       <td style="text-align: center;">
@@ -95,20 +95,20 @@ You can find useful repositories and contributors links below:
         </a><br>
       </td>
       <td style="text-align: center;">
-        <a href="https://www.linkedin.com/in/pedro-henrique-da-costa-lyrio-020a401a3?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">
-          <img src="/assets/contributors/pedro.png" width="100"/> 
+        <a href="https://www.linkedin.com/in/marcos-tolosa/">
+          <img src="/assets/contributors/marcos.png" width="100"/> 
         </a><br>
       </td>
       <td style="text-align: center;">
-        <a href="https://www.linkedin.com/in/rafael-corvino/">
-          <img src="/assets/contributors/rafael.png" width="100"/> 
+        <a href="https://www.linkedin.com/in/pedro-henrique-da-costa-lyrio-020a401a3?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">
+          <img src="/assets/contributors/pedro.png" width="100"/> 
         </a><br>
       </td>
     </tr>
     <tr>
       <td style="text-align: center; font-weight: bold;"><a href="http://www.linkedin.com/in/marceloqueirozjr">Marcelo<br>Queiroz</a></td>
+      <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/marcos-tolosa/">Marcos<br>Tolosa</a></td>
       <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/pedro-henrique-da-costa-lyrio-020a401a3?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">Pedro<br>Lyrio</a></td>
-      <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/rafael-corvino/">Rafael<br>Corvino</a></td>
     </tr>
   </tbody>
 </table>
@@ -117,7 +117,12 @@ You can find useful repositories and contributors links below:
   <tbody>
     <tr>
       <td style="text-align: center;">
-        <a href="https://github.com/%20%20www.linkedin.com/in/raul-pazem%C3%A9cxas-04882b21a/">
+        <a href="https://www.linkedin.com/in/rafael-corvino/">
+          <img src="/assets/contributors/rafael.png" width="100"/> 
+        </a><br>
+      </td>
+      <td style="text-align: center;">
+        <a href="https://www.linkedin.com/in/raul-pazem%C3%A9cxas-04882b21a/">
           <img src="/assets/contributors/raul.png" width="100"/> 
         </a><br>
       </td>
@@ -126,16 +131,11 @@ You can find useful repositories and contributors links below:
           <img src="/assets/contributors/samara.png" width="100"/> 
         </a><br>
       </td>
-      <td style="text-align: center;">
-        <a href="https://www.linkedin.com/in/ta%C3%ADza-oliveira">
-          <img src="/assets/contributors/taiza.png" width="100"/> 
-        </a><br>
-      </td>
     </tr>
     <tr>
-      <td style="text-align: center; font-weight: bold;"><a href="https://github.com/%20%20www.linkedin.com/in/raul-pazem%C3%A9cxas-04882b21a/">Raul<br>Pazemécxas</a></td>
+      <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/rafael-corvino/">Rafael<br>Corvino</a></td>
+      <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/raul-pazem%C3%A9cxas-04882b21a/">Raul<br>Pazemécxas</a></td>
       <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/samaragama?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app">Samara<br>Gama</a></td>
-      <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/ta%C3%ADza-oliveira">Taíza<br>Oliveira</a></td>
     </tr>
   </tbody>
 </table>
@@ -143,6 +143,11 @@ You can find useful repositories and contributors links below:
 <table border="1" align="center">
   <tbody>
     <tr>
+      <td style="text-align: center;">
+        <a href="https://www.linkedin.com/in/ta%C3%ADza-oliveira">
+          <img src="/assets/contributors/taiza.png" width="100"/> 
+        </a><br>
+      </td>
       <td style="text-align: center;">
         <a href="https://www.linkedin.com/in/vanderlei-princival/">
           <img src="/assets/contributors/vanderlei.png" width="100"/> 
@@ -155,6 +160,7 @@ You can find useful repositories and contributors links below:
       </td>
     </tr>
     <tr>
+      <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/ta%C3%ADza-oliveira">Taíza<br>Oliveira</a></td>
       <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/vanderlei-princival/">Vanderlei<br>Princival</a></td>
       <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/vinicius-marim-melfi-4b937b155/">Vinícius<br>Melfi</a></td>
     </tr>
