@@ -68,7 +68,7 @@ You can find useful repositories and contributors links below:
         </a><br>
       </td>
       <td style="text-align: center;">
-        <a href="https://www.linkedin.com/in/isadora-cristina-a05580014b/">
+        <a href="https://www.linkedin.com/in/isadora-cristina-a0580014b/">
           <img src="/assets/contributors/isadora.png" width="100"/> 
         </a><br>
       </td>
@@ -80,7 +80,7 @@ You can find useful repositories and contributors links below:
     </tr>
     <tr>
       <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/f%C3%AAmartins/">Fernanda<br>Martins</a></td>
-      <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/isadora-cristina-a05580014b/">Isadora<br>Novaes</a></td>
+      <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/isadora-cristina-a0580014b/">Isadora<br>Novaes</a></td>
       <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/karina-gante/">Karina<br>Gante</a></td>
     </tr>
   </tbody>
@@ -154,15 +154,36 @@ You can find useful repositories and contributors links below:
         </a><br>
       </td>
       <td style="text-align: center;">
-        <a href="https://www.linkedin.com/in/vinicius-marim-melfi-4b937b155/">
-          <img src="/assets/contributors/vinicius.png" width="100"/>
+        <a href="http://www.linkedin.com/in/vinicius-gross-castro">
+          <img src="/assets/contributors/viniciusCastro.png" width="100"/>
         </a><br>
       </td>
     </tr>
     <tr>
       <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/ta%C3%ADza-oliveira">Taíza<br>Oliveira</a></td>
       <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/vanderlei-princival/">Vanderlei<br>Princival</a></td>
+      <td style="text-align: center; font-weight: bold;"><a href="http://www.linkedin.com/in/vinicius-gross-castro">Vinicius<br>Castro</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<table border="1" align="center">
+  <tbody>
+    <tr>
+      <td style="text-align: center;">
+        <a href="https://www.linkedin.com/in/vinicius-marim-melfi-4b937b155/">
+          <img src="/assets/contributors/vinicius.png" width="100"/> 
+        </a><br>
+      </td>
+      <td style="text-align: center;">
+        <a href="https://www.linkedin.com/in/yago-dyogennes/">
+          <img src="/assets/contributors/yago.png" width="100"/> 
+        </a><br>
+      </td>
+    </tr>
+    <tr>
       <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/vinicius-marim-melfi-4b937b155/">Vinícius<br>Melfi</a></td>
+      <td style="text-align: center; font-weight: bold;"><a href="https://www.linkedin.com/in/yago-dyogennes/">Yago<br>Dyogennes</a></td>
     </tr>
   </tbody>
 </table>
