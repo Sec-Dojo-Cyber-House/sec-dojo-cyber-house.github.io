@@ -10,7 +10,7 @@
       "Karina": 30,
       "Vanderlei": 2,
       "Fernanda": 3,
-      "Vinicius C.": 1
+      "Vinicius C.": 2
     },
     "colors": [
       "#e918d5",
@@ -29,7 +29,7 @@
     "data": {
       "XSS": 145,
       "SQL Injection": 40,
-      "Broken Access Control": 25,
+      "Broken Access Control": 26,
       "CSRF": 2,
       "RCE": 1,
       "DoS": 4,
@@ -55,11 +55,11 @@
     "Low": 1,
     "High": 9,
     "Critical": 44,    
-    "Moderate": 169
+    "Moderate": 170
   },
   "total_by_year": {
     "2024": 10,
     "2025": 212,
-    "2026": 2
+    "2026": 3
   }
 }
