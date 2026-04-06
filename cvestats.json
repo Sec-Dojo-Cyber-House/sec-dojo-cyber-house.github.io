@@ -6,11 +6,12 @@
       "Pedro": 2,
       "Rafael": 8,
       "Raul": 20,
-      "Marcelo": 95,
+      "Marcelo": 100,
       "Karina": 30,
       "Vanderlei": 2,
       "Fernanda": 3,
-      "Vinicius C.": 2
+      "Vinicius C.": 2,
+      "Itauan": 1
     },
     "colors": [
       "#e918d5",
@@ -22,14 +23,15 @@
       "#a623c2",
       "#007c91",
       "#1de9b6",
-      "#3d5afe"
+      "#3d5afe",
+      "#ffd600"
     ]
   },
   "vuln_types": {
     "data": {
-      "XSS": 145,
+      "XSS": 149,
       "SQL Injection": 40,
-      "Broken Access Control": 26,
+      "Broken Access Control": 28,
       "CSRF": 2,
       "RCE": 1,
       "DoS": 4,
@@ -53,13 +55,13 @@
   },
   "severity": {
     "Low": 1,
-    "High": 9,
+    "High": 10,
     "Critical": 44,    
-    "Moderate": 170
+    "Moderate": 175
   },
   "total_by_year": {
     "2024": 10,
-    "2025": 212,
-    "2026": 3
+    "2025": 221,
+    "2026": 4
   }
 }
