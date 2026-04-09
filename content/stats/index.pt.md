@@ -19,7 +19,7 @@ Todas as estatísticas de CVEs registradas pela equipe do CVE-Hunters:
 
 ### Quem mais encontrou CVEs
 
-<img src="topFinders.png?{{ now.Unix }}" width="100%">
+<img src="/stats/topFinders.png?{{ now.Unix }}" width="100%">
 
 ### Tipos de vulnerabilidades
 
