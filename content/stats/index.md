@@ -19,7 +19,7 @@ All statistics of CVEs registered by CVE-Hunters's Team:
 
 ### Top Finders
 
-<img src="topFinders.png?{{ now.Unix }}" width="100%">
+<img src="topFinders.png" width=100% height=100>
 
 ### Vulnerability Type
 
