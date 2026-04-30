@@ -17,7 +17,7 @@
 
 > ⚠️ Se der erro, pode apagar a pasta public e recriar o worktree com:
 
-`rm -rf public`
+`rm -rf public` (windows: `Remove-Item -Recurse -Force public`)
 
 `git worktree prune`
 
@@ -173,7 +173,7 @@ Isso irá gerar os arquivos estáticos atualizados na pasta `public`.
 
 | Script Automatizado                         | Manual                                         |
 |--------------------------------|---------------------------------------------------|
-|Rode o script de deploy: `./deploy.sh`|Navegue até a pasta `public` vinculada à branch `gh-pages`: `cd public`                    |
+|Rode o script de deploy: `./deploy.sh` (Windows: `bash deploy.sh`)|Navegue até a pasta `public` vinculada à branch `gh-pages`: `cd public`                    |
 | 💡 Esse script muda para a pasta `public` (vinculada à branch `gh-pages`), faz o `git add`, `commit`, `push` e retorna para a raiz do projeto vinculada à branch `main`. Se tiver o erro comum de rejected ele força o push.         | Adicione as mudanças: `git add .`    |
 |         | Faça o commit: `git commit -m "blog build <# ultima versao + 1>"` ou `git commit -m "blog build <mes, dia>"`  |
 |         | Envie as mudanças para o repositório remoto: `git push origin gh-pages`  |
