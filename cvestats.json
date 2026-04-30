@@ -26,7 +26,8 @@
       "#1de9b6",
       "#3d5afe",
       "#ffd600",
-      "#e918d5"
+      "#e918d5",
+      "#afff00"
     ]
   },
   "vuln_types": {
@@ -51,14 +52,13 @@
       "#100027",
       "#5b0eeb",
       "#34ebc3",
-      "#8a2be2",
-      "#ff007f"
+      "#8a2be2"
     ]
   },
   "severity": {
     "Low": 1,
     "High": 10,
-    "Critical": 44,    
+    "Critical": 44,
     "Moderate": 178
   },
   "total_by_year": {
