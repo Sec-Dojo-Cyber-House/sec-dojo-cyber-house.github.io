@@ -11,7 +11,8 @@
       "Vanderlei": 2,
       "Fernanda": 3,
       "Vinicius C.": 2,
-      "Itauan": 1
+      "Itauan": 1,
+      "Thiago": 3
     },
     "colors": [
       "#e918d5",
@@ -24,12 +25,13 @@
       "#007c91",
       "#1de9b6",
       "#3d5afe",
-      "#ffd600"
+      "#ffd600",
+      "#e918d5"
     ]
   },
   "vuln_types": {
     "data": {
-      "XSS": 149,
+      "XSS": 152,
       "SQL Injection": 40,
       "Broken Access Control": 28,
       "CSRF": 2,
@@ -57,11 +59,11 @@
     "Low": 1,
     "High": 10,
     "Critical": 44,    
-    "Moderate": 175
+    "Moderate": 178
   },
   "total_by_year": {
     "2024": 10,
     "2025": 221,
-    "2026": 4
+    "2026": 7
   }
 }
