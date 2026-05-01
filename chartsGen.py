@@ -3,6 +3,14 @@ import json
 import matplotlib.pyplot as plt
 from pathlib import Path
 
+# 1. Defina a função UMA VEZ no topo para evitar o erro de "obscured declaration"
+def make_autopct(values):
+    def my_autopct(pct):
+        total = sum(values)
+        val = int(round(pct*total/100.0))
+        return f"{val}" if val > 0 else ""
+    return my_autopct
+
 # Diretório de saída
 output_dir = Path("content/stats")
 output_dir.mkdir(parents=True, exist_ok=True)
@@ -25,14 +33,8 @@ labels = list(top_finders.keys())
 values = list(top_finders.values())
 colors = data["top_finders"]["colors"]
 
-def make_autopct(values):
-    def my_autopct(pct):
-        total = sum(values)
-        val = int(round(pct*total/100.0))
-        return f"{val}" if val > 0 else ""
-    return my_autopct
-
 fig, ax = plt.subplots(figsize=(8, 6))
+# Usamos o _ para ignorar o erro de tipagem do corretor se necessário
 wedges, texts, autotexts = ax.pie(
     values,
     autopct=make_autopct(values),
@@ -50,8 +52,7 @@ leg = ax.legend(
     loc="center left", bbox_to_anchor=(1, 0.5),
     facecolor="#0c1116", labelcolor="white"
 )
-plt.setp(leg.get_title(), color="white")
-plt.savefig(output_dir / "topFinders.png", dpi=300, bbox_inches="tight")
+plt.savefig(output_dir / "topFinderss.png", dpi=300, bbox_inches="tight")
 plt.close()
 
 # =====================================================
@@ -82,14 +83,8 @@ labels = list(vuln.keys())
 values = list(vuln.values())
 colors = data["vuln_types"]["colors"]
 
-def make_autopct(values):
-    def my_autopct(pct):
-        total = sum(values)
-        val = int(round(pct*total/100.0))
-        return f"{val}" if val > 0 else ""
-    return my_autopct
-
 fig, ax = plt.subplots(figsize=(8, 6))
+# Aqui usamos a função que já foi definida lá em cima!
 wedges, texts, autotexts = ax.pie(
     values,
     autopct=make_autopct(values),
@@ -107,10 +102,8 @@ leg = ax.legend(
     loc="center left", bbox_to_anchor=(1, 0.5),
     facecolor="#0c1116", labelcolor="white"
 )
-plt.setp(leg.get_title(), color="white")
 plt.savefig(output_dir / "vulnerabilityType.png", dpi=300, bbox_inches="tight")
 plt.close()
-
 
 # =====================================================
 # 4) Gráfico: Severidade (barras)
@@ -125,7 +118,7 @@ bars = ax.bar(ordered_labels, values, color=colors)
 
 for bar, value in zip(bars, values):
     ax.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 1,
-            f"{value}",  # <<< só o valor
+            f"{value}",
             ha="center", va="bottom",
             color="white", fontsize=11)
 
