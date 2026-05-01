@@ -1,32 +1,44 @@
 #!/bin/bash
 set -e
 
+# 1. Configurações
 WORKTREE_DIR="public"
+BRANCH="gh-pages"
 
-# Entra na pasta public
-cd "$WORKTREE_DIR" || exit 1
+echo "🚀 Iniciando deploy..."
 
-# Força o Git a olhar para os arquivos de novo
+# 2. Garante que o Worktree existe e está saudável
+if [ ! -d "$WORKTREE_DIR" ]; then
+    echo "📁 Criando pasta public..."
+    git worktree add -B $BRANCH $WORKTREE_DIR origin/$BRANCH
+else
+    # Se a pasta existe mas perdeu a conexão (.git sumiu), restaura
+    if [ ! -f "$WORKTREE_DIR/.git" ]; then
+        echo "🔧 Restaurando conexão com a branch $BRANCH..."
+        git worktree remove --force $WORKTREE_DIR || true
+        git worktree add -B $BRANCH $WORKTREE_DIR origin/$BRANCH
+    fi
+fi
+
+# 3. Entra na pasta e limpa o índice (prevenção de erro no Windows)
+cd "$WORKTREE_DIR"
 git update-index -q --refresh
-
-# Checa se realmente não tem nada (com mais precisão)
-if git diff-index --quiet HEAD --; then
-  echo "Nenhuma mudança detectada. Nenhum commit/push necessário."
-  cd ..
-  exit 0
-fi
-
-# Pega o número do build baseado na branch gh-pages
-BUILD_NUM=$(git rev-list --count HEAD)
-
-git add -A
-git commit -m "blog build #$((BUILD_NUM + 1))"
-
-echo "Tentando realizar push para gh-pages..."
-if ! git push origin gh-pages; then
-  echo "Push falhou. Forçando push com --force..."
-  git push origin gh-pages --force
-fi
-
-# Volta para a raiz
 cd ..
+
+# 4. Checa se houve mudanças reais
+if [ -z "$(git status --porcelain $WORKTREE_DIR)" ]; then
+    echo "✅ Nenhuma mudança detectada. O site já está atualizado."
+    exit 0
+fi
+
+# 5. Commit e Push
+cd "$WORKTREE_DIR"
+BUILD_NUM=$(git rev-list --count HEAD)
+git add -A
+git commit -m "blog build #$((BUILD_NUM + 1)) - atualizando CVEs"
+
+echo "📤 Enviando para o GitHub..."
+git push origin $BRANCH --force
+
+cd ..
+echo "✨ Deploy finalizado com sucesso!"
