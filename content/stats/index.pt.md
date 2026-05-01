@@ -15,19 +15,19 @@ Todas as estatísticas de CVEs registradas pela equipe do CVE-Hunters:
 
 ### Total de CVEs registrados
 
-<img src="../static/stats/totalCVEsRegistred.png" width=100% height=100>
+<img src="/stats/totalCVEsRegistred.png" width=100% height=100>
 
 ### Quem mais encontrou CVEs
 
-<img src="../static/stats/topFinders.png" width=100% height=100>
+<img src="/stats/topFinders.png" width=100% height=100>
 
 ### Tipos de vulnerabilidades
 
-<img src="../static/stats/vulnerabilityType.png" width=100% height=100>
+<img src="/stats/vulnerabilityType.png" width=100% height=100>
 
 ### Severidade
 
-<img src="../static/stats/severity.png" width=100% height=100>
+<img src="/stats/severity.png" width=100% height=100>
 
 ### Histórico de Estrelas do Repositório
 
