@@ -64,7 +64,7 @@ comments: false
     <tr>
       <td style="text-align: center;"><img src="https://www.php.net/images/logos/new-php-logo.png" width="35"/></td>
       <td style="text-align: center;"><img src="https://www.php.net/images/logos/new-php-logo.png" width="35"/></td>
-      <td style="text-align: center;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Ruby_logo.svg/2048px-Ruby_logo.svg.png" width="25"/></td>
+      <td style="text-align: center;"><img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/ruby-programming-language-icon.png" width="20"/></td>
     </tr>
     <tr>
       <td style="text-align: center;"><b>🛡️ CVEs: 92</b></td>

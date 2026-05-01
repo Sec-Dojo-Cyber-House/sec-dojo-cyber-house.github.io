@@ -23,7 +23,7 @@ All statistics of CVEs registered by CVE-Hunters's Team:
 
 ### Vulnerability Type
 
-<img src="./stats/vulnerabilityType.png" width=100% height=100>
+<img src="/stats/vulnerabilityType.png" width=100% height=100>
 
 ### Severity
 
