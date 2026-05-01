@@ -6,23 +6,24 @@ BUILD_DIR="public"
 
 echo "🚀 Iniciando deploy..."
 
-# 1. Gera os gráficos
+# 0. Limpa tudo antes
+echo "🧹 Limpando build anterior..."
+rm -rf public
+
+# 1. Gera gráficos
 echo "📊 Gerando gráficos..."
 python chartsGen.py
 
-# 2. Build do Hugo (gera /public)
+# 2. Build
 echo "🏗️ Buildando site..."
 hugo --cleanDestinationDir
 
-# 3. Entra na pasta de build
-cd "$BUILD_DIR"
+# 3. Entra no build limpo
+cd public
 
-# 4. Inicializa repo temporário (sempre limpo)
-echo "🔧 Inicializando repositório temporário..."
-rm -rf .git
-
+# 4. Repo novo
 git init
-git checkout -b $BRANCH
+git checkout -b gh-pages
 
 # 5. Adiciona tudo
 git add -A
