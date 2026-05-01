@@ -12,7 +12,8 @@
       "Fernanda": 3,
       "Vinicius C.": 2,
       "Itauan": 1,
-      "Thiago": 3
+      "Thiago": 3,
+      "Teste": 1
     },
     "colors": [
       "#e918d5",
@@ -26,7 +27,8 @@
       "#1de9b6",
       "#3d5afe",
       "#ffd600",
-      "#8b22ff"
+      "#8b22ff",
+      "#f542c5"
     ]
   },
   "vuln_types": {

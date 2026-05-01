@@ -1,47 +1,44 @@
 #!/bin/bash
 set -e
 
-WORKTREE_DIR="public"
 BRANCH="gh-pages"
+BUILD_DIR="public"
 
 echo "🚀 Iniciando deploy..."
 
-# 1. Garante worktree saudável
-if [ ! -d "$WORKTREE_DIR" ]; then
-    echo "📁 Criando worktree..."
-    git worktree add -B $BRANCH $WORKTREE_DIR origin/$BRANCH
-else
-    if [ ! -f "$WORKTREE_DIR/.git" ]; then
-        echo "🔧 Restaurando worktree..."
-        git worktree remove --force $WORKTREE_DIR || true
-        git worktree add -B $BRANCH $WORKTREE_DIR origin/$BRANCH
-    fi
-fi
-
-# 2. Gera gráficos
+# 1. Gera os gráficos
 echo "📊 Gerando gráficos..."
 python chartsGen.py
 
-# 3. Build Hugo
+# 2. Build do Hugo (gera /public)
 echo "🏗️ Buildando site..."
 hugo --cleanDestinationDir
 
-# 4. Agora sim checa mudanças
-if [ -z "$(git status --porcelain $WORKTREE_DIR)" ]; then
-    echo "✅ Nenhuma mudança detectada."
-    exit 0
-fi
+# 3. Entra na pasta de build
+cd "$BUILD_DIR"
 
-# 5. Commit
-cd "$WORKTREE_DIR"
+# 4. Inicializa repo temporário (sempre limpo)
+echo "🔧 Inicializando repositório temporário..."
+rm -rf .git
 
-BUILD_NUM=$(git rev-list --count HEAD 2>/dev/null || echo 0)
+git init
+git checkout -b $BRANCH
 
+# 5. Adiciona tudo
 git add -A
-git commit -m "build #$((BUILD_NUM + 1)) - atualizando CVEs"
 
-echo "📤 Enviando..."
+# 6. Commit (sempre garante mudança)
+BUILD_TIME=$(date +%s 2>/dev/null || echo %RANDOM%)
+git commit -m "deploy $BUILD_TIME - atualizando CVEs"
+
+# 7. Conecta ao repo remoto
+echo "🔗 Conectando ao repositório..."
+git remote add origin "$(git config --get remote.origin.url)"
+
+# 8. Push forçado para gh-pages
+echo "📤 Enviando para GitHub Pages..."
 git push origin $BRANCH --force
 
 cd ..
-echo "✨ Deploy finalizado!"
+
+echo "✨ Deploy finalizado com sucesso!"

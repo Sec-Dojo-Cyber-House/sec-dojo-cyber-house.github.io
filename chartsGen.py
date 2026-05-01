@@ -12,7 +12,7 @@ def make_autopct(values):
     return my_autopct
 
 # Diretório de saída
-output_dir = Path("content/stats")
+output_dir = Path("static/stats")
 output_dir.mkdir(parents=True, exist_ok=True)
 
 # Configuração global de estilo
