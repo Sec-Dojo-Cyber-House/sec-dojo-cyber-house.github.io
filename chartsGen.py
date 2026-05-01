@@ -52,7 +52,7 @@ leg = ax.legend(
     loc="center left", bbox_to_anchor=(1, 0.5),
     facecolor="#0c1116", labelcolor="white"
 )
-plt.savefig(output_dir / "topFinderss.png", dpi=300, bbox_inches="tight")
+plt.savefig(output_dir / "topFinderss.png", dpi=120, bbox_inches="tight")
 plt.close()
 
 # =====================================================
@@ -72,7 +72,7 @@ ax.spines[:].set_visible(False)
 for i, v in enumerate(values):
     ax.text(i, v + 2, str(v), color="white", ha="center", fontsize=10)
 
-plt.savefig(output_dir / "totalCVEsRegistred.png", dpi=300, bbox_inches="tight")
+plt.savefig(output_dir / "totalCVEsRegistred.png", dpi=120, bbox_inches="tight")
 plt.close()
 
 # =====================================================
@@ -102,7 +102,7 @@ leg = ax.legend(
     loc="center left", bbox_to_anchor=(1, 0.5),
     facecolor="#0c1116", labelcolor="white"
 )
-plt.savefig(output_dir / "vulnerabilityType.png", dpi=300, bbox_inches="tight")
+plt.savefig(output_dir / "vulnerabilityType.png", dpi=120, bbox_inches="tight")
 plt.close()
 
 # =====================================================
@@ -113,7 +113,7 @@ ordered_labels = ["Low", "High", "Critical", "Moderate"]
 colors = ["#17539c", "#ff1e00", "#ff0000", "#ff9c00"]
 values = [severity[l] for l in ordered_labels]
 
-fig, ax = plt.subplots(figsize=(7, 4))
+fig, ax = plt.subplots(figsize=(6, 4))
 bars = ax.bar(ordered_labels, values, color=colors)
 
 for bar, value in zip(bars, values):
@@ -125,7 +125,7 @@ for bar, value in zip(bars, values):
 ax.tick_params(colors="white")
 ax.spines[:].set_visible(False)
 
-plt.savefig(output_dir / "severity.png", dpi=300, bbox_inches="tight")
+plt.savefig(output_dir / "severity.png", dpi=120, bbox_inches="tight")
 plt.close()
 
 print("[✔] Todos os gráficos foram gerados em:", output_dir)
