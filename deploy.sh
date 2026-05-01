@@ -33,7 +33,7 @@ git commit -m "deploy $BUILD_TIME - atualizando CVEs"
 
 # 7. Conecta ao repo remoto
 echo "🔗 Conectando ao repositório..."
-git remote add origin "$(git config --get remote.origin.url)"
+git remote add origin "$(git -C .. config --get remote.origin.url)"
 
 # 8. Push forçado para gh-pages
 echo "📤 Enviando para GitHub Pages..."
