@@ -30,7 +30,7 @@ git add -A
 
 # 6. Commit (sempre garante mudança)
 BUILD_TIME=$(date +%s 2>/dev/null || echo %RANDOM%)
-git commit -m "deploy $BUILD_TIME - atualizando CVEs"
+git commit -m "deploy $BUILD_TIME"
 
 # 7. Conecta ao repo remoto
 echo "🔗 Conectando ao repositório..."
