@@ -10,6 +10,7 @@
       "Karina": 30,
       "Vanderlei": 2,
       "Fernanda": 3,
+      "Marcos": 1,
       "Vinicius C.": 2,
       "Itauan": 1,
       "Thiago": 3
@@ -26,7 +27,8 @@
       "#1de9b6",
       "#3d5afe",
       "#ffd600",
-      "#8b22ff"
+      "#8b22ff",
+      "#9c27ff"
     ]
   },
   "vuln_types": {
