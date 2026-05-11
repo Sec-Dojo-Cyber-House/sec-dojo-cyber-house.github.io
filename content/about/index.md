@@ -173,3 +173,21 @@ comments: false
     </tr>
   </tbody>
 </table>
+
+<table border="1" align="center">
+  <tbody>
+    <tr>
+      <td style="text-align: center;">
+        <a href="https://github.com/projeto-siga/siga">
+          <img src="/about/siga.png" width="100"/> </br> <b>SIGA</b>
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: center;"><img src="https://cdn-icons-png.flaticon.com/512/226/226777.png" width="35"/></td>
+    </tr>
+    <tr>
+      <td style="text-align: center;"><b>🛡️ CVEs: 1</b></td>
+    </tr>
+  </tbody>
+</table>
