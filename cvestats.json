@@ -11,7 +11,7 @@
       "Vanderlei": 2,
       "Fernanda": 3,
       "Marcos": 1,
-      "Vinicius C.": 2,
+      "Vinicius C.": 3,
       "Itauan": 1,
       "Thiago": 3
     },
@@ -33,7 +33,7 @@
   },
   "vuln_types": {
     "data": {
-      "XSS": 152,
+      "XSS": 153,
       "SQL Injection": 40,
       "Broken Access Control": 28,
       "CSRF": 2,
@@ -60,11 +60,11 @@
     "Low": 1,
     "High": 10,
     "Critical": 44,
-    "Moderate": 178
+    "Moderate": 179
   },
   "total_by_year": {
     "2024": 10,
     "2025": 221,
-    "2026": 7
+    "2026": 8
   }
 }
