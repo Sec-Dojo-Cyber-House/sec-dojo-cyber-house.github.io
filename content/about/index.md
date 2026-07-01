@@ -19,7 +19,7 @@ comments: false
 
 <a href="https://github.com/Sec-Dojo-Cyber-House/cve-hunters">
 
-<a href="https://github.com/Sec-Dojo-Cyber-House/cve-hunters"><img src="https://img.shields.io/badge/CVE_Hunters_ᯤ-6407ab" /></a>
+<a href="https://github.com/Sec-Dojo-Cyber-House/cve-hunters"><img src="https://img.shields.io/badge/CVE_Hunters_🏹-6407ab" /></a>
 </div>
 
 ##
@@ -182,11 +182,25 @@ comments: false
           <img src="/about/siga.png" width="100"/> </br> <b>SIGA</b>
         </a>
       </td>
+      <td style="text-align: center;">
+        <a href="https://github.com/intelliants/subrion">
+          <img src="/about/subrionCMS.png" width="100"/> </br> <b>Subrion CMS</b>
+        </a>
+      </td>
+      <td style="text-align: center;">
+        <a href="https://github.com/fluentcms/FluentCMS">
+          <img src="/about/fluentCMS.png" width="100"/> </br> <b>FluentCMS</b>
+        </a>
+      </td>
     </tr>
     <tr>
       <td style="text-align: center;"><img src="https://cdn-icons-png.flaticon.com/512/226/226777.png" width="35"/></td>
+      <td style="text-align: center;"><img src="https://www.php.net/images/logos/new-php-logo.png" width="35"/></td>
+      <td style="text-align: center;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Logo_C_sharp.svg/960px-Logo_C_sharp.svg.png?_=20221121173824" width="30"/></td>
     </tr>
     <tr>
+      <td style="text-align: center;"><b>🛡️ CVEs: 1</b></td>
+      <td style="text-align: center;"><b>🛡️ CVEs: 1</b></td>
       <td style="text-align: center;"><b>🛡️ CVEs: 1</b></td>
     </tr>
   </tbody>
