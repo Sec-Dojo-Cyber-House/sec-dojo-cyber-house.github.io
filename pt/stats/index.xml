@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Métricas</title>
+    <link>https://www.cvehunters.com/pt/stats/</link>
+    <description>Métricas</description>
+    <atom:link href="https://www.cvehunters.com/pt/stats/index.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>Métricas</title>
+      <link>https://www.cvehunters.com/pt/stats/</link>
+      <guid>https://www.cvehunters.com/pt/stats/</guid>
+      <description>&amp;lt;p&amp;gt;Todas as estatísticas de CVEs registradas pela equipe do CVE-Hunters:&amp;lt;/p&amp;gt;
+&amp;lt;h3 id=&amp;#34;total-de-cves-registrados&amp;#34;&amp;gt;Total de CVEs registrados
+&amp;lt;/h3&amp;gt;&amp;lt;img src=&amp;#34;/stats/totalCVEsRegistred.png&amp;#34; width=100% height=100&amp;gt;
+&amp;lt;h3 id=&amp;#34;quem-mais-encontrou-cves&amp;#34;&amp;gt;Quem mais encontrou CVEs
+&amp;lt;/h3&amp;gt;&amp;lt;img src=&amp;#34;/stats/topFinderss.png&amp;#34; width=100% height=100&amp;gt;
+&amp;lt;h3 id=&amp;#34;tipos-de-vulnerabilidades&amp;#34;&amp;gt;Tipos de vulnerabilidades
+&amp;lt;/h3&amp;gt;&amp;lt;img src=&amp;#34;/stats/vulnerabilityType.png&amp;#34; width=100% height=100&amp;gt;
+&amp;lt;h3 id=&amp;#34;severidade&amp;#34;&amp;gt;Severidade
+&amp;lt;/h3&amp;gt;&amp;lt;img src=&amp;#34;/stats/severity.png&amp;#34; width=100% height=100&amp;gt;
+&amp;lt;h3 id=&amp;#34;histórico-de-estrelas-do-repositório&amp;#34;&amp;gt;Histórico de Estrelas do Repositório
+&amp;lt;/h3&amp;gt;&amp;lt;img src=&amp;#34;https://api.star-history.com/svg?repos=CVE-Hunters/cve-hunters&amp;amp;type=Date&amp;#34; width=100% height=100&amp;gt;</description><content:encoded>&amp;lt;p&amp;gt;Todas as estatísticas de CVEs registradas pela equipe do CVE-Hunters:&amp;lt;/p&amp;gt;
+&amp;lt;h3 id=&amp;#34;total-de-cves-registrados&amp;#34;&amp;gt;Total de CVEs registrados
+&amp;lt;/h3&amp;gt;&amp;lt;img src=&amp;#34;/stats/totalCVEsRegistred.png&amp;#34; width=100% height=100 /&amp;gt;
+&amp;lt;h3 id=&amp;#34;quem-mais-encontrou-cves&amp;#34;&amp;gt;Quem mais encontrou CVEs
+&amp;lt;/h3&amp;gt;&amp;lt;img src=&amp;#34;/stats/topFinderss.png&amp;#34; width=100% height=100 /&amp;gt;
+&amp;lt;h3 id=&amp;#34;tipos-de-vulnerabilidades&amp;#34;&amp;gt;Tipos de vulnerabilidades
+&amp;lt;/h3&amp;gt;&amp;lt;img src=&amp;#34;/stats/vulnerabilityType.png&amp;#34; width=100% height=100 /&amp;gt;
+&amp;lt;h3 id=&amp;#34;severidade&amp;#34;&amp;gt;Severidade
+&amp;lt;/h3&amp;gt;&amp;lt;img src=&amp;#34;/stats/severity.png&amp;#34; width=100% height=100 /&amp;gt;
+&amp;lt;h3 id=&amp;#34;histórico-de-estrelas-do-repositório&amp;#34;&amp;gt;Histórico de Estrelas do Repositório
+&amp;lt;/h3&amp;gt;&amp;lt;img src=&amp;#34;https://api.star-history.com/svg?repos=CVE-Hunters/cve-hunters&amp;amp;type=Date&amp;#34; width=100% height=100 /&amp;gt;
+</content:encoded>
+
+      <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
+    </item>
+  </channel>
+</rss>

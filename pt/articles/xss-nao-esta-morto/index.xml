@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>XSS Não Está Morto - Hacktiba Pulse 07</title>
+    <link>https://www.cvehunters.com/pt/articles/xss-nao-esta-morto/</link>
+    <description>Com base em descobertas reais do projeto CVE-Hunters, este artigo mostra por que essa vulnerabilidade clássica ainda merece atenção nas aplicações web atuais.</description>
+    <atom:link href="https://www.cvehunters.com/pt/articles/xss-nao-esta-morto/index.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>XSS Não Está Morto - Hacktiba Pulse 07</title>
+      <link>https://www.cvehunters.com/pt/articles/xss-nao-esta-morto/</link>
+      <guid>https://www.cvehunters.com/pt/articles/xss-nao-esta-morto/</guid>
+      <description>&amp;lt;h2 id=&amp;#34;introdução-xss-ainda&amp;#34;&amp;gt;Introdução: “XSS? Ainda?”
+&amp;lt;/h2&amp;gt;&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;Em pleno 2025, ainda estamos falando de XSS? Sim, ainda estamos. Mesmo com o uso de frameworks modernos, WAFs inteligentes e uma infinidade de artigos explicando como mitigar essa ameaça, o Cross-Site Scripting (XSS) continua presente, sorrateiro, persistente e muitas vezes negligenciado.&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;O XSS é uma das primeiras vulnerabilidades abordadas em cursos introdutórios de segurança ofensiva e testes de invasão em aplicações web. Com um payload simples, instrutores demonstram como essa falha é trivial de ser explorada, evidenciando o perigo e a facilidade de sua exploração.&amp;lt;/p&amp;gt;</description><content:encoded>&amp;lt;h2 id=&amp;#34;introdução-xss-ainda&amp;#34;&amp;gt;Introdução: “XSS? Ainda?”
+&amp;lt;/h2&amp;gt;&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;Em pleno 2025, ainda estamos falando de XSS? Sim, ainda estamos. Mesmo com o uso de frameworks modernos, WAFs inteligentes e uma infinidade de artigos explicando como mitigar essa ameaça, o Cross-Site Scripting (XSS) continua presente, sorrateiro, persistente e muitas vezes negligenciado.&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;O XSS é uma das primeiras vulnerabilidades abordadas em cursos introdutórios de segurança ofensiva e testes de invasão em aplicações web. Com um payload simples, instrutores demonstram como essa falha é trivial de ser explorada, evidenciando o perigo e a facilidade de sua exploração.&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;Mas o que é XSS, afinal? De acordo com a &amp;lt;b&amp;gt;&amp;lt;a href=&amp;#34;https://owasp.org/www-community/attacks/xss/&amp;#34; target=&amp;#34;_blank&amp;#34;&amp;gt;OWASP&amp;lt;/a&amp;gt;&amp;lt;/b&amp;gt;, ataques de Cross-Site Scripting são um tipo de injeção na qual scripts maliciosos são inseridos em sites vulneráveis. Esses ataques ocorrem quando um invasor usa uma aplicação web para enviar código malicioso, geralmente scripts executados no navegador, para outro usuário. As falhas que tornam esses ataques possíveis são bastante comuns e surgem sempre que uma aplicação web incorpora a entrada do usuário na saída gerada sem realizar a validação ou codificação apropriadas.&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;Também de acordo com a &amp;lt;b&amp;gt;&amp;lt;a href=&amp;#34;https://owasp.org/www-community/attacks/xss/&amp;#34; target=&amp;#34;_blank&amp;#34;&amp;gt;OWASP&amp;lt;/a&amp;gt;&amp;lt;/b&amp;gt;, o navegador da vítima não possui mecanismo para distinguir scripts legítimos de maliciosos. Assim, ao receber e executar o código, ele confia que ele veio de uma fonte segura. Como resultado, o invasor pode acessar cookies, tokens de sessão e outras informações confidenciais armazenadas pelo navegador, bem como reescrever o conteúdo da página ou redirecionar o usuário para sites maliciosos disfarçados de legítimos.&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;img src=&amp;#34;/articles/xss-nao-esta-morto/image.png&amp;#34;
+	width=&amp;#34;462&amp;#34;
+	height=&amp;#34;160&amp;#34;
+	srcset=&amp;#34;/articles/xss-nao-esta-morto/image_hu_e521a21402f0fae0.png 480w, /articles/xss-nao-esta-morto/image_hu_452c6b4617d6a6e9.png 1024w&amp;#34;
+	loading=&amp;#34;lazy&amp;#34;
+	
+		alt=&amp;#34;Exemplo simples de payload de XSS para executar mensagem.&amp;#34;
+	
+	
+		class=&amp;#34;gallery-image&amp;#34; 
+		data-flex-grow=&amp;#34;288&amp;#34;
+		data-flex-basis=&amp;#34;693px&amp;#34;
+	
+ /&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;h2 id=&amp;#34;cve-hunters-vs-xss&amp;#34;&amp;gt;CVE-Hunters vs XSS
+&amp;lt;/h2&amp;gt;&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;O grupo &amp;lt;b&amp;gt;&amp;lt;a href=&amp;#34;https://github.com/Sec-Dojo-Cyber-House/cve-hunters&amp;#34; target=&amp;#34;_blank&amp;#34;&amp;gt;CVE-Hunters&amp;lt;/a&amp;gt;&amp;lt;/b&amp;gt; foi criado em novembro de 2024 como uma iniciativa conjunta entre alunos e um professor, com um objetivo claro: identificar vulnerabilidades (CVEs) em projetos de código aberto. A proposta era proporcionar aos alunos experiência prática na busca por falhas em ambientes reais, indo além de laboratórios controlados ou desafios de Capture The Flag (CTF).&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;Desde então, o grupo analisou uma ampla gama de projetos, desde pequenos sistemas comunitários até aplicações amplamente utilizadas nos setores público e educacional. Ao longo do caminho, um padrão se destacou: a frequência com que vulnerabilidades de &amp;lt;b&amp;gt;Cross-Site Scripting (XSS)&amp;lt;/b&amp;gt; foram encontradas.&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;Essa recorrência levanta uma questão importante: os desenvolvedores pararam de tratar o XSS com a devida seriedade? Apesar de ser uma falha amplamente documentada e conhecida há anos, ela ainda aparece com frequência. Mesmo em organizações com processos de desenvolvimento maduros, vulnerabilidades de XSS continuam a aparecer devido à complexidade dos fluxos de entrada e saída, ao uso de bibliotecas legadas ou à falta de testes contextualizados.&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;Atualmente, o grupo tem &amp;lt;b&amp;gt;135 vulnerabilidades reportadas&amp;lt;/b&amp;gt;, &amp;lt;b&amp;gt;53 das quais já foram oficialmente registradas como CVEs&amp;lt;/b&amp;gt;. Do total de vulnerabilidades descobertas, &amp;lt;b&amp;gt;104 são do tipo XSS&amp;lt;/b&amp;gt;, o que representa uma proporção significativa e preocupante.&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;img src=&amp;#34;/articles/xss-nao-esta-morto/1.png&amp;#34;
+	width=&amp;#34;1024&amp;#34;
+	height=&amp;#34;768&amp;#34;
+	srcset=&amp;#34;/articles/xss-nao-esta-morto/1_hu_9cbac253be823803.png 480w, /articles/xss-nao-esta-morto/1_hu_e09f18163500396d.png 1024w&amp;#34;
+	loading=&amp;#34;lazy&amp;#34;
+	
+		alt=&amp;#34;Tipos de Vulnerabilidades encontradas pelo CVE-Hunters&amp;#34;
+	
+	
+		class=&amp;#34;gallery-image&amp;#34; 
+		data-flex-grow=&amp;#34;133&amp;#34;
+		data-flex-basis=&amp;#34;320px&amp;#34;
+	
+ /&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;Foram identificadas 62 ocorrências do tipo armazenado e 42 do tipo refletido, revelando uma distribuição relativamente equilibrada.&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;img src=&amp;#34;/articles/xss-nao-esta-morto/2.png&amp;#34;
+	width=&amp;#34;1024&amp;#34;
+	height=&amp;#34;768&amp;#34;
+	srcset=&amp;#34;/articles/xss-nao-esta-morto/2_hu_9d85e2af39ca47f0.png 480w, /articles/xss-nao-esta-morto/2_hu_b7c8b0a71c9c5136.png 1024w&amp;#34;
+	loading=&amp;#34;lazy&amp;#34;
+	
+		alt=&amp;#34;Quantidade de XSS Armazenado vs Refletido&amp;#34;
+	
+	
+		class=&amp;#34;gallery-image&amp;#34; 
+		data-flex-grow=&amp;#34;133&amp;#34;
+		data-flex-basis=&amp;#34;320px&amp;#34;
+	
+ /&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;Essas estatísticas por si só reforçam a ideia de que o XSS ainda é um problema real, frequentemente ignorado durante o desenvolvimento, e que continua a merecer atenção, tanto da comunidade técnica quanto dos desenvolvedores responsáveis ​​por aplicativos em produção.&amp;lt;/p&amp;gt;
+&amp;lt;h2 id=&amp;#34;experiência-prática&amp;#34;&amp;gt;Experiência prática
+&amp;lt;/h2&amp;gt;&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;Você pode estar pensando: &amp;#34;Ok, o grupo &amp;lt;b&amp;gt;&amp;lt;a href=&amp;#34;https://github.com/Sec-Dojo-Cyber-House/cve-hunters&amp;#34; target=&amp;#34;_blank&amp;#34;&amp;gt;CVE-Hunters&amp;lt;/a&amp;gt;&amp;lt;/b&amp;gt; encontrou muitos XSS em projetos de código aberto, mas quem pode dizer que grandes empresas também são vulneráveis?&amp;#34;&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;Vamos fazer um experimento rápido com um dos XSS mais recentes divulgados durante a escrita deste artigo: &amp;lt;b&amp;gt;&amp;lt;a href=&amp;#34;https://security.paloaltonetworks.com/CVE-2025-0133&amp;#34; target=&amp;#34;_blank&amp;#34;&amp;gt;CVE-2025-0133&amp;lt;/a&amp;gt;.&amp;lt;/b&amp;gt; Um XSS refletido nos produtos de gateway e portal GlobalProtect, recursos do PAN-OS da Palo Alto Networks, publicado em 14 de maio de 2025.&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;Com uma simples consulta no Shodan, podemos verificar a estimativa de uso deste produto no mundo.&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;img src=&amp;#34;/articles/xss-nao-esta-morto/image-1.png&amp;#34;
+	width=&amp;#34;2502&amp;#34;
+	height=&amp;#34;572&amp;#34;
+	srcset=&amp;#34;/articles/xss-nao-esta-morto/image-1_hu_e49695ca67986346.png 480w, /articles/xss-nao-esta-morto/image-1_hu_9a3164d2b1826f8.png 1024w&amp;#34;
+	loading=&amp;#34;lazy&amp;#34;
+	
+		alt=&amp;#34;Busca por páginas com Global Protect no Shodan &amp;#34;
+	
+	
+		class=&amp;#34;gallery-image&amp;#34; 
+		data-flex-grow=&amp;#34;437&amp;#34;
+		data-flex-basis=&amp;#34;1049px&amp;#34;
+	
+ /&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;No entanto isso não significa que todos estão vulneráveis. Vamos ao experimento para este artigo.&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;Primeiro, extraímos alguns resultados do Shodan, uma pequena amostragem do montante total:&amp;lt;/p&amp;gt;
+&amp;lt;div class=&amp;#34;highlight&amp;#34;&amp;gt;&amp;lt;div class=&amp;#34;chroma&amp;#34;&amp;gt;
+&amp;lt;table class=&amp;#34;lntable&amp;#34;&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td class=&amp;#34;lntd&amp;#34;&amp;gt;
+&amp;lt;pre tabindex=&amp;#34;0&amp;#34; class=&amp;#34;chroma&amp;#34;&amp;gt;&amp;lt;code&amp;gt;&amp;lt;span class=&amp;#34;lnt&amp;#34;&amp;gt;1
+&amp;lt;/span&amp;gt;&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;td class=&amp;#34;lntd&amp;#34;&amp;gt;
+&amp;lt;pre tabindex=&amp;#34;0&amp;#34; class=&amp;#34;chroma&amp;#34;&amp;gt;&amp;lt;code class=&amp;#34;language-bash&amp;#34; data-lang=&amp;#34;bash&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;line&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;cl&amp;#34;&amp;gt;shodan search --fields hostnames &amp;lt;span class=&amp;#34;s1&amp;#34;&amp;gt;&amp;amp;#39;http.title:&amp;amp;#34;GlobalProtect Portal&amp;amp;#34; port:443&amp;amp;#39;&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;#34;p&amp;#34;&amp;gt;|&amp;lt;/span&amp;gt; grep -v &amp;lt;span class=&amp;#34;s1&amp;#34;&amp;gt;&amp;amp;#39;^$&amp;amp;#39;&amp;lt;/span&amp;gt; &amp;amp;gt; globalprotect-hostnames.txt
+&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;&amp;lt;/table&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;&amp;lt;p&amp;gt;&amp;lt;img src=&amp;#34;/articles/xss-nao-esta-morto/image-2.png&amp;#34;
+	width=&amp;#34;1715&amp;#34;
+	height=&amp;#34;877&amp;#34;
+	srcset=&amp;#34;/articles/xss-nao-esta-morto/image-2_hu_f5d23ac8a0a8c2d7.png 480w, /articles/xss-nao-esta-morto/image-2_hu_80e917587581191.png 1024w&amp;#34;
+	loading=&amp;#34;lazy&amp;#34;
+	
+		alt=&amp;#34;Shodan CLI usado para exportar páginas com Global Protect&amp;#34;
+	
+	
+		class=&amp;#34;gallery-image&amp;#34; 
+		data-flex-grow=&amp;#34;195&amp;#34;
+		data-flex-basis=&amp;#34;469px&amp;#34;
+	
+ /&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;Depois disso, podemos usar o &amp;lt;b&amp;gt;&amp;lt;code&amp;gt;Nuclei&amp;lt;/code&amp;gt;&amp;lt;/b&amp;gt; para testar essa vulnerabilidade e automatizar o teste:&amp;lt;/p&amp;gt;
+&amp;lt;div class=&amp;#34;highlight&amp;#34;&amp;gt;&amp;lt;div class=&amp;#34;chroma&amp;#34;&amp;gt;
+&amp;lt;table class=&amp;#34;lntable&amp;#34;&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td class=&amp;#34;lntd&amp;#34;&amp;gt;
+&amp;lt;pre tabindex=&amp;#34;0&amp;#34; class=&amp;#34;chroma&amp;#34;&amp;gt;&amp;lt;code&amp;gt;&amp;lt;span class=&amp;#34;lnt&amp;#34;&amp;gt;1
+&amp;lt;/span&amp;gt;&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;td class=&amp;#34;lntd&amp;#34;&amp;gt;
+&amp;lt;pre tabindex=&amp;#34;0&amp;#34; class=&amp;#34;chroma&amp;#34;&amp;gt;&amp;lt;code class=&amp;#34;language-bash&amp;#34; data-lang=&amp;#34;bash&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;line&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;cl&amp;#34;&amp;gt;nuclei -l globalprotect-hostnames.txt -t CVE-2025-0133.yaml
+&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;&amp;lt;/table&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;&amp;lt;p&amp;gt;&amp;lt;img src=&amp;#34;/articles/xss-nao-esta-morto/image-3.png&amp;#34;
+	width=&amp;#34;1629&amp;#34;
+	height=&amp;#34;867&amp;#34;
+	srcset=&amp;#34;/articles/xss-nao-esta-morto/image-3_hu_a4ac1f5eae1ec9f0.png 480w, /articles/xss-nao-esta-morto/image-3_hu_a7cb5b9475b5bb68.png 1024w&amp;#34;
+	loading=&amp;#34;lazy&amp;#34;
+	
+		alt=&amp;#34;Resultado Nuclei template CVE-2025-0133&amp;#34;
+	
+	
+		class=&amp;#34;gallery-image&amp;#34; 
+		data-flex-grow=&amp;#34;187&amp;#34;
+		data-flex-basis=&amp;#34;450px&amp;#34;
+	
+ /&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;Template do nuclei utilizado para realizar o scan: &amp;lt;b&amp;gt;&amp;lt;a href=&amp;#34;https://github.com/projectdiscovery/nuclei-templates/blob/main/http/cves/2025/CVE-2025-0133.yaml&amp;#34; target=&amp;#34;_blank&amp;#34;&amp;gt;CVE-2025-0133&amp;lt;/a&amp;gt;&amp;lt;/b&amp;gt;.&amp;lt;/p&amp;gt;
+&amp;lt;div class=&amp;#34;highlight&amp;#34;&amp;gt;&amp;lt;div class=&amp;#34;chroma&amp;#34;&amp;gt;
+&amp;lt;table class=&amp;#34;lntable&amp;#34;&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td class=&amp;#34;lntd&amp;#34;&amp;gt;
+&amp;lt;pre tabindex=&amp;#34;0&amp;#34; class=&amp;#34;chroma&amp;#34;&amp;gt;&amp;lt;code&amp;gt;&amp;lt;span class=&amp;#34;lnt&amp;#34;&amp;gt; 1
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;lnt&amp;#34;&amp;gt; 2
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;lnt&amp;#34;&amp;gt; 3
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;lnt&amp;#34;&amp;gt; 4
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;lnt&amp;#34;&amp;gt; 5
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;lnt&amp;#34;&amp;gt; 6
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;lnt&amp;#34;&amp;gt; 7
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;lnt&amp;#34;&amp;gt; 8
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;lnt&amp;#34;&amp;gt; 9
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;lnt&amp;#34;&amp;gt;10
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;lnt&amp;#34;&amp;gt;11
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;lnt&amp;#34;&amp;gt;12
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;lnt&amp;#34;&amp;gt;13
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;lnt&amp;#34;&amp;gt;14
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;lnt&amp;#34;&amp;gt;15
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;lnt&amp;#34;&amp;gt;16
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;lnt&amp;#34;&amp;gt;17
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;lnt&amp;#34;&amp;gt;18
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;lnt&amp;#34;&amp;gt;19
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;lnt&amp;#34;&amp;gt;20
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;lnt&amp;#34;&amp;gt;21
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;lnt&amp;#34;&amp;gt;22
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;lnt&amp;#34;&amp;gt;23
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;lnt&amp;#34;&amp;gt;24
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;lnt&amp;#34;&amp;gt;25
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;lnt&amp;#34;&amp;gt;26
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;lnt&amp;#34;&amp;gt;27
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;lnt&amp;#34;&amp;gt;28
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;lnt&amp;#34;&amp;gt;29
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;lnt&amp;#34;&amp;gt;30
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;lnt&amp;#34;&amp;gt;31
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;lnt&amp;#34;&amp;gt;32
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;lnt&amp;#34;&amp;gt;33
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;lnt&amp;#34;&amp;gt;34
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;lnt&amp;#34;&amp;gt;35
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;lnt&amp;#34;&amp;gt;36
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;lnt&amp;#34;&amp;gt;37
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;lnt&amp;#34;&amp;gt;38
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;lnt&amp;#34;&amp;gt;39
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;lnt&amp;#34;&amp;gt;40
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;lnt&amp;#34;&amp;gt;41
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;lnt&amp;#34;&amp;gt;42
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;lnt&amp;#34;&amp;gt;43
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;lnt&amp;#34;&amp;gt;44
+&amp;lt;/span&amp;gt;&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;td class=&amp;#34;lntd&amp;#34;&amp;gt;
+&amp;lt;pre tabindex=&amp;#34;0&amp;#34; class=&amp;#34;chroma&amp;#34;&amp;gt;&amp;lt;code class=&amp;#34;language-bash&amp;#34; data-lang=&amp;#34;bash&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;line&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;cl&amp;#34;&amp;gt;id: CVE-2025-0133
+&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;line&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;cl&amp;#34;&amp;gt;
+&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;line&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;cl&amp;#34;&amp;gt;info:
+&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;line&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;cl&amp;#34;&amp;gt;  name: PAN-OS - Reflected Cross-Site Scripting
+&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;line&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;cl&amp;#34;&amp;gt;  author: xbow,DhiyaneshDK
+&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;line&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;cl&amp;#34;&amp;gt;  severity: medium
+&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;line&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;cl&amp;#34;&amp;gt;  description: &amp;lt;span class=&amp;#34;p&amp;#34;&amp;gt;|&amp;lt;/span&amp;gt;
+&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;line&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;cl&amp;#34;&amp;gt;    A reflected cross-site scripting &amp;lt;span class=&amp;#34;o&amp;#34;&amp;gt;(&amp;lt;/span&amp;gt;XSS&amp;lt;span class=&amp;#34;o&amp;#34;&amp;gt;)&amp;lt;/span&amp;gt; vulnerability in the GlobalProtect™ gateway and portal features of Palo Alto Networks PAN-OS® software enables execution of malicious JavaScript in the context of an authenticated Captive Portal user&amp;lt;span class=&amp;#34;s1&amp;#34;&amp;gt;&amp;amp;#39;s browser when they click on a specially crafted link.The primary risk is phishing attacks that can lead to credential theft—particularly if you enabled Clientless VPN.
+&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;line&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;cl&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;s1&amp;#34;&amp;gt;  reference:
+&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;line&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;cl&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;s1&amp;#34;&amp;gt;    - https://security.paloaltonetworks.com/CVE-2025-0133
+&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;line&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;cl&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;s1&amp;#34;&amp;gt;    - https://hackerone.com/reports/3096384
+&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;line&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;cl&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;s1&amp;#34;&amp;gt;  classification:
+&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;line&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;cl&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;s1&amp;#34;&amp;gt;    epss-score: 0.00102
+&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;line&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;cl&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;s1&amp;#34;&amp;gt;    epss-percentile: 0.29276
+&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;line&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;cl&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;s1&amp;#34;&amp;gt;  metadata:
+&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;line&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;cl&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;s1&amp;#34;&amp;gt;    verified: true
+&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;line&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;cl&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;s1&amp;#34;&amp;gt;    max-request: 1
+&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;line&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;cl&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;s1&amp;#34;&amp;gt;    shodan-query:
+&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;line&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;cl&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;s1&amp;#34;&amp;gt;      - http.favicon.hash:&amp;amp;#34;-631559155&amp;amp;#34;
+&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;line&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;cl&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;s1&amp;#34;&amp;gt;      - cpe:&amp;amp;#34;cpe:2.3:o:paloaltonetworks:pan-os&amp;amp;#34;
+&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;line&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;cl&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;s1&amp;#34;&amp;gt;    fofa-query: icon_hash=&amp;amp;#34;-631559155&amp;amp;#34;
+&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;line&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;cl&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;s1&amp;#34;&amp;gt;    product: pan-os
+&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;line&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;cl&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;s1&amp;#34;&amp;gt;    vendor: paloaltonetworks
+&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;line&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;cl&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;s1&amp;#34;&amp;gt;  tags: hackerone,cve,cve2025,xss,panos,global-protect
+&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;line&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;cl&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;s1&amp;#34;&amp;gt;
+&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;line&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;cl&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;s1&amp;#34;&amp;gt;http:
+&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;line&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;cl&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;s1&amp;#34;&amp;gt;  - raw:
+&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;line&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;cl&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;s1&amp;#34;&amp;gt;      - |
+&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;line&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;cl&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;s1&amp;#34;&amp;gt;        GET /ssl-vpn/getconfig.esp?client-type=1&amp;amp;amp;protocol-version=p1&amp;amp;amp;app-version=3.0.1-10&amp;amp;amp;clientos=Linux&amp;amp;amp;os-version=linux-64&amp;amp;amp;hmac-algo=sha1%2Cmd5&amp;amp;amp;enc-algo=aes-128-cbc%2Caes-256-cbc&amp;amp;amp;authcookie=12cea70227d3aafbf25082fac1b6f51d&amp;amp;amp;portal=us-vpn-gw-N&amp;amp;amp;user=%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cscript%3Eprompt%28%22XSS%22%29%3C%2Fscript%3E%3C%2Fsvg%3E&amp;amp;amp;domain=%28empty_domain%29&amp;amp;amp;computer=computer HTTP/1.1
+&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;line&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;cl&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;s1&amp;#34;&amp;gt;        Host: {{Hostname}}
+&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;line&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;cl&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;s1&amp;#34;&amp;gt;
+&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;line&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;cl&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;s1&amp;#34;&amp;gt;    matchers-condition: and
+&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;line&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;cl&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;s1&amp;#34;&amp;gt;    matchers:
+&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;line&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;cl&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;s1&amp;#34;&amp;gt;      - type: word
+&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;line&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;cl&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;s1&amp;#34;&amp;gt;        part: body
+&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;line&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;cl&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;s1&amp;#34;&amp;gt;        words:
+&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;line&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;cl&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;s1&amp;#34;&amp;gt;          - &amp;amp;#39;&amp;lt;/span&amp;gt;&amp;amp;lt;script&amp;amp;gt;prompt&amp;lt;span class=&amp;#34;o&amp;#34;&amp;gt;(&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;s2&amp;#34;&amp;gt;&amp;amp;#34;XSS&amp;amp;#34;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;o&amp;#34;&amp;gt;)&amp;lt;/span&amp;gt;&amp;amp;lt;/script&amp;amp;gt;&amp;lt;span class=&amp;#34;s1&amp;#34;&amp;gt;&amp;amp;#39;
+&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;line&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;cl&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;s1&amp;#34;&amp;gt;          - &amp;amp;#39;&amp;lt;/span&amp;gt;authentication cookie&amp;lt;span class=&amp;#34;err&amp;#34;&amp;gt;&amp;amp;#39;&amp;lt;/span&amp;gt;
+&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;line&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;cl&amp;#34;&amp;gt;        condition: and
+&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;line&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;cl&amp;#34;&amp;gt;
+&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;line&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;cl&amp;#34;&amp;gt;      - type: status
+&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;line&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;cl&amp;#34;&amp;gt;        status:
+&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;line&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;cl&amp;#34;&amp;gt;          - &amp;lt;span class=&amp;#34;m&amp;#34;&amp;gt;200&amp;lt;/span&amp;gt;
+&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;#34;line&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;cl&amp;#34;&amp;gt;&amp;lt;span class=&amp;#34;c1&amp;#34;&amp;gt;# digest: 490a0046304402202037be3477c0e16d7bb7cfb9874bf1cb6894a1d8035d64115db72607a539a54502203a1dac9b97514abef71fdb6a73d681f64f788f43605f2235f1fbfd26f6ddac2c:922c64590222798bb761d5b6d8e72950&amp;lt;/span&amp;gt;
+&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;&amp;lt;/table&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;Obtivemos um número significativo de hosts vulneráveis. Em seguida, tentamos identificar, entre esses resultados, quaisquer hosts que tivessem um VDP público, para que pudéssemos notificá-los sobre a vulnerabilidade. Essa etapa é um pouco complexa de ser realizada manualmente, por isso utilizamos inteligência artificial para cruzar os domínios extraídos do &amp;lt;b&amp;gt;&amp;lt;code&amp;gt;Shodan&amp;lt;/code&amp;gt;&amp;lt;/b&amp;gt; com informações disponíveis na internet sobre empresas que possuem programas de recompensa por bugs ou VDPs abertos.&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;Durante esta pesquisa, encontramos apenas dois domínios com VDPs públicos — um de uma grande empresa do setor privado e o outro de uma agência governamental. Ambos estão localizados nos Estados Unidos: um com um VDP hospedado no BugCrowd e o outro com um VDP privado, acessível por e-mail.&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;Relatamos ambas as vulnerabilidades às empresas de forma responsável.&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;img src=&amp;#34;/articles/xss-nao-esta-morto/image-4.png&amp;#34;
+	width=&amp;#34;1477&amp;#34;
+	height=&amp;#34;318&amp;#34;
+	srcset=&amp;#34;/articles/xss-nao-esta-morto/image-4_hu_4ef3b501dfbf457c.png 480w, /articles/xss-nao-esta-morto/image-4_hu_b14be945089ea159.png 1024w&amp;#34;
+	loading=&amp;#34;lazy&amp;#34;
+	
+		alt=&amp;#34;POC XSS Refletido em um dos alvos encontrados &amp;#34;
+	
+	
+		class=&amp;#34;gallery-image&amp;#34; 
+		data-flex-grow=&amp;#34;464&amp;#34;
+		data-flex-basis=&amp;#34;1114px&amp;#34;
+	
+ /&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;img src=&amp;#34;/articles/xss-nao-esta-morto/image-5.png&amp;#34;
+	width=&amp;#34;1324&amp;#34;
+	height=&amp;#34;691&amp;#34;
+	srcset=&amp;#34;/articles/xss-nao-esta-morto/image-5_hu_6322dbd059060c9c.png 480w, /articles/xss-nao-esta-morto/image-5_hu_9279a9a4ff7f61a6.png 1024w&amp;#34;
+	loading=&amp;#34;lazy&amp;#34;
+	
+		alt=&amp;#34;Divulgação Responsável via Bug Crowd&amp;#34;
+	
+	
+		class=&amp;#34;gallery-image&amp;#34; 
+		data-flex-grow=&amp;#34;191&amp;#34;
+		data-flex-basis=&amp;#34;459px&amp;#34;
+	
+ /&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;É importante destacar que a amostra testada representa apenas uma fração dos sistemas expostos.&amp;lt;/p&amp;gt;
+&amp;lt;h2 id=&amp;#34;mais-números&amp;#34;&amp;gt;Mais números
+&amp;lt;/h2&amp;gt;&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;Se você ainda não está convencido pela quantidade de XSS que temos por aí, podemos fazer outra pesquisa simples no &amp;lt;i&amp;gt;GitHub Advisory Database&amp;lt;/i&amp;gt;, onde obtemos um retorno de mais de &amp;lt;b&amp;gt;31.611 ocorrências relacionadas a XSS&amp;lt;/b&amp;gt;.&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;Se ainda não está convencido da quantidade de XSS que temos por ai, podemos fazer mais uma pesquisa simples no &amp;lt;em&amp;gt;GitHub Advisory Database&amp;lt;/em&amp;gt;  onde temos um retorno de mais de &amp;lt;strong&amp;gt;31.611 ocorrências relacionadas a XSS&amp;lt;/strong&amp;gt;.&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;img src=&amp;#34;/articles/xss-nao-esta-morto/image-6.png&amp;#34;
+	width=&amp;#34;2692&amp;#34;
+	height=&amp;#34;1404&amp;#34;
+	srcset=&amp;#34;/articles/xss-nao-esta-morto/image-6_hu_8944e16afc8c1393.png 480w, /articles/xss-nao-esta-morto/image-6_hu_aa853c3ed0f5991.png 1024w&amp;#34;
+	loading=&amp;#34;lazy&amp;#34;
+	
+		alt=&amp;#34;Pesquisa de XSS no GitHub Advisory Database&amp;#34;
+	
+	
+		class=&amp;#34;gallery-image&amp;#34; 
+		data-flex-grow=&amp;#34;191&amp;#34;
+		data-flex-basis=&amp;#34;460px&amp;#34;
+	
+ /&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;Uma busca no banco de dados de &amp;lt;b&amp;gt;CVE (Common Vulnerabilities and Exposures)&amp;lt;/b&amp;gt; também revela um número significativo de vulnerabilidades registradas relacionadas ao XSS, demonstrando sua recorrência em diferentes sistemas, aplicações e contextos ao longo dos anos.&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;img src=&amp;#34;/articles/xss-nao-esta-morto/image-7.png&amp;#34;
+	width=&amp;#34;1096&amp;#34;
+	height=&amp;#34;866&amp;#34;
+	srcset=&amp;#34;/articles/xss-nao-esta-morto/image-7_hu_dacb254ef186816c.png 480w, /articles/xss-nao-esta-morto/image-7_hu_272a9901a5e54f76.png 1024w&amp;#34;
+	loading=&amp;#34;lazy&amp;#34;
+	
+		alt=&amp;#34;Pesquisa de XSS no MITRE&amp;#34;
+	
+	
+		class=&amp;#34;gallery-image&amp;#34; 
+		data-flex-grow=&amp;#34;126&amp;#34;
+		data-flex-basis=&amp;#34;303px&amp;#34;
+	
+ /&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;Além disso, uma busca realizada na plataforma &amp;lt;b&amp;gt;HackerOne&amp;lt;/b&amp;gt;, amplamente reconhecida no ecossistema de &amp;lt;i&amp;gt;Bug Bounty&amp;lt;/i&amp;gt;, resulta em um total de &amp;lt;b&amp;gt;2.225 relatórios públicos&amp;lt;/b&amp;gt; envolvendo vulnerabilidades de Cross-Site Scripting. Esses dados reforçam não apenas a prevalência do XSS, mas também o interesse contínuo da comunidade de segurança em explorá-lo e relatá-lo, mesmo em ambientes com altos padrões de segurança.&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;img src=&amp;#34;/articles/xss-nao-esta-morto/image-8.png&amp;#34;
+	width=&amp;#34;1178&amp;#34;
+	height=&amp;#34;831&amp;#34;
+	srcset=&amp;#34;/articles/xss-nao-esta-morto/image-8_hu_2eaf7efd23d706c8.png 480w, /articles/xss-nao-esta-morto/image-8_hu_c63b99d525b540c3.png 1024w&amp;#34;
+	loading=&amp;#34;lazy&amp;#34;
+	
+		alt=&amp;#34;Pesquisa por XSS no Hacker One&amp;#34;
+	
+	
+		class=&amp;#34;gallery-image&amp;#34; 
+		data-flex-grow=&amp;#34;141&amp;#34;
+		data-flex-basis=&amp;#34;340px&amp;#34;
+	
+ /&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;h2 id=&amp;#34;o-que-dá-para-fazer-com-um-xss-além-do-alert1&amp;#34;&amp;gt;O que dá para fazer com um XSS além do alert(1)?
+&amp;lt;/h2&amp;gt;&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;O famoso alert(1) costuma ser o primeiro exemplo usado para demonstrar uma falha de XSS. No entanto, os impactos reais dessa vulnerabilidade vão muito além de uma simples janela de alerta. Abaixo, listamos algumas ações maliciosas clássicas e conhecidas que podem ser realizadas por um invasor ao explorar uma falha de Cross-Site Scripting:&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;
+  &amp;lt;ul&amp;gt;
+    &amp;lt;li&amp;gt;&amp;lt;b&amp;gt;Roubo de Cookie&amp;lt;/b&amp;gt;, (se o cookie não estiver protegido com o sinalizador HttpOnly);&amp;lt;/li&amp;gt;
+    &amp;lt;li&amp;gt;&amp;lt;b&amp;gt;Sequestro de Sessão&amp;lt;/b&amp;gt;, assumindo a identidade da vítima em aplicativos autenticados;&amp;lt;/li&amp;gt;
+    &amp;lt;li&amp;gt;&amp;lt;b&amp;gt;Keylogging&amp;lt;/b&amp;gt;, capturando tudo o que o usuário digita na página comprometida;&amp;lt;/li&amp;gt;
+    &amp;lt;li&amp;gt;&amp;lt;b&amp;gt;Redirecionamentos Maliciosos&amp;lt;/b&amp;gt; para páginas falsas, com o objetivo de aplicar golpes;&amp;lt;/li&amp;gt;
+    &amp;lt;li&amp;gt;&amp;lt;b&amp;gt;Execução de ações em nome do usuário&amp;lt;/b&amp;gt;, como enviar mensagens, alterar configurações ou excluir dados;&amp;lt;/li&amp;gt;
+    &amp;lt;li&amp;gt;&amp;lt;b&amp;gt;Execução Remota de Código&amp;lt;/b&amp;gt;, embora rara e dependendo do contexto específico, pode ser possível obter acesso remoto a o sistema a partir de um XSS.&amp;lt;/li&amp;gt;
+    &amp;lt;/ul&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;Esses exemplos mostram que, embora o XSS seja uma vulnerabilidade frequentemente subestimada, ele pode ter consequências graves, especialmente quando explorado em aplicativos com dados confidenciais ou com alto nível de privilégio para o usuário afetado.&amp;lt;/p&amp;gt;
+&amp;lt;h2 id=&amp;#34;conclusão&amp;#34;&amp;gt;Conclusão
+&amp;lt;/h2&amp;gt;&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;O XSS não morreu; talvez tenha sido apenas ignorado diante de novas ameaças mais &amp;#34;glamourosas&amp;#34;. Mas sua presença silenciosa continua a oferecer uma superfície de ataque explorável, muitas vezes com impacto crítico.&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;Apesar de frequentemente ser classificado como uma vulnerabilidade de gravidade &amp;lt;i&amp;gt;média&amp;lt;/i&amp;gt; ou mesmo &amp;lt;i&amp;gt;baixa&amp;lt;/i&amp;gt;, &amp;lt;b&amp;gt;o XSS não deve ser subestimado&amp;lt;/b&amp;gt;. &amp;lt;b&amp;gt;Seu impacto pode ser significativo, especialmente quando envolve roubo de cookies, sequestro de sessão ou redirecionamento para páginas maliciosas. E o que é mais perigoso: as proteções tradicionais nem sempre são suficientes para impedir que o usuário seja induzido a clicar naquele site de phishing que está usando uma URL legítima com uma vulnerabilidade XSS&amp;lt;/b&amp;gt;.&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;Afinal, o XSS geralmente depende de um único clique e, nesse cenário, &amp;lt;b&amp;gt;o elo mais fraco geralmente é o próprio usuário&amp;lt;/b&amp;gt;. Não importa quão robusta seja sua estrutura ou quão bem configurada esteja sua WAF: se o invasor conseguir criar um link malicioso convincente, basta uma ação desatenta da vítima para que o ataque se concretize.&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;&amp;lt;b&amp;gt;Enquanto nós confiamos em estruturas e WAFs, o invasor confia em nossa falta de cuidado e na curiosidade do usuário.&amp;lt;/b&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;Apesar de muitas vezes ser classificado como uma vulnerabilidade de severidade &amp;lt;em&amp;gt;média&amp;lt;/em&amp;gt; ou até &amp;lt;em&amp;gt;baixa&amp;lt;/em&amp;gt;, o &amp;lt;strong&amp;gt;XSS não deve ser subestimado&amp;lt;/strong&amp;gt;. Seu impacto pode ser significativo, especialmente quando envolve o roubo de cookies, sequestro de sessão ou redirecionamento para páginas maliciosas. E o mais perigoso: &amp;lt;strong&amp;gt;nem sempre as proteções tradicionais são suficientes para impedir que o usuário seja enganado e clique naquele phishing que está utilizando uma URL legítima com vulnerabilidade de XSS.&amp;lt;/strong&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;Afinal, o XSS frequentemente depende de um simples clique, e nesse cenário, &amp;lt;strong&amp;gt;o elo mais fraco costuma ser o próprio usuário&amp;lt;/strong&amp;gt;. Não importa o quão robusto seja seu framework ou quão bem configurado esteja seu WAF: se o atacante conseguir criar um link malicioso convincente, basta uma ação desatenta da vítima para que o ataque se concretize.&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;strong&amp;gt;Enquanto confiamos em frameworks e WAFs, o atacante confia no nosso descuido,e na curiosidade do usuário.&amp;lt;/strong&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;img src=&amp;#34;/articles/xss-nao-esta-morto/xss-nao-esta-morto.png&amp;#34;
+	width=&amp;#34;1200&amp;#34;
+	height=&amp;#34;600&amp;#34;
+	srcset=&amp;#34;/articles/xss-nao-esta-morto/xss-nao-esta-morto_hu_5292005210033088.png 480w, /articles/xss-nao-esta-morto/xss-nao-esta-morto_hu_6838249933812897.png 1024w&amp;#34;
+	loading=&amp;#34;lazy&amp;#34;
+	
+	
+		class=&amp;#34;gallery-image&amp;#34; 
+		data-flex-grow=&amp;#34;200&amp;#34;
+		data-flex-basis=&amp;#34;480px&amp;#34;
+	
+ /&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;h2 id=&amp;#34;escrito-por&amp;#34;&amp;gt;Escrito por
+&amp;lt;/h2&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a class=&amp;#34;link&amp;#34; href=&amp;#34;https://www.linkedin.com/in/nmmorette&amp;#34;  target=&amp;#34;_blank&amp;#34; rel=&amp;#34;noopener&amp;#34;
+    &amp;gt;&amp;lt;img src=&amp;#34;/assets/contributors/50x50/natan50x50.png&amp;#34;
+	
+	
+	
+	loading=&amp;#34;lazy&amp;#34;
+	
+	
+ /&amp;gt;&amp;lt;/a&amp;gt; &amp;lt;a class=&amp;#34;link&amp;#34; href=&amp;#34;https://www.linkedin.com/in/nmmorette&amp;#34;  target=&amp;#34;_blank&amp;#34; rel=&amp;#34;noopener&amp;#34;
+    &amp;gt;Natan Maia Morette&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;h2 id=&amp;#34;colaboradora&amp;#34;&amp;gt;Colaboradora
+&amp;lt;/h2&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a class=&amp;#34;link&amp;#34; href=&amp;#34;https://www.linkedin.com/in/karina-gante/&amp;#34;  target=&amp;#34;_blank&amp;#34; rel=&amp;#34;noopener&amp;#34;
+    &amp;gt;&amp;lt;img src=&amp;#34;/assets/contributors/50x50/karina50x50.png&amp;#34;
+	
+	
+	
+	loading=&amp;#34;lazy&amp;#34;
+	
+	
+ /&amp;gt;&amp;lt;/a&amp;gt; &amp;lt;a class=&amp;#34;link&amp;#34; href=&amp;#34;https://www.linkedin.com/in/karina-gante/&amp;#34;  target=&amp;#34;_blank&amp;#34; rel=&amp;#34;noopener&amp;#34;
+    &amp;gt;Karina Gante&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;h2 id=&amp;#34;parceria&amp;#34;&amp;gt;Parceria
+&amp;lt;/h2&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a class=&amp;#34;link&amp;#34; href=&amp;#34;https://hacktiba.github.io/&amp;#34;  target=&amp;#34;_blank&amp;#34; rel=&amp;#34;noopener&amp;#34;
+    &amp;gt;&amp;lt;img src=&amp;#34;/assets/partners/hacktiba60x60.png&amp;#34;
+	
+	
+	
+	loading=&amp;#34;lazy&amp;#34;
+	
+	
+ /&amp;gt;&amp;lt;/a&amp;gt; Esse post foi feito em parceria com &amp;lt;strong&amp;gt;&amp;lt;a class=&amp;#34;link&amp;#34; href=&amp;#34;https://hacktiba.github.io/&amp;#34;  target=&amp;#34;_blank&amp;#34; rel=&amp;#34;noopener&amp;#34;
+    &amp;gt;Hacktiba&amp;lt;/a&amp;gt;&amp;lt;/strong&amp;gt; para o Pulse 07.&amp;lt;/p&amp;gt;
+&amp;lt;blockquote&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;em&amp;gt;Por: &amp;lt;a class=&amp;#34;link&amp;#34; href=&amp;#34;https://github.com/Sec-Dojo-Cyber-House/cve-hunters&amp;#34;  target=&amp;#34;_blank&amp;#34; rel=&amp;#34;noopener&amp;#34;
+    &amp;gt;CVE-Hunters&amp;lt;/a&amp;gt;&amp;lt;/em&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;/blockquote&amp;gt;
+</content:encoded>
+
+      <pubDate>Mon, 07 Jul 2025 00:00:00 &#43;0000</pubDate>
+    </item>
+  </channel>
+</rss>

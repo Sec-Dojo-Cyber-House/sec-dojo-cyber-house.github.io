@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Discovery of 51 CVEs - How Caido Helped Our Open Source Security Research</title>
+    <link>https://www.cvehunters.com/articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/</link>
+    <description>Strengthening open source security through effective vulnerability detection</description>
+    <atom:link href="https://www.cvehunters.com/articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/index.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>Discovery of 51 CVEs - How Caido Helped Our Open Source Security Research</title>
+      <link>https://www.cvehunters.com/articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/</link>
+      <guid>https://www.cvehunters.com/articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/</guid>
+      <description>&amp;lt;h2 id=&amp;#34;contributions-from-the-cve-hunters-group-using-caido&amp;#34;&amp;gt;Contributions from the CVE-Hunters Group using Caido
+&amp;lt;/h2&amp;gt;&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;Information security is a precious assistance to the design, installation, and ongoing updating of computer systems, especially for public, non-profit, or educational use. With cyber attacks and data breaches on the rise, never has it been more critical to improve the open-source project security.&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;Our group, CVE-Hunters, strives to find, research, and responsibly disclose vulnerabilities (CVEs) in widely used open-source software. We contribute to the global cybersecurity community by reporting CVEs, improving code security, and helping maintainers patch actual world security vulnerabilities before they become available for attack.&amp;lt;/p&amp;gt;</description><content:encoded>&amp;lt;h2 id=&amp;#34;contributions-from-the-cve-hunters-group-using-caido&amp;#34;&amp;gt;Contributions from the CVE-Hunters Group using Caido
+&amp;lt;/h2&amp;gt;&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;Information security is a precious assistance to the design, installation, and ongoing updating of computer systems, especially for public, non-profit, or educational use. With cyber attacks and data breaches on the rise, never has it been more critical to improve the open-source project security.&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;Our group, CVE-Hunters, strives to find, research, and responsibly disclose vulnerabilities (CVEs) in widely used open-source software. We contribute to the global cybersecurity community by reporting CVEs, improving code security, and helping maintainers patch actual world security vulnerabilities before they become available for attack.&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;By on-job vulnerability research and live penetration testing, our program not only protects critical web applications but also provides hands-on training for the future generation of ethical hackers and cybersecurity experts. We try to foster a culture of active, open, and inclusive cybersecurity—allowing students and researchers to utilize state-of-the-art tools like Caido to perform simulated attacks, automate security testing, and facilitate secure development practices.&amp;lt;/p&amp;gt;
+&amp;lt;h2 id=&amp;#34;project-objectives&amp;#34;&amp;gt;Project Objectives
+&amp;lt;/h2&amp;gt;&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;Our cybersecurity research is bounded by three core pillars underpinning technical excellence and societal responsibility:&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;
+  &amp;lt;ul&amp;gt;
+    &amp;lt;li&amp;gt;Bolstering the security of commonly used open-source software with the discovery, verification, and support for remediation of real-world vulnerabilities. These core bugs—be they Cross-Site Scripting (XSS), Insecure Direct Object References (IDOR), or faulty authentication—may be exploited in production, exposing sensitive information.&amp;lt;/li&amp;gt;
+    &amp;lt;li&amp;gt;Offering experiential cybersecurity training to future professionals through real-world vulnerability assessment projects. Students gain hands-on experience in bug discovery, secure code analysis, and ethical vulnerability disclosure using modern security testing tools like Caido, Burp Suite, and custom automation scripts.&amp;lt;/li&amp;gt;
+    &amp;lt;li&amp;gt;Encouraging collaborative research and responsible CVE publication of Common Vulnerabilities and Exposures to facilitate awareness of developing threats, improve transparency, and assist with the continuous hardening of critical systems.&amp;lt;/li&amp;gt;
+  &amp;lt;/ul&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;h2 id=&amp;#34;case-1-wegia-platform&amp;#34;&amp;gt;Case 1: WeGIA Platform
+&amp;lt;/h2&amp;gt;&amp;lt;p&amp;gt;&amp;lt;img src=&amp;#34;/articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/wegia.png&amp;#34;
+	width=&amp;#34;1914&amp;#34;
+	height=&amp;#34;959&amp;#34;
+	srcset=&amp;#34;/articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/wegia_hu_2524eec9eeae804c.png 480w, /articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/wegia_hu_91fc3ba8afe4f7ad.png 1024w&amp;#34;
+	loading=&amp;#34;lazy&amp;#34;
+	
+	
+		class=&amp;#34;gallery-image&amp;#34; 
+		data-flex-grow=&amp;#34;199&amp;#34;
+		data-flex-basis=&amp;#34;478px&amp;#34;
+	
+ /&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;One of the main targets of our security research was the WeGIA (Web Manager for Assistance Institutions) web application — an open-source web application to manage third-sector institutions in Brazil, including NGOs, social shelters, and nonprofit institutions. Such organizations are highly reliant on donations, volunteer support, and secure processing of data to function effectively.&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;The security weaknesses that were discovered were among them critical ones such as unauthorized access, inadequate authentication processes, and data exposure vulnerabilities with considerable impact on confidentiality, integrity, and availability of sensitive information. In a fascinating collaborative pen testing challenge, CVE-Hunters community discovered, responsibly disclosed, and retried 48 security vulnerabilities (CVEs) in the WeGIA system. &amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;Effective remediation and discovery of the security weaknesses made up the overall security status of the platform and facilitated long-term sustainability and trustiness of the software. This instance supports the necessity for constant vulnerability scanning and ethical hacking presence within the defense of open-source tools utilized in socially critical environments.&amp;lt;/p&amp;gt;
+&amp;lt;h2 id=&amp;#34;case-2-i-educar-platform&amp;#34;&amp;gt;Case 2: i-Educar Platform
+&amp;lt;/h2&amp;gt;&amp;lt;p&amp;gt;&amp;lt;img src=&amp;#34;/articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/i-educar.png&amp;#34;
+	width=&amp;#34;1914&amp;#34;
+	height=&amp;#34;962&amp;#34;
+	srcset=&amp;#34;/articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/i-educar_hu_4322185b1b88d839.png 480w, /articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/i-educar_hu_1cac18ecedf8c1b3.png 1024w&amp;#34;
+	loading=&amp;#34;lazy&amp;#34;
+	
+	
+		class=&amp;#34;gallery-image&amp;#34; 
+		data-flex-grow=&amp;#34;198&amp;#34;
+		data-flex-basis=&amp;#34;477px&amp;#34;
+	
+ /&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;Continuing our endeavor to promote the cybersecurity of critical digital infrastructure, our research team directed its focus on the i-Educar platform, a widely used open-source school management platform adopted by numerous public schools and institutions of learning in Brazil.&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;i-Educar is designed to handle sensitive student data, including students&amp;#39; personal information, teachers&amp;#39; personal information, and learning histories. Thus, the platform becomes a premium target for any potential attackers and thus emphasizes the importance of securing it against future threats.&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;During a professional application security audit, our team of researchers found other vulnerabilities in the i-Educar system. These included some authentication bypass, insecure exposure of data, and access controls that were improper in nature—both of which can potentially compromise educational information&amp;#39;s confidentiality, integrity, and availability.&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;To date, 3 of the vulnerabilities have been officially assigned CVE IDs and responsibly disclosed to the project maintainers following best practices for coordinated disclosure. The remaining findings are awaiting technical validation and documentation and will be submitted for CVE publication in the coming weeks.&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;This case study illustrates the importance of vulnerability research to the education community, especially when dealing with open-source platforms which have been storing personally identifiable information (PII). Securing i-Educar, we are committed to making it easier for a secure online community for schools and students.&amp;lt;/p&amp;gt;
+&amp;lt;h2 id=&amp;#34;support-tool-caido&amp;#34;&amp;gt;Support Tool: Caido
+&amp;lt;/h2&amp;gt;&amp;lt;p&amp;gt;&amp;lt;img src=&amp;#34;/articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/caido.webp&amp;#34;
+	width=&amp;#34;2600&amp;#34;
+	height=&amp;#34;1417&amp;#34;
+	srcset=&amp;#34;/articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/caido_hu_9c404777f95c89b8.webp 480w, /articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/caido_hu_352aa15174226705.webp 1024w&amp;#34;
+	loading=&amp;#34;lazy&amp;#34;
+	
+	
+		class=&amp;#34;gallery-image&amp;#34; 
+		data-flex-grow=&amp;#34;183&amp;#34;
+		data-flex-basis=&amp;#34;440px&amp;#34;
+	
+ /&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;In our thorough web app security testing, Caido has been one of our go-to tools to discover, exploit, and document vulnerabilities. Created for pen testers, security researchers, and bug bounty hunters in mind, Caido is a contemporary and lightweight alternative to Burp Suite that provides a user-friendly interface without any loss of features.&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;With functionalities tailored to ethical hacking and web application penetration testing, Caido enables efficient workflows in both manual and semi-automated testing environments. Caido&amp;#39;s ability to intercept traffic, map the structure of sites, and manage enormous volumes of HTTP requests qualifies it to identify issues like XSS, CSRF, IDOR, authentication flaws, and insecure session ID management.&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;Apart from its clean UI and smoothness, Caido&amp;#39;s design is scalable—making it part of the best tools for security practitioners to look for an enterprise-level web vulnerability scanner and exploit tool in real-world engagements. Be it doing OWASP Top 10 testing or technical deep auditing, Caido is an integral component of an offensive security toolkit in the modern world.&amp;lt;/p&amp;gt;
+&amp;lt;h3 id=&amp;#34;simple-and-functional-interface&amp;#34;&amp;gt;&amp;lt;em&amp;gt;Simple and functional interface&amp;lt;/em&amp;gt;
+&amp;lt;/h3&amp;gt;&amp;lt;p&amp;gt;&amp;lt;img src=&amp;#34;/articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/interface.png&amp;#34;
+	width=&amp;#34;974&amp;#34;
+	height=&amp;#34;738&amp;#34;
+	srcset=&amp;#34;/articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/interface_hu_946c678debb29535.png 480w, /articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/interface_hu_5a3572f402be32ad.png 1024w&amp;#34;
+	loading=&amp;#34;lazy&amp;#34;
+	
+	
+		class=&amp;#34;gallery-image&amp;#34; 
+		data-flex-grow=&amp;#34;131&amp;#34;
+		data-flex-basis=&amp;#34;316px&amp;#34;
+	
+ /&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;Caido has a minimal, modern, and user-friendly interface designed to ease the web application penetration testing process. Useful features such as a dynamic site map, full browsing history, and real-time interception of HTTP traffic allow security researchers to gain extensive visibility into the structure and operation of the targeted application.&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;These allow for faster and more precise identification of potential attack vectors, making Caido the solution of choice among professionals looking for an easy-to-use yet powerful platform for real-time request exploration, parameter inspection, and vulnerability detection. From endpoint mapping complex endpoints to analyzing live sessions, Caido optimizes the process without compromising depth or precision.&amp;lt;/p&amp;gt;
+&amp;lt;h3 id=&amp;#34;automation-with&amp;#34;&amp;gt;&amp;lt;em&amp;gt;Automation with &amp;amp;ldquo;Automate&amp;amp;rdquo;&amp;lt;/em&amp;gt;
+&amp;lt;/h3&amp;gt;&amp;lt;p&amp;gt;&amp;lt;img src=&amp;#34;/articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/automate.png&amp;#34;
+	width=&amp;#34;1424&amp;#34;
+	height=&amp;#34;627&amp;#34;
+	srcset=&amp;#34;/articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/automate_hu_b71d2686d66b9f75.png 480w, /articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/automate_hu_1ff1724a47fc979e.png 1024w&amp;#34;
+	loading=&amp;#34;lazy&amp;#34;
+	
+	
+		class=&amp;#34;gallery-image&amp;#34; 
+		data-flex-grow=&amp;#34;227&amp;#34;
+		data-flex-basis=&amp;#34;545px&amp;#34;
+	
+ /&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;The &amp;#34;Automate&amp;#34; feature of Caido allows security professionals to configure and execute customized vulnerability scans with precision and velocity. It is specifically helpful in automating the detection of common web application vulnerabilities such as Cross-Site Scripting (XSS), Cross-Site Request Forgery (CSRF), Insecure Direct Object References (IDOR), and authentication or session management issues.&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;In supporting scripted test automation and payload injection for tailor-made payloads, Caido&amp;#39;s Automate functionality slashes manual labor significantly but boosts precision in identifying security issues in complex web environments. It is an ideal addition for penetration testers and bug bounty hunters alike to enhance their web application security testing using automated, efficient scans tailored to their specific testing scope.&amp;lt;/p&amp;gt;
+&amp;lt;h3 id=&amp;#34;project-management&amp;#34;&amp;gt;&amp;lt;em&amp;gt;Project management&amp;lt;/em&amp;gt;
+&amp;lt;/h3&amp;gt;&amp;lt;p&amp;gt;&amp;lt;img src=&amp;#34;/articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/scopes.png&amp;#34;
+	width=&amp;#34;882&amp;#34;
+	height=&amp;#34;451&amp;#34;
+	srcset=&amp;#34;/articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/scopes_hu_3ab3440b6ccc98cc.png 480w, /articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/scopes_hu_827f3f99ffd7ccda.png 1024w&amp;#34;
+	loading=&amp;#34;lazy&amp;#34;
+	
+	
+		class=&amp;#34;gallery-image&amp;#34; 
+		data-flex-grow=&amp;#34;195&amp;#34;
+		data-flex-basis=&amp;#34;469px&amp;#34;
+	
+ /&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;Caido supports efficient penetration testing procedures through the capability to work on several projects simultaneously without having to restart the application. This kind of functionality is necessary for specialists with several web security tests to execute simultaneously, supporting easy switching between targets without jeopardizing information integrity.&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;To make pentest campaign management even simpler, Caido has a full-featured Scopes feature. With it, users can effectively define, segment, and manage multiple testing scopes within one project. This proves useful to segment tests in terms of different domains, apps, or environments — improving organization, reducing noise, and supporting targeted vulnerability analysis.
+&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;By combining multi-project capability with scope-limited testing via environments, Caido keeps penetration testers, bug bounty hunters, and security researchers productive, effective, and concentrated on the most important bugs.&amp;lt;/p&amp;gt;
+&amp;lt;h3 id=&amp;#34;filters-with-httpql&amp;#34;&amp;gt;&amp;lt;em&amp;gt;Filters with HTTPQL&amp;lt;/em&amp;gt;
+&amp;lt;/h3&amp;gt;&amp;lt;p&amp;gt;&amp;lt;img src=&amp;#34;/articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/filters.png&amp;#34;
+	width=&amp;#34;1324&amp;#34;
+	height=&amp;#34;422&amp;#34;
+	srcset=&amp;#34;/articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/filters_hu_c24f37b46942eccd.png 480w, /articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/filters_hu_b74b8191f7d2bf3.png 1024w&amp;#34;
+	loading=&amp;#34;lazy&amp;#34;
+	
+	
+		class=&amp;#34;gallery-image&amp;#34; 
+		data-flex-grow=&amp;#34;313&amp;#34;
+		data-flex-basis=&amp;#34;752px&amp;#34;
+	
+ /&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;The Caido HTTPQL search engine provides for precise filtering and thorough examination of HTTP requests, even for heavy web traffic. As a security researcher and penetration tester, this concise and straightforward query language assists you in quickly navigating colossal sets of data without being an expert programmer.&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;With HTTPQL, advanced request filtering is made simpler to implement, and this accelerates the identification of security flaws such as injection points, authentication errors, and session irregularities, which makes it an essential utility for automated web traffic auditing and mass-scale vulnerability testing.&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;Caido also takes the lead in delivering cutting-edge features that make it stronger in real-world penetration testing and security auditing scenarios:&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;
+  &amp;lt;ul&amp;gt;
+    &amp;lt;li&amp;gt;&amp;lt;b&amp;gt;Invisible proxy:&amp;lt;/b&amp;gt; Conveniently captures and saves client and device network traffic that isn&amp;#39;t supported by manual proxy configuration. This is especially helpful when testing embedded software, IoT devices, mobile apps, and blocked browsers for deep security analysis in otherwise hard-to-test cases.&amp;lt;/li&amp;gt;
+    &amp;lt;li&amp;gt;&amp;lt;b&amp;gt;DNS override:&amp;lt;/b&amp;gt; Provides fine-grained control of domain name resolution during security testing to enable pentesters to spoof DNS, redirect traffic, and create realistic test cases. It is necessary to verify DNS-related vulnerabilities, perform phishing attacks, and analyze complex network attack vectors.&amp;lt;/li&amp;gt;
+    &amp;lt;li&amp;gt;&amp;lt;b&amp;gt;Browser integration:&amp;lt;/b&amp;gt; Facilitates instantaneous inspection and dynamic inspection of HTTP/HTTPS traffic from modern web browsers, including those with strong reliance on JavaScript and dynamic content loading. The integration improves the efficiency of testing highly interactive web applications, single-page applications (SPA), and rich-client environments, which permit cross-site scripting (XSS), authentication problems, and other client-side attack detection.&amp;lt;/li&amp;gt;
+  &amp;lt;/ul&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;h2 id=&amp;#34;about-the-cve-hunters-group-formation-evolution-and-mission&amp;#34;&amp;gt;About the CVE-Hunters Group: Formation, Evolution and Mission
+&amp;lt;/h2&amp;gt;&amp;lt;p&amp;gt;&amp;lt;img src=&amp;#34;/articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/repo.png&amp;#34;
+	width=&amp;#34;674&amp;#34;
+	height=&amp;#34;848&amp;#34;
+	srcset=&amp;#34;/articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/repo_hu_1766647e601cd925.png 480w, /articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/repo_hu_70e520e1660c3d3e.png 1024w&amp;#34;
+	loading=&amp;#34;lazy&amp;#34;
+	
+	
+		class=&amp;#34;gallery-image&amp;#34; 
+		data-flex-grow=&amp;#34;79&amp;#34;
+		data-flex-basis=&amp;#34;190px&amp;#34;
+	
+ /&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;CVE-Hunters is a dedicated information security research group specializing in the discovery, analysis, and responsible disclosure of vulnerabilities in critical software applications. Founded in December 2024 by cybersecurity expert Professor &amp;lt;a href=&amp;#34;https://www.linkedin.com/in/nmmorette&amp;#34; &amp;gt;Natan Morette&amp;lt;/a&amp;gt;, the group started with just four passionate students eager to deepen their knowledge in offensive security and ethical hacking.&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;Under the expert technical and ethical mentorship of Professor &amp;lt;a href=&amp;#34;https://www.linkedin.com/in/nmmorette&amp;#34;&amp;gt;Natan&amp;lt;/a&amp;gt;, CVE-Hunters has steadily grown and matured. Today, we proudly count 10 active cybersecurity researchers who apply practical skills learned in both academic settings and hands-on lab environments. Our core focus areas include penetration testing, vulnerability assessment, CVE publication, and contributing to the security hardening of impactful open-source projects with significant social relevance.&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;Our research and development work is continuously evolving. We are actively analyzing new security flaws, documenting technical details, and preparing additional responsible vulnerability disclosures to the community.&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;To learn more about our team members, explore our ongoing projects, and follow the latest CVE publications, visit our official GitHub repository at: &amp;lt;a href=&amp;#34;https://github.com/Sec-Dojo-Cyber-House/cve-hunters&amp;#34;&amp;gt;https://github.com/Sec-Dojo-Cyber-House/cve-hunters&amp;lt;/a&amp;gt;.&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: justify;&amp;#34;&amp;gt;All identified vulnerabilities and officially published CVEs by CVE-Hunters are transparently catalogued and accessible on our official website: &amp;lt;a href=&amp;#34;https://sec-dojo-cyber-house.github.io/&amp;#34;&amp;gt;https://sec-dojo-cyber-house.github.io/&amp;lt;/a&amp;gt;.&amp;lt;/p&amp;gt;
+&amp;lt;p style=&amp;#34;text-align: center;&amp;#34;&amp;gt;“Security is a journey, not a destination.” &amp;lt;br /&amp;gt;
+  &amp;lt;a href=&amp;#34;https://github.com/Sec-Dojo-Cyber-House&amp;#34;&amp;gt;&amp;lt;img src=&amp;#34;sdch.png&amp;#34; width=&amp;#34;120&amp;#34;/ /&amp;gt;&amp;lt;/a&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;h2 id=&amp;#34;written-by&amp;#34;&amp;gt;Written by
+&amp;lt;/h2&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a class=&amp;#34;link&amp;#34; href=&amp;#34;https://www.linkedin.com/in/elisangelasilvademendonca/&amp;#34;  target=&amp;#34;_blank&amp;#34; rel=&amp;#34;noopener&amp;#34;
+    &amp;gt;&amp;lt;img src=&amp;#34;/assets/contributors/50x50/elisangela50x50.png&amp;#34;
+	
+	
+	
+	loading=&amp;#34;lazy&amp;#34;
+	
+	
+ /&amp;gt;&amp;lt;/a&amp;gt; &amp;lt;a class=&amp;#34;link&amp;#34; href=&amp;#34;https://www.linkedin.com/in/elisangelasilvademendonca/&amp;#34;  target=&amp;#34;_blank&amp;#34; rel=&amp;#34;noopener&amp;#34;
+    &amp;gt;Elisangela Mendonça&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;h2 id=&amp;#34;contributors&amp;#34;&amp;gt;Contributors
+&amp;lt;/h2&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a class=&amp;#34;link&amp;#34; href=&amp;#34;https://www.linkedin.com/in/karina-gante/&amp;#34;  target=&amp;#34;_blank&amp;#34; rel=&amp;#34;noopener&amp;#34;
+    &amp;gt;&amp;lt;img src=&amp;#34;/assets/contributors/50x50/karina50x50.png&amp;#34;
+	
+	
+	
+	loading=&amp;#34;lazy&amp;#34;
+	
+	
+ /&amp;gt;&amp;lt;/a&amp;gt; &amp;lt;a class=&amp;#34;link&amp;#34; href=&amp;#34;https://www.linkedin.com/in/karina-gante/&amp;#34;  target=&amp;#34;_blank&amp;#34; rel=&amp;#34;noopener&amp;#34;
+    &amp;gt;Karina Gante&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;a class=&amp;#34;link&amp;#34; href=&amp;#34;https://www.linkedin.com/in/nmmorette&amp;#34;  target=&amp;#34;_blank&amp;#34; rel=&amp;#34;noopener&amp;#34;
+    &amp;gt;&amp;lt;img src=&amp;#34;/assets/contributors/50x50/natan50x50.png&amp;#34;
+	
+	
+	
+	loading=&amp;#34;lazy&amp;#34;
+	
+	
+ /&amp;gt;&amp;lt;/a&amp;gt; &amp;lt;a class=&amp;#34;link&amp;#34; href=&amp;#34;https://www.linkedin.com/in/nmmorette&amp;#34;  target=&amp;#34;_blank&amp;#34; rel=&amp;#34;noopener&amp;#34;
+    &amp;gt;Natan Maia Morette&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;blockquote&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;em&amp;gt;By: &amp;lt;a class=&amp;#34;link&amp;#34; href=&amp;#34;https://github.com/Sec-Dojo-Cyber-House/cve-hunters&amp;#34;  target=&amp;#34;_blank&amp;#34; rel=&amp;#34;noopener&amp;#34;
+    &amp;gt;CVE-Hunters&amp;lt;/a&amp;gt;&amp;lt;/em&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;/blockquote&amp;gt;
+</content:encoded>
+
+      <pubDate>Wed, 04 Jun 2025 00:00:00 &#43;0000</pubDate>
+    </item>
+  </channel>
+</rss>

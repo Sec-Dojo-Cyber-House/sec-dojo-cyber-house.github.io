@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="pt" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Fortalecendo a Segurança de Software Open Source através da Detecção Eficaz de Vulnerabilidades">
+<title>Descoberta de 51 CVEs - Como o Caido Ajudou Nossa Pesquisa em Segurança de Código Aberto</title>
+
+<link rel='canonical' href='https://www.cvehunters.com/pt/articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/'>
+
+<link rel="stylesheet" href="/scss/style.min.833d6eed45de56f48306bf57268d5b8cdfc8a60e8e7bdc99810464fcd033f7c6.css"><meta property='og:title' content="Descoberta de 51 CVEs - Como o Caido Ajudou Nossa Pesquisa em Segurança de Código Aberto">
+<meta property='og:description' content="Fortalecendo a Segurança de Software Open Source através da Detecção Eficaz de Vulnerabilidades">
+<meta property='og:url' content='https://www.cvehunters.com/pt/articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/'>
+<meta property='og:site_name' content='CVE-Hunters'>
+<meta property='og:type' content='article'><meta property='article:section' content='Articles' /><meta property='article:tag' content='CVE-Hunters' /><meta property='article:tag' content='Ferramenta Caido' /><meta property='article:tag' content='Proxy Caido' /><meta property='article:tag' content='Pesquisa de vulnerabilidades' /><meta property='article:tag' content='Segurança de aplicações web' /><meta property='article:tag' content='Divulgação responsável' /><meta property='article:tag' content='Vulnerabilidades em código aberto' /><meta property='article:tag' content='Ferramentas de segurança para pentesters' /><meta property='article:tag' content='Ferramentas de bug bounty' /><meta property='article:tag' content='Hacking ético' /><meta property='article:tag' content='Alternativa ao Burp Suite' /><meta property='article:tag' content='Publicação de CVE' /><meta property='article:tag' content='Detecção de XSS' /><meta property='article:tag' content='Vulnerabilidade IDOR' /><meta property='article:tag' content='Proteção contra CSRF' /><meta property='article:tag' content='Filtro HTTPQL' /><meta property='article:published_time' content='2025-06-04T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-06-04T00:00:00&#43;00:00'/><meta property='og:image' content='https://www.cvehunters.com/articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/cve-hunters&#43;caido.png' />
+<meta name="twitter:title" content="Descoberta de 51 CVEs - Como o Caido Ajudou Nossa Pesquisa em Segurança de Código Aberto">
+<meta name="twitter:description" content="Fortalecendo a Segurança de Software Open Source através da Detecção Eficaz de Vulnerabilidades"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://www.cvehunters.com/articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/cve-hunters&#43;caido.png' /><link rel="alternate" type="application/rss&#43;xml" href="https://www.cvehunters.com/pt/articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/index.xml">
+    <link rel="shortcut icon" href="/favicon.png" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/pt/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu_b690a75912753cd9.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🏹</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/pt">CVE-Hunters</a></h1>
+            <h2 class="site-description">Grupo de Pesquisa em Vulnerabilidades.</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://discord.gg/3GJvV6xPeg'
+                        target="_blank"
+                        title="Discord"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-discord"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 12a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" /><path d="M14 12a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" /><path d="M15.5 17c0 1 1.5 3 2 3c1.5 0 2.833 -1.667 3.5 -3c.667 -1.667 .5 -5.833 -1.5 -11.5c-1.457 -1.015 -3 -1.34 -4.5 -1.5l-.972 1.923a11.913 11.913 0 0 0 -4.053 0l-.975 -1.923c-1.5 .16 -3.043 .485 -4.5 1.5c-2 5.667 -2.167 9.833 -1.5 11.5c.667 1.333 2 3 3.5 3c.5 0 2 -2 2 -3" /><path d="M7 16.5c3.5 1 6.5 1 10 0" /></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='mailto:contact@cvehunters.com'
+                        target="_blank"
+                        title="E-mail"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-mail"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" /><path d="M3 7l9 6l9 -6" /></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/Sec-Dojo-Cyber-House/cve-hunters'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/company/cve-hunters/'
+                        target="_blank"
+                        title="LinkedIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-linkedin"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 11v5" /><path d="M8 8v.01" /><path d="M12 16v-5" /><path d="M16 16v-3a2 2 0 1 0 -4 0" /><path d="M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4z" /></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.youtube.com/@CVEHunters'
+                        target="_blank"
+                        title="YouTube"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-youtube"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M2 8a4 4 0 0 1 4 -4h12a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-12a4 4 0 0 1 -4 -4v-8z" /><path d="M10 9l5 3l-5 3z" /></svg>
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/pt/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li  class='current' >
+            <a href='/pt/articles/' >
+                
+                
+                
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-article"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 4m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z" /><path d="M7 8h10" /><path d="M7 12h10" /><path d="M7 16h10" /></svg>
+                
+                <span>Artigos</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/pt/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Pesquisa</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/pt/team/' >
+                
+                
+                
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-users"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" /><path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /><path d="M21 21v-2a4 4 0 0 0 -3 -3.85" /></svg>
+                
+                <span>Equipe</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/pt/stats/' >
+                
+                
+                
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-chart-bar"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 13a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" /><path d="M15 9a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" /><path d="M9 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" /><path d="M4 20h14" /></svg>
+                
+                <span>Métricas</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/pt/support/' >
+                
+                
+                
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-heart-handshake"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" /><path d="M12 6l-3.293 3.293a1 1 0 0 0 0 1.414l.543 .543c.69 .69 1.81 .69 2.5 0l1 -1a3.182 3.182 0 0 1 4.5 0l2.25 2.25" /><path d="M12.5 15.5l2 2" /><path d="M15 13l2 2" /></svg>
+                
+                <span>Apoio</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/pt/about/' >
+                
+                
+                
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-info-octagon"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12.802 2.165l5.575 2.389c.48 .206 .863 .589 1.07 1.07l2.388 5.574c.22 .512 .22 1.092 0 1.604l-2.389 5.575c-.206 .48 -.589 .863 -1.07 1.07l-5.574 2.388c-.512 .22 -1.092 .22 -1.604 0l-5.575 -2.389a2.036 2.036 0 0 1 -1.07 -1.07l-2.388 -5.574a2.036 2.036 0 0 1 0 -1.604l2.389 -5.575c.206 -.48 .589 -.863 1.07 -1.07l5.574 -2.388a2.036 2.036 0 0 1 1.604 0z" /><path d="M12 9h.01" /><path d="M11 12h1v4h1" /></svg>
+                
+                <span>Sobre</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/pt/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Arquivos</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="https://www.cvehunters.com/" >English</option>
+                                
+                                    <option value="https://www.cvehunters.com/pt/" selected>Português</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#contribuições-do-grupo-cve-hunters-usando-o-caido">Contribuições do Grupo CVE-Hunters usando o Caido</a></li>
+    <li><a href="#objetivos-do-projeto">Objetivos do Projeto</a></li>
+    <li><a href="#case-1-platforma-wegia">Case 1: Platforma WeGIA</a></li>
+    <li><a href="#case-2-platforma-i-educar">Case 2: Platforma i-Educar</a></li>
+    <li><a href="#ferramenta-de-suporte-caido">Ferramenta de Suporte: Caido</a>
+      <ol>
+        <li><a href="#interface-simples-e-funcional"><em>Interface simples e funcional</em></a></li>
+        <li><a href="#automação-com"><em>Automação com “Automate”</em></a></li>
+        <li><a href="#gerenciamento-de-projetos"><em>Gerenciamento de projetos</em></a></li>
+        <li><a href="#filtros-com-httpql"><em>Filtros com HTTPQL</em></a></li>
+      </ol>
+    </li>
+    <li><a href="#sobre-o-grupo-cve-hunters-formação-evolução-e-missão">Sobre o Grupo CVE-Hunters: Formação, Evolução e Missão</a></li>
+    <li><a href="#escrito-por">Escrito por</a></li>
+    <li><a href="#colaboradores">Colaboradores</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/pt/articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/">
+                <img src="/articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/cve-hunters&#43;caido_hu_184ae2914134757c.png"
+                        srcset="/articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/cve-hunters&#43;caido_hu_184ae2914134757c.png 800w, /articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/cve-hunters&#43;caido_hu_c426d2e0068b8ed5.png 1600w"
+                        width="800" 
+                        height="400" 
+                        loading="lazy"
+                        alt="Featured image of post Descoberta de 51 CVEs - Como o Caido Ajudou Nossa Pesquisa em Segurança de Código Aberto" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/pt/categories/pesquisa-de-vulnerabilidades/" >
+                Pesquisa De Vulnerabilidades
+            </a>
+        
+            <a href="/pt/categories/seguran%C3%A7a-de-c%C3%B3digo-aberto/" >
+                Segurança De Código Aberto
+            </a>
+        
+            <a href="/pt/categories/seguran%C3%A7a-de-aplica%C3%A7%C3%B5es-web/" >
+                Segurança De Aplicações Web
+            </a>
+        
+            <a href="/pt/categories/ferramentas-de-pentest/" >
+                Ferramentas De Pentest
+            </a>
+        
+            <a href="/pt/categories/projetos-de-hacking-%C3%A9tico/" >
+                Projetos De Hacking Ético
+            </a>
+        
+            <a href="/pt/categories/divulga%C3%A7%C3%A3o-de-cve/" >
+                Divulgação De CVE
+            </a>
+        
+            <a href="/pt/categories/educa%C3%A7%C3%A3o-em-ciberseguran%C3%A7a/" >
+                Educação Em Cibersegurança
+            </a>
+        
+            <a href="/pt/categories/estudos-de-caso/" >
+                Estudos De Caso
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/pt/articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/">Descoberta de 51 CVEs - Como o Caido Ajudou Nossa Pesquisa em Segurança de Código Aberto</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            Fortalecendo a Segurança de Software Open Source através da Detecção Eficaz de Vulnerabilidades
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime='2025-06-04T00:00:00Z'>jun. 04, 2025</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    9 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+        <footer class="article-translations">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+            <div>
+                
+                    <a href="https://www.cvehunters.com/articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/" class="link">English</a>
+                
+            </div>
+        </footer>
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="contribuições-do-grupo-cve-hunters-usando-o-caido">Contribuições do Grupo CVE-Hunters usando o Caido
+</h2><p style="text-align: justify;">A segurança da informação é uma ajuda preciosa para o design, instalação e atualização contínua de sistemas computacionais, especialmente para uso público, sem fins lucrativos ou educacional. Com o aumento dos ataques cibernéticos e vazamentos de dados, nunca foi tão crítico melhorar a segurança dos projetos open source.</p>
+<p style="text-align: justify;">Nosso grupo, CVE-Hunters, se esforça para encontrar, pesquisar e divulgar de forma responsável vulnerabilidades (CVEs) em softwares de código aberto amplamente utilizados. Contribuímos com a comunidade global de cibersegurança relatando CVEs, melhorando a segurança do código e ajudando os mantenedores a corrigirem vulnerabilidades de segurança do mundo real antes que se tornem alvos de ataques.</p> 
+<p style="text-align: justify;">Por meio de pesquisas de vulnerabilidade no trabalho e testes de penetração ao vivo, nosso programa não apenas protege aplicações web críticas, mas também oferece treinamento prático para a futura geração de hackers éticos e especialistas em cibersegurança. Buscamos fomentar uma cultura de cibersegurança ativa, aberta e inclusiva — permitindo que estudantes e pesquisadores utilizem ferramentas de ponta como o Caido para realizar ataques simulados, automatizar testes de segurança e facilitar práticas de desenvolvimento seguro.</p>
+<h2 id="objetivos-do-projeto">Objetivos do Projeto
+</h2><p style="text-align: justify;">Nossa pesquisa em cibersegurança se apoia em três pilares centrais que sustentam a excelência técnica e a responsabilidade social:</p>
+<p style="text-align: justify;">
+ <ul>
+  <li>Reforçar a segurança de softwares open source comumente utilizados por meio da descoberta, verificação e apoio à correção de vulnerabilidades do mundo real. Esses bugs centrais — como Cross-Site Scripting (XSS), Insecure Direct Object References (IDOR) ou autenticação falha — podem ser explorados em produção, expondo informações sensíveis.</li>
+  <li>Oferecer treinamento experiencial em cibersegurança para futuros profissionais por meio de projetos reais de avaliação de vulnerabilidades. Os estudantes ganham experiência prática em descoberta de bugs, análise de código seguro e divulgação ética de vulnerabilidades usando ferramentas modernas como Caido, Burp Suite e scripts de automação personalizados.</li>
+  <li>Incentivar a pesquisa colaborativa e a publicação responsável de CVEs (Common Vulnerabilities and Exposures) para facilitar a conscientização sobre ameaças emergentes, melhorar a transparência e ajudar no fortalecimento contínuo de sistemas críticos.</li>
+ </ul>
+</p>
+<h2 id="case-1-platforma-wegia">Case 1: Platforma WeGIA
+</h2><p><img src="/articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/wegia.png"
+	width="1914"
+	height="959"
+	srcset="/articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/wegia_hu_2524eec9eeae804c.png 480w, /articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/wegia_hu_91fc3ba8afe4f7ad.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="199"
+		data-flex-basis="478px"
+	
+></p>
+<p style="text-align: justify;">Um dos principais alvos de nossa pesquisa em segurança foi a aplicação web WeGIA (Web Manager for Assistance Institutions) — uma aplicação open source para gerenciamento de instituições do terceiro setor no Brasil, incluindo ONGs, abrigos sociais e instituições sem fins lucrativos. Tais organizações dependem fortemente de doações, apoio voluntário e processamento seguro de dados para funcionar de forma eficaz.</p>
+<p style="text-align: justify;">As falhas de segurança descobertas incluíram vulnerabilidades críticas como acesso não autorizado, processos de autenticação inadequados e exposição de dados com impacto considerável na confidencialidade, integridade e disponibilidade de informações sensíveis. Em um desafio colaborativo fascinante de pentest, a comunidade CVE-Hunters descobriu, divulgou de forma responsável e reavaliou 48 vulnerabilidades (CVEs) no sistema WeGIA.</p>
+<p style="text-align: justify;">A correção eficaz e a descoberta dessas falhas contribuíram para o status geral de segurança da plataforma e facilitaram a sustentabilidade e confiabilidade do software a longo prazo. Este caso reforça a necessidade de escaneamento constante de vulnerabilidades e a presença do hacking ético na defesa de ferramentas open source utilizadas em contextos sociais críticos.</p>
+<h2 id="case-2-platforma-i-educar">Case 2: Platforma i-Educar
+</h2><p><img src="/articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/i-educar.png"
+	width="1914"
+	height="962"
+	srcset="/articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/i-educar_hu_4322185b1b88d839.png 480w, /articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/i-educar_hu_1cac18ecedf8c1b3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="198"
+		data-flex-basis="477px"
+	
+></p>
+<p style="text-align: justify;">Dando continuidade ao nosso esforço para promover a segurança cibernética da infraestrutura digital crítica, nossa equipe de pesquisa direcionou seu foco para a plataforma i-Educar, um sistema de gestão escolar open source amplamente adotado por escolas públicas e instituições de ensino no Brasil.</p> 
+<p style="text-align: justify;">O i-Educar é projetado para lidar com dados sensíveis de estudantes, incluindo informações pessoais dos alunos, professores e históricos escolares. Isso torna a plataforma um alvo privilegiado para possíveis atacantes, o que reforça a importância de protegê-la contra ameaças futuras.</p>
+<p style="text-align: justify;">Durante uma auditoria profissional de segurança de aplicações, nossa equipe de pesquisadores encontrou outras vulnerabilidades no sistema i-Educar. Estas incluíam bypass de autenticação, exposição insegura de dados e controles de acesso inadequados — que podem comprometer a confidencialidade, integridade e disponibilidade das informações educacionais.</p>
+<p style="text-align: justify;">Até o momento, 3 das vulnerabilidades receberam oficialmente IDs de CVE e foram divulgadas de forma responsável aos mantenedores do projeto seguindo as melhores práticas de divulgação coordenada. As demais descobertas estão aguardando validação técnica e documentação e serão submetidas para publicação como CVE nas próximas semanas.</p> 
+<p style="text-align: justify;">Este estudo de caso ilustra a importância da pesquisa de vulnerabilidades para a comunidade educacional, especialmente ao lidar com plataformas open source que armazenam informações pessoais identificáveis (PII). Ao proteger o i-Educar, estamos comprometidos em construir uma comunidade online mais segura para escolas e estudantes.</p>
+<h2 id="ferramenta-de-suporte-caido">Ferramenta de Suporte: Caido
+</h2><p><img src="/articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/caido.webp"
+	width="2600"
+	height="1417"
+	srcset="/articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/caido_hu_9c404777f95c89b8.webp 480w, /articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/caido_hu_352aa15174226705.webp 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="183"
+		data-flex-basis="440px"
+	
+></p>
+<p style="text-align: justify;">Em nossos testes aprofundados de segurança de aplicações web, o Caido tem sido uma de nossas ferramentas preferidas para descobrir, explorar e documentar vulnerabilidades. Criado para pentesters, pesquisadores de segurança e caçadores de bugs, o Caido é uma alternativa moderna e leve ao Burp Suite, com uma interface amigável sem perder funcionalidades.</p> 
+<p style="text-align: justify;">Com funcionalidades voltadas para hacking ético e pentests em aplicações web, o Caido permite fluxos de trabalho eficientes tanto em ambientes manuais quanto semi-automatizados. A capacidade do Caido de interceptar tráfego, mapear a estrutura de sites e gerenciar grandes volumes de requisições HTTP o qualifica para identificar problemas como XSS, CSRF, IDOR, falhas de autenticação e gerenciamento inseguro de sessões.</p> 
+<p style="text-align: justify;">Além de sua interface limpa e fluidez, o design do Caido é escalável — tornando-o uma das melhores ferramentas para profissionais de segurança que buscam um scanner e ferramenta de exploração de vulnerabilidades web em nível corporativo para uso em cenários reais. Seja para testar o OWASP Top 10 ou realizar auditorias técnicas profundas, o Caido é um componente essencial do kit de ferramentas de segurança ofensiva no mundo moderno.</p>
+<h3 id="interface-simples-e-funcional"><em>Interface simples e funcional</em>
+</h3><p><img src="/articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/interface.png"
+	width="974"
+	height="738"
+	srcset="/articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/interface_hu_946c678debb29535.png 480w, /articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/interface_hu_5a3572f402be32ad.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="131"
+		data-flex-basis="316px"
+	
+></p>
+<p style="text-align: justify;">O Caido possui uma interface minimalista, moderna e amigável, projetada para facilitar o processo de pentest em aplicações web. Recursos úteis como mapa dinâmico do site, histórico completo de navegação e interceptação em tempo real do tráfego HTTP permitem que pesquisadores de segurança tenham ampla visibilidade sobre a estrutura e operação da aplicação alvo.</p> 
+<p style="text-align: justify;">Isso permite identificar vetores de ataque potenciais de forma mais rápida e precisa, fazendo do Caido a solução preferida entre profissionais que buscam uma plataforma fácil de usar e poderosa para exploração de requisições em tempo real, inspeção de parâmetros e detecção de vulnerabilidades. Desde o mapeamento de endpoints complexos até a análise de sessões ao vivo, o Caido otimiza o processo sem comprometer profundidade ou precisão.</p>
+<h3 id="automação-com"><em>Automação com &ldquo;Automate&rdquo;</em>
+</h3><p><img src="/articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/automate.png"
+	width="1424"
+	height="627"
+	srcset="/articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/automate_hu_b71d2686d66b9f75.png 480w, /articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/automate_hu_1ff1724a47fc979e.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="227"
+		data-flex-basis="545px"
+	
+></p>
+<p style="text-align: justify;">O recurso "Automate" do Caido permite que profissionais de segurança configurem e executem varreduras de vulnerabilidade personalizadas com precisão e velocidade. É especialmente útil na automação da detecção de vulnerabilidades comuns em aplicações web, como XSS, CSRF, IDOR e falhas de autenticação ou gerenciamento de sessão.</p> 
+<p style="text-align: justify;">Com suporte para automação de testes com scripts e injeção de payloads personalizados, a funcionalidade Automate do Caido reduz significativamente o trabalho manual, mas aumenta a precisão na identificação de falhas de segurança em ambientes web complexos. É uma adição ideal para pentesters e caçadores de bugs que desejam melhorar seus testes com varreduras automatizadas e eficientes adaptadas ao seu escopo.</p>
+<h3 id="gerenciamento-de-projetos"><em>Gerenciamento de projetos</em>
+</h3><p><img src="/articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/scopes.png"
+	width="882"
+	height="451"
+	srcset="/articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/scopes_hu_3ab3440b6ccc98cc.png 480w, /articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/scopes_hu_827f3f99ffd7ccda.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="195"
+		data-flex-basis="469px"
+	
+></p>
+<p style="text-align: justify;">O Caido oferece suporte a procedimentos eficientes de pentest com a capacidade de trabalhar em vários projetos simultaneamente sem precisar reiniciar o aplicativo. Esse tipo de funcionalidade é essencial para especialistas que conduzem múltiplos testes de segurança ao mesmo tempo, permitindo alternância fácil entre alvos sem comprometer a integridade das informações.</p> 
+<p style="text-align: justify;">Para tornar o gerenciamento de campanhas de pentest ainda mais simples, o Caido possui um recurso completo chamado Scopes. Com ele, os usuários podem definir, segmentar e gerenciar escopos de teste múltiplos dentro de um único projeto. Isso é útil para segmentar testes em diferentes domínios, aplicações ou ambientes — melhorando a organização, reduzindo ruídos e apoiando uma análise de vulnerabilidades mais direcionada.</p> <p style="text-align: justify;">Ao combinar a capacidade de múltiplos projetos com testes limitados por escopo, o Caido mantém pentesters, caçadores de bugs e pesquisadores de segurança produtivos, eficazes e concentrados nos bugs mais importantes.</p>
+<p style="text-align: justify;">By combining multi-project capability with scope-limited testing via environments, Caido keeps penetration testers, bug bounty hunters, and security researchers productive, effective, and concentrated on the most important bugs.</p>
+<h3 id="filtros-com-httpql"><em>Filtros com HTTPQL</em>
+</h3><p><img src="/articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/filters.png"
+	width="1324"
+	height="422"
+	srcset="/articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/filters_hu_c24f37b46942eccd.png 480w, /articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/filters_hu_b74b8191f7d2bf3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="313"
+		data-flex-basis="752px"
+	
+></p>
+<p style="text-align: justify;">O mecanismo de busca HTTPQL do Caido oferece filtragem precisa e exame minucioso de requisições HTTP, mesmo em tráfego web pesado. Como pesquisador de segurança e pentester, essa linguagem de consulta concisa e direta ajuda você a navegar rapidamente por grandes volumes de dados sem precisar ser um programador experiente.</p> 
+<p style="text-align: justify;">Com o HTTPQL, a filtragem avançada de requisições se torna mais fácil de implementar, acelerando a identificação de falhas de segurança como pontos de injeção, erros de autenticação e irregularidades de sessão, tornando-o uma ferramenta essencial para auditorias automatizadas de tráfego web e testes de vulnerabilidades em larga escala.</p> 
+<p style="text-align: justify;">O Caido também se destaca ao oferecer recursos de ponta que o tornam mais forte em cenários reais de pentest e auditoria de segurança:</p> 
+<p style="text-align: justify;"> 
+  <ul> 
+    <li><b>Proxy invisível:</b> Captura e salva convenientemente o tráfego de rede de clientes e dispositivos que não suportam configuração manual de proxy. Isso é especialmente útil ao testar softwares embarcados, dispositivos IoT, aplicativos móveis e navegadores bloqueados para análises profundas de segurança em casos difíceis de testar.</li> 
+    <li><b>Substituição de DNS:</b> Fornece controle refinado sobre a resolução de nomes de domínio durante testes de segurança, permitindo que pentesters falsifiquem DNS, redirecionem tráfego e criem casos de teste realistas. É essencial para verificar vulnerabilidades relacionadas a DNS, realizar ataques de phishing e analisar vetores complexos de ataque em rede.</li> 
+    <li><b>Integração com navegador:</b> Facilita a inspeção instantânea e dinâmica do tráfego HTTP/HTTPS de navegadores modernos, incluindo aqueles fortemente baseados em JavaScript e carregamento dinâmico de conteúdo. A integração melhora a eficiência nos testes de aplicações web altamente interativas, aplicações de página única (SPA) e ambientes de cliente rico, permitindo a detecção de XSS, problemas de autenticação e outros ataques client-side.</li>
+  </ul> 
+</p>
+<h2 id="sobre-o-grupo-cve-hunters-formação-evolução-e-missão">Sobre o Grupo CVE-Hunters: Formação, Evolução e Missão
+</h2><p><img src="/articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/repo.png"
+	width="674"
+	height="848"
+	srcset="/articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/repo_hu_1766647e601cd925.png 480w, /articles/discovery-of-51-cves---how-caido-helped-our-open-source-security-research/repo_hu_70e520e1660c3d3e.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="79"
+		data-flex-basis="190px"
+	
+></p>
+<p style="text-align: justify;">O CVE-Hunters é um grupo de pesquisa dedicado à segurança da informação, especializado na descoberta, análise e divulgação responsável de vulnerabilidades em aplicativos de software críticos. Fundado em dezembro de 2024 pelo especialista em segurança cibernética, Professor <a href="https://www.linkedin.com/in/nmmorette">Natan Morette</a>, o grupo começou com apenas quatro alunos apaixonados, ansiosos por aprofundar seus conhecimentos em segurança ofensiva e hacking ético.</p>
+<p style="text-align: justify;">Sob a orientação técnica e ética especializada do Professor <a href="https://www.linkedin.com/in/nmmorette">Natan</a>, o CVE-Hunters cresceu e amadureceu de forma constante. Hoje, contamos com orgulho com 10 pesquisadores ativos em segurança cibernética que aplicam as habilidades práticas aprendidas tanto em ambientes acadêmicos quanto em ambientes de laboratório. Nossas principais áreas de foco incluem testes de penetração, avaliação de vulnerabilidades, publicação de CVE e contribuição para o fortalecimento da segurança de projetos de código aberto impactantes com relevância social significativa.</p>
+<p style="text-align: justify;">Nosso trabalho de pesquisa e desenvolvimento está em constante evolução. Estamos analisando ativamente novas falhas de segurança, documentando detalhes técnicos e preparando divulgações de vulnerabilidades responsáveis ​​adicionais para a comunidade.</p>
+<p style="text-align: justify;">Para saber mais sobre os membros da nossa equipe, explorar nossos projetos em andamento e acompanhar as últimas publicações do CVE, visite nosso repositório oficial do GitHub em: <a href="https://github.com/Sec-Dojo-Cyber-House/cve-hunters">https://github.com/Sec-Dojo-Cyber-House/cve-hunters</a>.</p>
+<p style="text-align: justify;">Todas as vulnerabilidades identificadas e CVEs oficialmente publicadas pelo CVE-Hunters são catalogadas de forma transparente e acessíveis em nosso site oficial: <a href="https://sec-dojo-cyber-house.github.io/">https://sec-dojo-cyber-house.github.io/</a>.</p>
+<h2 id="escrito-por">Escrito por
+</h2><p><a class="link" href="https://www.linkedin.com/in/elisangelasilvademendonca/"  target="_blank" rel="noopener"
+    ><img src="/assets/contributors/50x50/elisangela50x50.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></a> <a class="link" href="https://www.linkedin.com/in/elisangelasilvademendonca/"  target="_blank" rel="noopener"
+    >Elisangela Mendonça</a></p>
+<h2 id="colaboradores">Colaboradores
+</h2><p><a class="link" href="https://www.linkedin.com/in/karina-gante/"  target="_blank" rel="noopener"
+    ><img src="/assets/contributors/50x50/karina50x50.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></a> <a class="link" href="https://www.linkedin.com/in/karina-gante/"  target="_blank" rel="noopener"
+    >Karina Gante</a></p>
+<p><a class="link" href="https://www.linkedin.com/in/nmmorette"  target="_blank" rel="noopener"
+    ><img src="/assets/contributors/50x50/natan50x50.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></a> <a class="link" href="https://www.linkedin.com/in/nmmorette"  target="_blank" rel="noopener"
+    >Natan Maia Morette</a></p>
+<blockquote>
+<p><em>Por: <a class="link" href="https://github.com/Sec-Dojo-Cyber-House/cve-hunters"  target="_blank" rel="noopener"
+    >CVE-Hunters</a></em></p>
+</blockquote>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/pt/tags/cve-hunters/">CVE-Hunters</a>
+        
+            <a href="/pt/tags/ferramenta-caido/">Ferramenta Caido</a>
+        
+            <a href="/pt/tags/proxy-caido/">Proxy Caido</a>
+        
+            <a href="/pt/tags/pesquisa-de-vulnerabilidades/">Pesquisa De Vulnerabilidades</a>
+        
+            <a href="/pt/tags/seguran%C3%A7a-de-aplica%C3%A7%C3%B5es-web/">Segurança De Aplicações Web</a>
+        
+            <a href="/pt/tags/divulga%C3%A7%C3%A3o-respons%C3%A1vel/">Divulgação Responsável</a>
+        
+            <a href="/pt/tags/vulnerabilidades-em-c%C3%B3digo-aberto/">Vulnerabilidades Em Código Aberto</a>
+        
+            <a href="/pt/tags/ferramentas-de-seguran%C3%A7a-para-pentesters/">Ferramentas De Segurança Para Pentesters</a>
+        
+            <a href="/pt/tags/ferramentas-de-bug-bounty/">Ferramentas De Bug Bounty</a>
+        
+            <a href="/pt/tags/hacking-%C3%A9tico/">Hacking Ético</a>
+        
+            <a href="/pt/tags/alternativa-ao-burp-suite/">Alternativa Ao Burp Suite</a>
+        
+            <a href="/pt/tags/publica%C3%A7%C3%A3o-de-cve/">Publicação De CVE</a>
+        
+            <a href="/pt/tags/detec%C3%A7%C3%A3o-de-xss/">Detecção De XSS</a>
+        
+            <a href="/pt/tags/vulnerabilidade-idor/">Vulnerabilidade IDOR</a>
+        
+            <a href="/pt/tags/prote%C3%A7%C3%A3o-contra-csrf/">Proteção Contra CSRF</a>
+        
+            <a href="/pt/tags/filtro-httpql/">Filtro HTTPQL</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licenciado sob CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/pt/articles/xss-nao-esta-morto/">
+        
+        
+            <div class="article-image">
+                <img src="/articles/xss-nao-esta-morto/xss-nao-esta-morto.cbb3ac9d1e059ad433fa8445001faf8b_hu_ac4e6880b5f1882b.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post XSS Não Está Morto - Hacktiba Pulse 07"
+                        
+                        data-hash="md5-y7OsnR4FmtQz&#43;oRFAB&#43;viw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">XSS Não Está Morto - Hacktiba Pulse 07</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/pt/articles/cve-hunters---the-journey-of-aspiring-vulnerability-researchers/">
+        
+        
+            <div class="article-image">
+                <img src="/articles/cve-hunters---the-journey-of-aspiring-vulnerability-researchers/defcon33.2f259eebb06b8a739f10f6d58933baa9_hu_5cd4c1382b79c62b.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post CVE-Hunters, A Jornada de Aspirantes à Pesquisadores de Vulnerabilidades"
+                        
+                        data-hash="md5-LyWe67BrinOfEPbViTO6qQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">CVE-Hunters, A Jornada de Aspirantes à Pesquisadores de Vulnerabilidades</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2026 CVE-Hunters
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.33.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+    
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.c922af694cc257bf1ecc41c0dd7b0430f9114ec280ccf67cd2c6ad55f5316c4e.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

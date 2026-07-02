@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Stats</title>
+    <link>https://www.cvehunters.com/stats/</link>
+    <description>Stats</description>
+    <atom:link href="https://www.cvehunters.com/stats/index.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>Stats</title>
+      <link>https://www.cvehunters.com/stats/</link>
+      <guid>https://www.cvehunters.com/stats/</guid>
+      <description>&amp;lt;p&amp;gt;All statistics of CVEs registered by CVE-Hunters&amp;amp;rsquo;s Team:&amp;lt;/p&amp;gt;
+&amp;lt;h3 id=&amp;#34;total-cves-registered&amp;#34;&amp;gt;Total CVEs Registered
+&amp;lt;/h3&amp;gt;&amp;lt;img src=&amp;#34;/stats/totalCVEsRegistred.png&amp;#34; width=100% height=100&amp;gt;
+&amp;lt;h3 id=&amp;#34;top-finders&amp;#34;&amp;gt;Top Finders
+&amp;lt;/h3&amp;gt;&amp;lt;img src=&amp;#34;/stats/topFinderss.png&amp;#34; width=100% height=100&amp;gt;
+&amp;lt;h3 id=&amp;#34;vulnerability-type&amp;#34;&amp;gt;Vulnerability Type
+&amp;lt;/h3&amp;gt;&amp;lt;img src=&amp;#34;/stats/vulnerabilityType.png&amp;#34; width=100% height=100&amp;gt;
+&amp;lt;h3 id=&amp;#34;severity&amp;#34;&amp;gt;Severity
+&amp;lt;/h3&amp;gt;&amp;lt;img src=&amp;#34;/stats/severity.png&amp;#34; width=100% height=100&amp;gt;
+&amp;lt;h3 id=&amp;#34;repository-stars-history&amp;#34;&amp;gt;Repository Stars History
+&amp;lt;/h3&amp;gt;&amp;lt;img src=&amp;#34;https://api.star-history.com/svg?repos=CVE-Hunters/cve-hunters&amp;amp;type=Date&amp;#34; width=100% height=100&amp;gt;</description><content:encoded>&amp;lt;p&amp;gt;All statistics of CVEs registered by CVE-Hunters&amp;amp;rsquo;s Team:&amp;lt;/p&amp;gt;
+&amp;lt;h3 id=&amp;#34;total-cves-registered&amp;#34;&amp;gt;Total CVEs Registered
+&amp;lt;/h3&amp;gt;&amp;lt;img src=&amp;#34;/stats/totalCVEsRegistred.png&amp;#34; width=100% height=100 /&amp;gt;
+&amp;lt;h3 id=&amp;#34;top-finders&amp;#34;&amp;gt;Top Finders
+&amp;lt;/h3&amp;gt;&amp;lt;img src=&amp;#34;/stats/topFinderss.png&amp;#34; width=100% height=100 /&amp;gt;
+&amp;lt;h3 id=&amp;#34;vulnerability-type&amp;#34;&amp;gt;Vulnerability Type
+&amp;lt;/h3&amp;gt;&amp;lt;img src=&amp;#34;/stats/vulnerabilityType.png&amp;#34; width=100% height=100 /&amp;gt;
+&amp;lt;h3 id=&amp;#34;severity&amp;#34;&amp;gt;Severity
+&amp;lt;/h3&amp;gt;&amp;lt;img src=&amp;#34;/stats/severity.png&amp;#34; width=100% height=100 /&amp;gt;
+&amp;lt;h3 id=&amp;#34;repository-stars-history&amp;#34;&amp;gt;Repository Stars History
+&amp;lt;/h3&amp;gt;&amp;lt;img src=&amp;#34;https://api.star-history.com/svg?repos=CVE-Hunters/cve-hunters&amp;amp;type=Date&amp;#34; width=100% height=100 /&amp;gt;</content:encoded>
+
+      <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
+    </item>
+  </channel>
+</rss>
