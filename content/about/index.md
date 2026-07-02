@@ -135,7 +135,7 @@ comments: false
       <td style="text-align: center;"><img src="https://cdn.iconscout.com/icon/free/png-256/free-python-logo-icon-download-in-svg-png-gif-file-formats--technology-social-media-vol-5-pack-logos-icons-3030224.png?f=webp" width="28"/></td>
     </tr>
     <tr>
-      <td style="text-align: center;"><b>🛡️ CVEs: 12</b></td>
+      <td style="text-align: center;"><b>🛡️ CVEs: 18</b></td>
       <td style="text-align: center;"><b>🛡️ CVEs: 6</b></td>
       <td style="text-align: center;"><b>🛡️ CVEs: 1</b></td>
     </tr>
